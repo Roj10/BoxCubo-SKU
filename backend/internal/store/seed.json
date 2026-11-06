@@ -1,0 +1,2407 @@
+{
+ "machines": [
+  {
+   "id": "v2",
+   "sku": "MAQ-V2",
+   "nome": "BoxCubo Estática V2",
+   "apelido": "A base",
+   "tecnologia": "Ultrassônico",
+   "ativa": true
+  },
+  {
+   "id": "v25",
+   "sku": "MAQ-V25",
+   "nome": "BoxCubo Estática V2.5",
+   "apelido": "Revisão da V2",
+   "tecnologia": "Ultrassônico",
+   "ativa": false
+  },
+  {
+   "id": "vision",
+   "sku": "MAQ-VIS",
+   "nome": "BoxCubo Vision",
+   "apelido": "A inteligência",
+   "tecnologia": "Câmera RGB + 3D com IA",
+   "ativa": false
+  },
+  {
+   "id": "dynamic",
+   "sku": "MAQ-DYN",
+   "nome": "BoxCubo Dynamic",
+   "apelido": "A performance",
+   "tecnologia": "Laser em esteira",
+   "ativa": false
+  },
+  {
+   "id": "eye",
+   "sku": "MAQ-EYE",
+   "nome": "BoxCubo Eye",
+   "apelido": "A prova",
+   "tecnologia": "Auditoria por foto e vídeo",
+   "ativa": false
+  }
+ ],
+ "kits": [
+  {
+   "id": "ADDC",
+   "nome": "Adicional Correios",
+   "descricao": "Monitor, teclado, leitor 2D, nobreak e acessórios"
+  }
+ ],
+ "parts": [
+  {
+   "sku": "ELE-RES-10",
+   "nome": "10 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RESISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.03,
+   "estoque": 1352
+  },
+  {
+   "sku": "ELE-RES-100",
+   "nome": "100 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RESISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.03,
+   "estoque": 1387
+  },
+  {
+   "sku": "ELE-RES-150",
+   "nome": "150 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RESISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.03,
+   "estoque": 1038
+  },
+  {
+   "sku": "ELE-RES-220",
+   "nome": "220 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RESISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.03,
+   "estoque": 1840
+  },
+  {
+   "sku": "ELE-RES-270",
+   "nome": "270 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RESISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.03,
+   "estoque": 385
+  },
+  {
+   "sku": "ELE-RES-390",
+   "nome": "390 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RESISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.03,
+   "estoque": 1403
+  },
+  {
+   "sku": "ELE-RES-1K",
+   "nome": "1k Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RESISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.03,
+   "estoque": 1407
+  },
+  {
+   "sku": "ELE-RES-1K2",
+   "nome": "1k2 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RESISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.03,
+   "estoque": 1392
+  },
+  {
+   "sku": "ELE-RES-2K2",
+   "nome": "2k2 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RESISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.03,
+   "estoque": 1914
+  },
+  {
+   "sku": "ELE-RES-3K9",
+   "nome": "3k9 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RESISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.03,
+   "estoque": 1334
+  },
+  {
+   "sku": "ELE-RES-10K",
+   "nome": "10k Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RESISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.03,
+   "estoque": 1000
+  },
+  {
+   "sku": "ELE-RES-100K",
+   "nome": "100k Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RESISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.03,
+   "estoque": 1874
+  },
+  {
+   "sku": "ELE-CAP-470UF16V",
+   "nome": "Eletrolítico 16v 470uF",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CAPACITOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.35,
+   "estoque": 140
+  },
+  {
+   "sku": "ELE-LED-VERDE",
+   "nome": "Verde 3mm",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "LED",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.15,
+   "estoque": 200
+  },
+  {
+   "sku": "ELE-LED-VERMELHO",
+   "nome": "Vermelho 3mm",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "LED",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.15,
+   "estoque": 200
+  },
+  {
+   "sku": "ELE-LED-RGB",
+   "nome": "RGB Catodo Comum",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "LED",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 1.38,
+   "estoque": 75
+  },
+  {
+   "sku": "ELE-DIO-1N4148",
+   "nome": "1N4148",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "DIODO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.08,
+   "estoque": 200
+  },
+  {
+   "sku": "ELE-DIO-1N4007",
+   "nome": "1N4007",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "DIODO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.1,
+   "estoque": 200
+  },
+  {
+   "sku": "ELE-TRS-BC327",
+   "nome": "BC327",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "TRANSISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 1.5,
+   "estoque": 221
+  },
+  {
+   "sku": "ELE-TRS-BC337",
+   "nome": "BC337",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "TRANSISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 1.4,
+   "estoque": 213
+  },
+  {
+   "sku": "ELE-TRS-LM35",
+   "nome": "LM35",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "TRANSISTOR",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 6.8,
+   "estoque": 90
+  },
+  {
+   "sku": "ELE-CMP-BUZZER",
+   "nome": "Buzzer 3.3v com Oscilador interno",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 2.1,
+   "estoque": 60
+  },
+  {
+   "sku": "ELE-CMP-PORTAFUS",
+   "nome": "Porta Fusível 5x20 (AS-06) para placa",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.49,
+   "estoque": 46
+  },
+  {
+   "sku": "ELE-CMP-FUS3A",
+   "nome": "Fusível de Vidro 3A",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.2,
+   "estoque": 132
+  },
+  {
+   "sku": "ELE-CMP-TRIMPOT5K",
+   "nome": "Trimpot 5KΩ Vertical",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 1.5,
+   "estoque": 52
+  },
+  {
+   "sku": "ELE-CMP-RELE5V",
+   "nome": "Rele 5V",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 3.95,
+   "estoque": 36
+  },
+  {
+   "sku": "ELE-CMP-TBLOCK3M",
+   "nome": "Tblock 3 Vias 90 graus macho para placa",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 1.27,
+   "estoque": 47
+  },
+  {
+   "sku": "ELE-CMP-TBLOCK3F",
+   "nome": "Tblock 3 Vias 90 graus femea para fio",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 2.05,
+   "estoque": 103
+  },
+  {
+   "sku": "ELE-CMP-RJ45F",
+   "nome": "RJ45 fêmea 90 graus para placa",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 1.56,
+   "estoque": 89
+  },
+  {
+   "sku": "ELE-CMP-DB9F",
+   "nome": "DB9 fêmea 90 graus para placa",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 1.26,
+   "estoque": 31
+  },
+  {
+   "sku": "ELE-CMP-LCD20X4",
+   "nome": "Display LCD 20x4",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 37,
+   "estoque": 52
+  },
+  {
+   "sku": "ELE-CMP-HYSR05",
+   "nome": "Sensores ultrassônicos HYSR05",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 10.35,
+   "estoque": 151
+  },
+  {
+   "sku": "ELE-BPN-F1X5",
+   "nome": "Fêmea 1x5 90 graus 2.54mm",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "BARRA DE PINO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.31,
+   "estoque": 52
+  },
+  {
+   "sku": "ELE-BPN-M1X5",
+   "nome": "Macho 1x5 90 graus 2.54mm (*)",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "BARRA DE PINO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.15,
+   "estoque": 0
+  },
+  {
+   "sku": "ELE-BPN-M1X40",
+   "nome": "Macho 1x40 90 graus 2.54mm (*)",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "BARRA DE PINO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 1.21,
+   "estoque": 77
+  },
+  {
+   "sku": "ELE-BPN-F1X16",
+   "nome": "Fêmea 1x16 180 graus",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "BARRA DE PINO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 1.27,
+   "estoque": 50
+  },
+  {
+   "sku": "ELE-BPN-F2X20",
+   "nome": "Fêmea 2x20 180 graus",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "BARRA DE PINO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 2.54,
+   "estoque": 0
+  },
+  {
+   "sku": "ELE-BPN-M1X16",
+   "nome": "Macho 1x16 180 graus",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "BARRA DE PINO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 1.53,
+   "estoque": 40
+  },
+  {
+   "sku": "ELE-CTR-RPI3B",
+   "nome": "Raspberry pi3 B(ou B+)",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CONTROLADORES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "ML",
+   "valor_unitario": 715,
+   "estoque": 28
+  },
+  {
+   "sku": "ELE-CTR-SD32GB",
+   "nome": "Cartão de memória 32GB /16GB (070341075586) (070341075593)",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CONTROLADORES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Abu Mazin / ML",
+   "valor_unitario": 24.5,
+   "estoque": 36
+  },
+  {
+   "sku": "ELE-CTR-ATTINY85",
+   "nome": "Microcontrolador ATTINY85",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CONTROLADORES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL / ML",
+   "valor_unitario": 17.22,
+   "estoque": 90
+  },
+  {
+   "sku": "ELE-CTR-74HC595",
+   "nome": "CI 74HC595",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CONTROLADORES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 1.61,
+   "estoque": 51
+  },
+  {
+   "sku": "ELE-CTR-MAX3232",
+   "nome": "Conversor RS232 to TTL MAX3232 com DB9",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CONTROLADORES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL / ML",
+   "valor_unitario": 10.45,
+   "estoque": 22
+  },
+  {
+   "sku": "ELE-CAB-TERMMODU",
+   "nome": "Terminal Modu 1mm",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.12,
+   "estoque": 800
+  },
+  {
+   "sku": "ELE-CAB-FORQUILHA",
+   "nome": "Terminal Forquilha Azul Para Fios De 1,5 A 2,5Mm",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "",
+   "valor_unitario": 0.12,
+   "estoque": 2000
+  },
+  {
+   "sku": "ELE-CAB-ALOJMODU",
+   "nome": "Alojamento conector modu 1mm 1x5",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.23,
+   "estoque": 300
+  },
+  {
+   "sku": "ELE-CAB-DB9M",
+   "nome": "DB9 macho",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 1.07,
+   "estoque": 22
+  },
+  {
+   "sku": "ELE-CAB-CAPADB9",
+   "nome": "Capa DB9",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 1.32,
+   "estoque": 51
+  },
+  {
+   "sku": "ELE-CAB-MANGA4X26",
+   "nome": "Cabo manga 4x26AWG",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "rolo",
+   "tipo": "consumivel",
+   "fornecedor": "Wincabos / ML",
+   "valor_unitario": 220,
+   "estoque": 0
+  },
+  {
+   "sku": "ELE-CAB-USB3M",
+   "nome": "Extensor USB 3m 7899646320992",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Wincabos / ML",
+   "valor_unitario": 15.9,
+   "estoque": 76
+  },
+  {
+   "sku": "ELE-CAB-FORCA15M",
+   "nome": "Cabo de força Pc tripolar 1,50 metros para fonte",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Wincabos / ML",
+   "valor_unitario": 25.9,
+   "estoque": 40
+  },
+  {
+   "sku": "ELE-CAB-HDMI",
+   "nome": "Cabo HDMI",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "",
+   "valor_unitario": null,
+   "estoque": 21
+  },
+  {
+   "sku": "ELE-CAB-FLEXVM",
+   "nome": "Cabo eletrica flexível 1,5mm² Vermelho (emborrachado)",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "rolo",
+   "tipo": "consumivel",
+   "fornecedor": "Wincabos / ML",
+   "valor_unitario": 60,
+   "estoque": 100
+  },
+  {
+   "sku": "ELE-CAB-FLEXPT",
+   "nome": "Cabo eletrica flexível 1,5mm² Preto (emborrachado)",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "rolo",
+   "tipo": "consumivel",
+   "fornecedor": "Wincabos / ML",
+   "valor_unitario": 60,
+   "estoque": 100
+  },
+  {
+   "sku": "ELE-CAB-FLEXVD",
+   "nome": "Cabo eletrica flexível 1,5mm² Verde (emborrachado)",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "rolo",
+   "tipo": "consumivel",
+   "fornecedor": "Wincabos / ML",
+   "valor_unitario": 60,
+   "estoque": 100
+  },
+  {
+   "sku": "ELE-CAB-FLEXAM",
+   "nome": "Cabo eletrica flexível 1,5mm² Amarelo (emborrachado)",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "rolo",
+   "tipo": "consumivel",
+   "fornecedor": "Wincabos / ML",
+   "valor_unitario": 60,
+   "estoque": 100
+  },
+  {
+   "sku": "ELE-CAB-CAT5E",
+   "nome": "Cabo de rede Cat5e",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "m",
+   "tipo": "consumivel",
+   "fornecedor": "Wincabos / ML",
+   "valor_unitario": 2.59,
+   "estoque": 145
+  },
+  {
+   "sku": "ELE-CAB-RJ45M",
+   "nome": "RJ45 Macho para climpagem",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL",
+   "valor_unitario": 0.15,
+   "estoque": 368
+  },
+  {
+   "sku": "ELE-CAB-TOMADAAS03",
+   "nome": "Tomada Força As-03 Tripolar Macho C/ Gangorra Porta Fusível",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "",
+   "valor_unitario": null,
+   "estoque": 30
+  },
+  {
+   "sku": "ELE-CAB-BOTAO",
+   "nome": "Botão",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL / ML",
+   "valor_unitario": 11.99,
+   "estoque": 32
+  },
+  {
+   "sku": "ELE-CAB-COGUMELO",
+   "nome": "Botão Cogumelo",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "FORNELL / ML",
+   "valor_unitario": 16.99,
+   "estoque": 0
+  },
+  {
+   "sku": "ELE-CAB-FONTEMW",
+   "nome": "Fonte MW (5v 3A - 0 - 12v 2A) [V1 - GND - V2]",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "LRI MW",
+   "valor_unitario": 159.9,
+   "estoque": 0
+  },
+  {
+   "sku": "ELE-PCB-SHIELDRPI",
+   "nome": "Shield Raspberry",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "PCB",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Griffus",
+   "valor_unitario": 36.8,
+   "estoque": 29
+  },
+  {
+   "sku": "ELE-PCB-SHIELDSENS",
+   "nome": "Shield Sensor",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "PCB",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Griffus",
+   "valor_unitario": 11,
+   "estoque": 0
+  },
+  {
+   "sku": "ELE-PES-BALANCA",
+   "nome": "Balança",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "PESAGEM",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Trentim",
+   "valor_unitario": 3850,
+   "estoque": 27
+  },
+  {
+   "sku": "ELE-PER-MONITOR15",
+   "nome": "Monitor 15'' VX154X   XJHA13040",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "ADICIONAL CORREIOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "",
+   "valor_unitario": 305,
+   "estoque": 3
+  },
+  {
+   "sku": "ELE-PER-TECLADO",
+   "nome": "Teclado",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "ADICIONAL CORREIOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Kabum",
+   "valor_unitario": 24.9,
+   "estoque": 0
+  },
+  {
+   "sku": "ELE-PER-LEITOR2D",
+   "nome": "Leitor Código de Barras com leitura 2D",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "ADICIONAL CORREIOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "",
+   "valor_unitario": 450,
+   "estoque": 8
+  },
+  {
+   "sku": "ELE-PER-BOXTV",
+   "nome": "Box TV",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "ADICIONAL CORREIOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "",
+   "valor_unitario": null,
+   "estoque": 16
+  },
+  {
+   "sku": "ELE-PER-NOBREAK600",
+   "nome": "Nobreak UPS 600VA",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "ADICIONAL CORREIOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "",
+   "valor_unitario": 350,
+   "estoque": 2
+  },
+  {
+   "sku": "EST-MET-ESTRUTURA",
+   "nome": "Estrutura Tubo",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Dominik / GR",
+   "valor_unitario": 1798.76,
+   "estoque": 40
+  },
+  {
+   "sku": "EST-MET-ANGFRENTE",
+   "nome": "Angulação Sensor Frente",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Dominik / MetalPorto",
+   "valor_unitario": 11.71,
+   "estoque": 0
+  },
+  {
+   "sku": "EST-MET-ANGFUNDO",
+   "nome": "Angulação Sensor Fundo",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Dominik / MetalPorto",
+   "valor_unitario": 7.15,
+   "estoque": 0
+  },
+  {
+   "sku": "EST-MET-VESA",
+   "nome": "Supote Vesa Monitor",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Dominik / MetalPorto",
+   "valor_unitario": 27,
+   "estoque": 28
+  },
+  {
+   "sku": "EST-MET-CHAPAFIX",
+   "nome": "Chapa Fixação",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Dominik / MetalPorto",
+   "valor_unitario": 10.91,
+   "estoque": 28
+  },
+  {
+   "sku": "EST-ACA-TAPA40X40",
+   "nome": "Tapa furo 40x40 (tampa metalon)",
+   "grupo": "ESTRUTURAL",
+   "classe": "ACABAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Dominik / zinca rapido / ML",
+   "valor_unitario": 0.39,
+   "estoque": 0
+  },
+  {
+   "sku": "EST-ACA-TAPA60X40",
+   "nome": "Tapa furo 60x40 (tampa metalon)",
+   "grupo": "ESTRUTURAL",
+   "classe": "ACABAMENTO",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Dominik / zinca rapido / ML",
+   "valor_unitario": 0.96,
+   "estoque": 0
+  },
+  {
+   "sku": "EST-ACA-ORGFIO",
+   "nome": "Organiza fio chinês (20cm)",
+   "grupo": "ESTRUTURAL",
+   "classe": "ACABAMENTO",
+   "unidade": "m",
+   "tipo": "consumivel",
+   "fornecedor": "Loja completa / ML / Casa das Borrachas",
+   "valor_unitario": 4.2,
+   "estoque": 0
+  },
+  {
+   "sku": "EST-ACA-BORRLEITOR",
+   "nome": "Borracha Leitor código de barras",
+   "grupo": "ESTRUTURAL",
+   "classe": "ACABAMENTO",
+   "unidade": "m",
+   "tipo": "consumivel",
+   "fornecedor": "Casa das Mangueiras e Borrachas Silvy",
+   "valor_unitario": 6,
+   "estoque": 0
+  },
+  {
+   "sku": "EST-ADE-NSERIE",
+   "nome": "Número de série",
+   "grupo": "ESTRUTURAL",
+   "classe": "ADESIVOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Tecnograph",
+   "valor_unitario": 3.5,
+   "estoque": 16
+  },
+  {
+   "sku": "EST-ADE-NAOAPOIE",
+   "nome": "Não apoie objetos",
+   "grupo": "ESTRUTURAL",
+   "classe": "ADESIVOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Tecnograph",
+   "valor_unitario": 7.04,
+   "estoque": 20
+  },
+  {
+   "sku": "EST-ADE-MODO",
+   "nome": "Modo",
+   "grupo": "ESTRUTURAL",
+   "classe": "ADESIVOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Tecnograph",
+   "valor_unitario": 5.06,
+   "estoque": 0
+  },
+  {
+   "sku": "EST-ADE-LOGO60X60",
+   "nome": "Logo 60x60 mm",
+   "grupo": "ESTRUTURAL",
+   "classe": "ADESIVOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Tecnograph",
+   "valor_unitario": 5.28,
+   "estoque": 143
+  },
+  {
+   "sku": "EST-ADE-LOGO60X260",
+   "nome": "Logo 60x260 mm",
+   "grupo": "ESTRUTURAL",
+   "classe": "ADESIVOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Tecnograph",
+   "valor_unitario": 14.3,
+   "estoque": 0
+  },
+  {
+   "sku": "EST-ADE-DISPLAY",
+   "nome": "Adesivo Display BoxCubo",
+   "grupo": "ESTRUTURAL",
+   "classe": "ADESIVOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Sombra Print",
+   "valor_unitario": 13,
+   "estoque": 0
+  },
+  {
+   "sku": "EST-CAS-PBT075",
+   "nome": "Patola PBT 075 - Sensor",
+   "grupo": "ESTRUTURAL",
+   "classe": "CASES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Patola",
+   "valor_unitario": 6.98,
+   "estoque": 10
+  },
+  {
+   "sku": "EST-CAS-USIN075",
+   "nome": "Usinagem PBT 075",
+   "grupo": "ESTRUTURAL",
+   "classe": "CASES",
+   "unidade": "serviço",
+   "tipo": "servico",
+   "fornecedor": "GR",
+   "valor_unitario": 6,
+   "estoque": 0
+  },
+  {
+   "sku": "EST-CAS-PBT114",
+   "nome": "Patola PBT 114 TE - Raspberry",
+   "grupo": "ESTRUTURAL",
+   "classe": "CASES",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Patola",
+   "valor_unitario": 13.83,
+   "estoque": 15
+  },
+  {
+   "sku": "EST-CAS-USIN114",
+   "nome": "Usinagem PBT 114 TE",
+   "grupo": "ESTRUTURAL",
+   "classe": "CASES",
+   "unidade": "serviço",
+   "tipo": "servico",
+   "fornecedor": "GR",
+   "valor_unitario": 48,
+   "estoque": 0
+  },
+  {
+   "sku": "EST-PAR-FR38X4",
+   "nome": "2241 Parafuso Frances ZB 3/8x4\" (Estrutura Tubo)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 1.46,
+   "estoque": 268
+  },
+  {
+   "sku": "EST-PAR-FR38X5",
+   "nome": "2243 Parafuso Frances ZB 3/8x5\" (Estrutura Tubo)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 1.704,
+   "estoque": 310
+  },
+  {
+   "sku": "EST-PAR-FR38X212",
+   "nome": "2238 Parafuso Frances ZB 3/8x21/2 (Estrutura Tubo)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 1.465,
+   "estoque": 103
+  },
+  {
+   "sku": "EST-PAR-SEX10X50",
+   "nome": "2322 Parafuso Sextavado ZB RI 10x50 (Fixa Balança)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 1.325,
+   "estoque": 161
+  },
+  {
+   "sku": "EST-PAR-ARR38AL",
+   "nome": "5652 Arruela Lisa ZB 3/8 Abalarga (Fixa Balança)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 0.527,
+   "estoque": 177
+  },
+  {
+   "sku": "EST-PAR-ARR38",
+   "nome": "14508 Arruela Lisa ZB 3/8 - IMP (Fixa Estrutura)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 0.16,
+   "estoque": 716
+  },
+  {
+   "sku": "EST-PAR-AA29X65",
+   "nome": "3815 Parafuso AA PN PH ZB 2,9x6,5 (Chapa metal Shield Rapsberry)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 0.035,
+   "estoque": 150
+  },
+  {
+   "sku": "EST-PAR-M4X10",
+   "nome": "3381 Parafuso PN PH 4x10 (M4x10) (Tampa Gabinete + Leitor)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 0.067,
+   "estoque": 304
+  },
+  {
+   "sku": "EST-PAR-M4X20",
+   "nome": "3384 Parafuso PN PH 4x20 (M4x20)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 0.097,
+   "estoque": 0
+  },
+  {
+   "sku": "EST-PAR-M6X12",
+   "nome": "3403 Parafuso PN PH 6x12 (M6x12) (Display Balança)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 0.181,
+   "estoque": 63
+  },
+  {
+   "sku": "EST-PAR-CH35X16",
+   "nome": "14097 Parafuso Fixes CH 3,5x16 - IMP (Fechar CPU) Principal",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 0.034,
+   "estoque": 193
+  },
+  {
+   "sku": "EST-PAR-CH35X25",
+   "nome": "4047 Parafuso Fixer CH 3,5x25 (Fechar CPU) Alternativo",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 0.064,
+   "estoque": 91
+  },
+  {
+   "sku": "EST-PAR-M3X6",
+   "nome": "3371 Parafuso PN PH 3x6 M3 (Parafuso Fonte)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 0.048,
+   "estoque": 60
+  },
+  {
+   "sku": "EST-PAR-REB4X8",
+   "nome": "6367 Rebite Pop 4,0x8",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 0.093,
+   "estoque": 110
+  },
+  {
+   "sku": "EST-PAR-REB4X10",
+   "nome": "14133 Rebite Pop 4,0x10",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 0.076,
+   "estoque": 810
+  },
+  {
+   "sku": "EST-PAR-REB4X12",
+   "nome": "14134 Rebite Pop 4,0x12",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 0.08,
+   "estoque": 110
+  },
+  {
+   "sku": "EST-PAR-REBROSCM4",
+   "nome": "6227 Rebite Rosca Liso M4 (porca Rebite M4)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 0.261,
+   "estoque": 902
+  },
+  {
+   "sku": "EST-PAR-AA42X95",
+   "nome": "3831 Parafuso AA PN PH ZB 4,2x9,5 (Fixar patola sensor)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos / ML",
+   "valor_unitario": 0.074,
+   "estoque": 276
+  },
+  {
+   "sku": "EST-PAR-RODIZIO2",
+   "nome": "Rodízio 2'' rosca 3/8",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos",
+   "valor_unitario": 15.64,
+   "estoque": 85
+  },
+  {
+   "sku": "EST-PAR-PEREG",
+   "nome": "Pé regulável",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "1001 parafusos / R&A Parafusos / Trentim / ML",
+   "valor_unitario": 4.99,
+   "estoque": 0
+  },
+  {
+   "sku": "EST-PAR-DUPLAFACE",
+   "nome": "7747 Fita dupla face 3M (1/4 ROLO)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "m",
+   "tipo": "consumivel",
+   "fornecedor": "1001 parafusos / R&A Parafusos",
+   "valor_unitario": 67.617,
+   "estoque": 80
+  },
+  {
+   "sku": "EMB-EMB-CAIXA",
+   "nome": "Caixa de papelão (398737)",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMBALAGENS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Trombini",
+   "valor_unitario": 52.97,
+   "estoque": 68
+  },
+  {
+   "sku": "EMB-EMB-STRETCH",
+   "nome": "Plástico Strech (1/3)",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMBALAGENS",
+   "unidade": "rolo",
+   "tipo": "consumivel",
+   "fornecedor": "Mercadão das Embalagens / Cia Embalagem",
+   "valor_unitario": 65.5,
+   "estoque": 9
+  },
+  {
+   "sku": "EMB-EMB-BOLHA",
+   "nome": "Plástico Bolha (1/20)",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMBALAGENS",
+   "unidade": "rolo",
+   "tipo": "consumivel",
+   "fornecedor": "Mercadão das Embalagens / Cia Embalagem",
+   "valor_unitario": 123,
+   "estoque": 2
+  },
+  {
+   "sku": "EMB-EMB-FITILHO",
+   "nome": "Fitilho (1/8)",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMBALAGENS",
+   "unidade": "rolo",
+   "tipo": "consumivel",
+   "fornecedor": "Mercadão das Embalagens / Cia Embalagem",
+   "valor_unitario": 25,
+   "estoque": 0
+  },
+  {
+   "sku": "EMB-EMB-PAPELAO",
+   "nome": "Rolo Papelão ondulado (1/50)",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMBALAGENS",
+   "unidade": "rolo",
+   "tipo": "consumivel",
+   "fornecedor": "Mercadão das Embalagens / Cia Embalagem",
+   "valor_unitario": 350,
+   "estoque": 1
+  },
+  {
+   "sku": "EMB-EMB-FITACRISTAL",
+   "nome": "Fita Cristal (Durex) (1/10)",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMBALAGENS",
+   "unidade": "rolo",
+   "tipo": "consumivel",
+   "fornecedor": "Mercadão das Embalagens / Cia Embalagem",
+   "valor_unitario": 11.15,
+   "estoque": 20
+  },
+  {
+   "sku": "EMB-EMB-CXMANUT",
+   "nome": "Caixa Manutenção",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMBALAGENS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Mercadão das Embalagens / Cia Embalagem / ML",
+   "valor_unitario": 1.5,
+   "estoque": 0
+  },
+  {
+   "sku": "EMB-EMB-TINTABR",
+   "nome": "Tinta Spray Automotiva Colorgin Branco Brilhante 300mL",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMBALAGENS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "Bite",
+   "valor_unitario": 17.4,
+   "estoque": 0
+  },
+  {
+   "sku": "EMB-EMB-TINTAPT",
+   "nome": "Tinta Spray Automotiva Colorgin Preto Fosco 300mL",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMBALAGENS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "",
+   "valor_unitario": 16.95,
+   "estoque": 3
+  },
+  {
+   "sku": "EMB-EMB-ABRP",
+   "nome": "Abraçadeira nylon P (2,5mm x 100mm)",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMBALAGENS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "ML",
+   "valor_unitario": 0.03,
+   "estoque": 700
+  },
+  {
+   "sku": "EMB-EMB-ABRM",
+   "nome": "Abraçadeira nylon M (2,5mm x 150mm)",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMBALAGENS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "ML",
+   "valor_unitario": 0.03,
+   "estoque": 500
+  },
+  {
+   "sku": "EMB-EMB-ABRG",
+   "nome": "Abraçadeira nylon G (2,5mm x 200mm)",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMBALAGENS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "ML",
+   "valor_unitario": 0.1,
+   "estoque": 0
+  },
+  {
+   "sku": "EMB-EMB-ABRXG",
+   "nome": "Abraçadeira nylon XG (2,5 x 300mm)",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMBALAGENS",
+   "unidade": "und",
+   "tipo": "peca",
+   "fornecedor": "ML",
+   "valor_unitario": 0.12,
+   "estoque": 0
+  }
+ ],
+ "bom": {
+  "v2": [
+   {
+    "sku": "ELE-RES-10",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-RES-100",
+    "quantidade": 3,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-RES-150",
+    "quantidade": 8,
+    "onde_usado": [
+     "PS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-RES-220",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-RES-270",
+    "quantidade": 3,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-RES-390",
+    "quantidade": 3,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-RES-1K",
+    "quantidade": 3,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-RES-1K2",
+    "quantidade": 3,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-RES-2K2",
+    "quantidade": 2,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-RES-3K9",
+    "quantidade": 3,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-RES-10K",
+    "quantidade": 15,
+    "onde_usado": [
+     "PR",
+     "PS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-RES-100K",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAP-470UF16V",
+    "quantidade": 6,
+    "onde_usado": [
+     "PR",
+     "PS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-LED-VERDE",
+    "quantidade": 5,
+    "onde_usado": [
+     "PR",
+     "PS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-LED-VERMELHO",
+    "quantidade": 5,
+    "onde_usado": [
+     "PR",
+     "PS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-LED-RGB",
+    "quantidade": 3,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-DIO-1N4148",
+    "quantidade": 5,
+    "onde_usado": [
+     "PR",
+     "PS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-DIO-1N4007",
+    "quantidade": 5,
+    "onde_usado": [
+     "PR",
+     "PS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-TRS-BC327",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-TRS-BC337",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-TRS-LM35",
+    "quantidade": 4,
+    "onde_usado": [
+     "PS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CMP-BUZZER",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CMP-PORTAFUS",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CMP-FUS3A",
+    "quantidade": 3,
+    "onde_usado": [
+     "PR",
+     "KM"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CMP-TRIMPOT5K",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CMP-RELE5V",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CMP-TBLOCK3M",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CMP-TBLOCK3F",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CMP-RJ45F",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CMP-DB9F",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CMP-LCD20X4",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CMP-HYSR05",
+    "quantidade": 10,
+    "onde_usado": [
+     "OS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-BPN-F1X5",
+    "quantidade": 8,
+    "onde_usado": [
+     "PS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-BPN-M1X5",
+    "quantidade": 4,
+    "onde_usado": [
+     "PS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-BPN-M1X40",
+    "quantidade": 0,
+    "onde_usado": [
+     "PS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-BPN-F1X16",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-BPN-F2X20",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-BPN-M1X16",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CTR-RPI3B",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CTR-SD32GB",
+    "quantidade": 2,
+    "onde_usado": [
+     "PS",
+     "KM"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CTR-ATTINY85",
+    "quantidade": 4,
+    "onde_usado": [
+     "PS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CTR-74HC595",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CTR-MAX3232",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-TERMMODU",
+    "quantidade": 16,
+    "onde_usado": [
+     "CS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-FORQUILHA",
+    "quantidade": 6,
+    "onde_usado": [],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-ALOJMODU",
+    "quantidade": 4,
+    "onde_usado": [
+     "CS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-DB9M",
+    "quantidade": 1,
+    "onde_usado": [
+     "CS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-CAPADB9",
+    "quantidade": 1,
+    "onde_usado": [
+     "CS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-MANGA4X26",
+    "quantidade": 0.1,
+    "onde_usado": [
+     "CS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-USB3M",
+    "quantidade": 2,
+    "onde_usado": [
+     "CL"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-FORCA15M",
+    "quantidade": 1,
+    "onde_usado": [
+     "CF"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-HDMI",
+    "quantidade": 1,
+    "onde_usado": [],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-FLEXVM",
+    "quantidade": 0.01,
+    "onde_usado": [
+     "CF"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-FLEXPT",
+    "quantidade": 0.01,
+    "onde_usado": [
+     "CF"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-FLEXVD",
+    "quantidade": 0.01,
+    "onde_usado": [
+     "CF"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-FLEXAM",
+    "quantidade": 0.01,
+    "onde_usado": [
+     "CF"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-CAT5E",
+    "quantidade": 3,
+    "onde_usado": [
+     "CR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-RJ45M",
+    "quantidade": 3,
+    "onde_usado": [
+     "CR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-TOMADAAS03",
+    "quantidade": 0,
+    "onde_usado": [],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-BOTAO",
+    "quantidade": 1,
+    "onde_usado": [
+     "CF"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-CAB-COGUMELO",
+    "quantidade": 1,
+    "onde_usado": [],
+    "kit": "ADDC"
+   },
+   {
+    "sku": "ELE-CAB-FONTEMW",
+    "quantidade": 1,
+    "onde_usado": [
+     "CF"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-PCB-SHIELDRPI",
+    "quantidade": 1,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-PCB-SHIELDSENS",
+    "quantidade": 4,
+    "onde_usado": [
+     "PS"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-PES-BALANCA",
+    "quantidade": 1,
+    "onde_usado": [
+     "BL"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "ELE-PER-MONITOR15",
+    "quantidade": 1,
+    "onde_usado": [],
+    "kit": "ADDC"
+   },
+   {
+    "sku": "ELE-PER-TECLADO",
+    "quantidade": 1,
+    "onde_usado": [],
+    "kit": "ADDC"
+   },
+   {
+    "sku": "ELE-PER-LEITOR2D",
+    "quantidade": 1,
+    "onde_usado": [],
+    "kit": "ADDC"
+   },
+   {
+    "sku": "ELE-PER-BOXTV",
+    "quantidade": 0,
+    "onde_usado": [],
+    "kit": "ADDC"
+   },
+   {
+    "sku": "ELE-PER-NOBREAK600",
+    "quantidade": 1,
+    "onde_usado": [],
+    "kit": "ADDC"
+   },
+   {
+    "sku": "EST-MET-ESTRUTURA",
+    "quantidade": 1,
+    "onde_usado": [
+     "EST"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-MET-ANGFRENTE",
+    "quantidade": 3,
+    "onde_usado": [
+     "ESE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-MET-ANGFUNDO",
+    "quantidade": 3,
+    "onde_usado": [
+     "ESE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-MET-VESA",
+    "quantidade": 1,
+    "onde_usado": [],
+    "kit": "ADDC"
+   },
+   {
+    "sku": "EST-MET-CHAPAFIX",
+    "quantidade": 1,
+    "onde_usado": [
+     "ESR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-ACA-TAPA40X40",
+    "quantidade": 7,
+    "onde_usado": [
+     "ACA"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-ACA-TAPA60X40",
+    "quantidade": 2,
+    "onde_usado": [
+     "ACA"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-ACA-ORGFIO",
+    "quantidade": 0.2,
+    "onde_usado": [
+     "ACA"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-ACA-BORRLEITOR",
+    "quantidade": 0.3,
+    "onde_usado": [
+     "ACA"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-ADE-NSERIE",
+    "quantidade": 1,
+    "onde_usado": [
+     "ADE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-ADE-NAOAPOIE",
+    "quantidade": 1,
+    "onde_usado": [
+     "ADE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-ADE-MODO",
+    "quantidade": 1,
+    "onde_usado": [
+     "ADE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-ADE-LOGO60X60",
+    "quantidade": 1,
+    "onde_usado": [
+     "ADE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-ADE-LOGO60X260",
+    "quantidade": 1,
+    "onde_usado": [
+     "ADE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-ADE-DISPLAY",
+    "quantidade": 1,
+    "onde_usado": [
+     "ADE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-CAS-PBT075",
+    "quantidade": 4,
+    "onde_usado": [
+     "PTL"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-CAS-USIN075",
+    "quantidade": 4,
+    "onde_usado": [
+     "PTL"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-CAS-PBT114",
+    "quantidade": 1,
+    "onde_usado": [
+     "PTL"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-CAS-USIN114",
+    "quantidade": 1,
+    "onde_usado": [
+     "PTL"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-FR38X4",
+    "quantidade": 6,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-FR38X5",
+    "quantidade": 5,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-FR38X212",
+    "quantidade": 2,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-SEX10X50",
+    "quantidade": 4,
+    "onde_usado": [
+     "PFB"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-ARR38AL",
+    "quantidade": 6,
+    "onde_usado": [
+     "PFB"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-ARR38",
+    "quantidade": 28,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-AA29X65",
+    "quantidade": 4,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-M4X10",
+    "quantidade": 13,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-M4X20",
+    "quantidade": 3,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-M6X12",
+    "quantidade": 2,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-CH35X16",
+    "quantidade": 4,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-CH35X25",
+    "quantidade": 4,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-M3X6",
+    "quantidade": 2,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-REB4X8",
+    "quantidade": 5,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-REB4X10",
+    "quantidade": 5,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-REB4X12",
+    "quantidade": 5,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-REBROSCM4",
+    "quantidade": 12,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-AA42X95",
+    "quantidade": 8,
+    "onde_usado": [
+     "PFE"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-RODIZIO2",
+    "quantidade": 0,
+    "onde_usado": [
+     "PR"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EST-PAR-PEREG",
+    "quantidade": 4,
+    "onde_usado": [],
+    "kit": "ADDC"
+   },
+   {
+    "sku": "EST-PAR-DUPLAFACE",
+    "quantidade": 0.25,
+    "onde_usado": [
+     "FB"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EMB-EMB-CAIXA",
+    "quantidade": 1,
+    "onde_usado": [
+     "EMB"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EMB-EMB-STRETCH",
+    "quantidade": 0.33,
+    "onde_usado": [
+     "EMB"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EMB-EMB-BOLHA",
+    "quantidade": 0.05,
+    "onde_usado": [
+     "EMB"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EMB-EMB-FITILHO",
+    "quantidade": 0.13,
+    "onde_usado": [
+     "EMB"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EMB-EMB-PAPELAO",
+    "quantidade": 0.02,
+    "onde_usado": [
+     "EMB"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EMB-EMB-FITACRISTAL",
+    "quantidade": 0.1,
+    "onde_usado": [
+     "EMB"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EMB-EMB-CXMANUT",
+    "quantidade": 1,
+    "onde_usado": [
+     "EMB"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EMB-EMB-TINTABR",
+    "quantidade": 3,
+    "onde_usado": [
+     "ACA"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EMB-EMB-TINTAPT",
+    "quantidade": 1,
+    "onde_usado": [
+     "ACA"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EMB-EMB-ABRP",
+    "quantidade": 5,
+    "onde_usado": [
+     "EMB"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EMB-EMB-ABRM",
+    "quantidade": 5,
+    "onde_usado": [
+     "EMB"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EMB-EMB-ABRG",
+    "quantidade": 5,
+    "onde_usado": [
+     "EMB"
+    ],
+    "kit": ""
+   },
+   {
+    "sku": "EMB-EMB-ABRXG",
+    "quantidade": 5,
+    "onde_usado": [
+     "EMB"
+    ],
+    "kit": ""
+   }
+  ]
+ },
+ "legenda": {
+  "PR": "Placa Raspberry",
+  "PS": "Placa Sensor",
+  "KM": "Kit Manutenção",
+  "CS": "Cabo Sensor",
+  "CF": "Cabo de força",
+  "CL": "Cabo leitor (?)",
+  "CR": "Cabo de rede (?)",
+  "OS": "Sensores (?)",
+  "BL": "Balança (?)",
+  "FB": "Fixação balança (?)",
+  "EMB": "Embalagem (?)",
+  "EST": "Estrutural",
+  "ACA": "Acabamento",
+  "ADE": "Adesivo",
+  "ESE": "Estrutural sensor",
+  "ESR": "Estrutural Raspberry",
+  "ESM": "Estrutural Monitor",
+  "PTL": "Patola",
+  "PFB": "Parafuso Balança",
+  "PFE": "Parafuso Estrutura",
+  "PFR": "Parafuso Raspberry",
+  "PFS": "Parafuso Sensor",
+  "FE": "Fixação estrutura",
+  "FTB": "Fixação tampo balança",
+  "BEM": "Embalagens e proteções"
+ }
+}

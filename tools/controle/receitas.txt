@@ -1,0 +1,160 @@
+##V2
+Adesivo CPU V2|1
+Adesivo Logo Box Cubo V2|1
+Adesivo Logo Hexágono|1
+Adesivo Modo Cubagem / Modo Balança|1
+Adesivo Objetos Sobre a Mesa|1
+Arruela Lisa ZB 3/8 - IMP (Fixa Estrutura)|23
+Arruela Lisa ZB 3/8 Abalarga (Fixa Balança)|10
+Balança|1
+Botão Pulsador 22mm Retentivo Verde 1na Xa2eh031 Schneider|1
+Cabo De Rede Cat.5e|3
+Cabo Extensor Usb 2.0 Cristal 3m Fce3 Feasso (resistente)|2
+Cabo Hdmi Curvo 1 metro|1
+Cabo Manga 4X26 Awg Blindado Malha de Cobre Verde/Palha|8.15
+Cabo de Alimentação da Balança|1
+Cabo de Força Tripolar 3 Metros|1
+Caixa Patola CPU|1
+Caixa Patola Sensor|4
+Caixa de papelão V2|1
+Capa para Conector DB9|1
+Conector DB9 Serial RS232 Macho 180º|1
+Conector Modu Femea 5 Vias|4
+Fita dupla face 3M (1/4 ROLO)|3
+Fonte Chaveada 25W 5A RS-25-5 88-264V Mean Well AC/DC Entrada Automática|1
+Fonte de Alimentação RS-25-12 12V 2,1A 25W|1
+Led Difuso 3mm - Vermelho|4
+Led RGB Tricolor 5mm com 4 Terminais - 3.000 MCD, catodo comum|3
+Monitor 15" LED HD 60Hz|1
+Módulo Conversor RS232 para TTL MAX3232|1
+Organizador De Fios E Cabos Espiral 1/2|0.5
+Parafuso AA PN PH ZB 4,2x9,5 (Fixar patola sensor)|8
+Parafuso Fixer CH 3,5x16 (Fechar CPU)|4
+Parafuso Frances ZB 3/8x21/2 (Estrutura Tubo)|2
+Parafuso Frances ZB 3/8x4" (Estrutura Tubo)|6
+Parafuso Frances ZB 3/8x5" (Estrutura Tubo)|5
+Parafuso PN PH 3x6 M3 (Parafuso Fonte)|2
+Parafuso PN PH 4x10|8
+Parafuso PN PH 6x12 (M6x12) (Display Balança)|2
+Parafuso PN PH 6x40 (M6x40)|4
+Parafuso Sextavado ZB RI 10x50 (Fixa Balança)|4
+Plug RJ45 Macho Furukawa SohoPlus CAT5e|3
+Porca rebite M4|8
+Porta Fusível 5x20 AS-06|1
+RJ45 fêmea 90 graus para placa|1
+Rebite Pop 4,0x10|12
+Rodízio 2'' rosca 3/8|4
+Sensores ultrassônicos HYSR05|10
+Shield Sensor|4
+Tblock 3 Vias 90 graus femea para fio|1
+Tblock 3 Vias 90 graus macho para placa|1
+Terminal Forquilha Azul Para Fios De 1,5 A 2,5Mm|8
+Terminal Modu 1mm|16
+Termo Retrátil 4,8mm|0.3
+Transistor NPN BC337|1
+Transistor PNP BC327|1
+Trimpot 3386H - 5K|1
+##EYE
+Adapdator eixo giratorio EYE|1
+Adesivo Logo Box Cubo EYE|1
+Arruela Plastica 1/4|4
+Arruela M5|4
+Arruela de borracha 1/8|11
+Base Eye|1
+Botão 19mm Inox Lig/desl. Start Led C/ Trava + Chicote|1
+Braço 1 Eye|1
+Braço 2 EYE|1
+Braço 3 EYE|1
+Braço 4 EYE|1
+Cabo Carregamento V8 Micro Usb 6920231021077|1
+Cabo De Energia Para Fonte, 1.50M, 3x0,75, 10Ah - Nbr14136|1
+Cabo De Rede Cat.5e|3
+Cartão de memória 32GB /16GB (070341075586) (070341075593)|1
+Case Raspberry Pi 3 B+|1
+Fita dupla face 3M (1/4 ROLO)|0.5
+Fonte Chaveada 25W 5A RS-25-5 88-264V Mean Well AC/DC Entrada Automática|1
+Junta U EYE|3
+Manipulo M6|4
+Monitor 15" LED HD 60Hz|1
+Parafuso Auto Brocante Sextavado 5,5x19mm (12x3/4)|3
+Parafuso PN PH 4x10|10
+Parafuso PN PH 4x20|2
+Parafuso PN PH 4x25 (M4x25)|2
+Parafuso PN PH 6x8 (M6x8)|1
+Plug RJ45 Macho Furukawa SohoPlus CAT5e|2
+Porca rebite M4|12
+Porca rebite M6|6
+Raspberry pi3 B+|1
+Rebite Pop 4,0x10|8
+Suporte monitor EYE|1
+Tampa da Base Eye|1
+Terminal Forquilha Azul Para Fios De 1,5 A 2,5Mm|5
+Termo Retrátil 4,8mm|0.3
+Tomada AS-03 Tripolar com Chave Gangorra|1
+Webcam 4k ??? kkk|1
+##VISION
+Adesivo Logo Vision|1
+Botão 19mm Inox Lig/desl. Start Led C/ Trava + Chicote|1
+Cabo De Energia Para Fonte, 1.50M, 3x0,75, 10Ah - Nbr14136|1
+Cabo De Rede Cat.5e|3
+Cabo Extensor Usb 2.0 Cristal 3m Fce3 Feasso (resistente)|2
+Cabo de Alimentação da Balança|1
+Conversor de USB para 1 saída serial RS232|1
+Extensao Eletrica Tripolar 3Mts 3 Entradas|1
+Fita dupla face 3M (1/4 ROLO)|4.3
+Fita led 12v|4.2
+Fonte MW (5v 3A - 0 - 12v 2A) [V1 - GND - V2]|1
+Mini Pc Nuc Intel|1
+Monitor 15" LED HD 60Hz|1
+Organizador De Fios E Cabos Espiral 1/2|3
+Parafuso PN PH 4x10|12
+Parafuso PN PH 4x20|1
+Perfil Alpo2 Sobrepor Preto|2
+Plug RJ45 Macho Furukawa SohoPlus CAT5e|2
+Rebite Pop 4,0x10|2
+Silicone Neutro Incolor|1
+Terminal Forquilha Azul Para Fios De 1,5 A 2,5Mm|6
+Webcam 4k ??? kkk|1
+##SUB:CPU
+Adesivo CPU V2|1
+Barra pino macho 1x40 180 graus|1
+Caixa Patola CPU|1
+Cartão de memória 32GB /16GB (070341075586) (070341075593)|1
+Chapa Fixação LCD / Shield Raspberry|1
+Display LCD 20×4 Backlight Azul|1
+Parafuso AA PN PH ZB 2,9x6,5 (Chapa metal Shield Rapsberry)|6
+Parafuso Fixer CH 3,5x16 (Fechar CPU)|4
+Raspberry pi3 B+|1
+Shield Raspberry|1
+##SUB:Shield Raspberry
+Barra De Pinos Fêmea 2x20|1
+Barra de Pinos 16 Vias (1x16) Simples MCI Fêmea|1
+Buzzer 3.3v com Oscilador interno|1
+CI 74HC595|1
+Capacitor Eletrolítico 16v 470uF|2
+DB9 fêmea 90 graus para placa|1
+Diodo 1N4007 Retificador 1A 1000V (DO-41)|1
+Diodo 1N4148 Comutação Rápida 0,15A 100V (DO-35)|1
+Fusível de Vidro 5x20mm 3A 250V|3
+Led Difuso 3mm - Verde|1
+Led Difuso 3mm - Vermelho|1
+Led RGB Tricolor 5mm com 4 Terminais - 3.000 MCD, catodo comum|3
+PCB BoxCubo v2.5|1
+Porta Fusível 5x20 AS-06|1
+RJ45 fêmea 90 graus para placa|1
+Relé Songle 5V|1
+Resistor 10 Ω|1
+Resistor 100 Ω|3
+Resistor 100k Ω|1
+Resistor 10k Ω|3
+Resistor 1k Ω|2
+Resistor 1k2 Ω|3
+Resistor 220 Ω|1
+Resistor 270Ω|3
+Resistor 2k2 Ω|2
+Resistor 390 Ω|3
+Resistor 3k9 Ω|3
+Tblock 3 Vias 90 graus macho para placa|1
+Transistor NPN BC337|1
+Transistor PNP BC327|1
+Trimpot 3386H - 5K|1

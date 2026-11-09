@@ -65,6 +65,8 @@ func New(s store.Store, imgDir string) http.Handler {
 	h.routesEstoque(mux)
 	h.routesImagens(mux)
 	h.routesMinimo(mux)
+	h.routesSubconjuntos(mux)
+	h.routesFornecedores(mux)
 	return cors(mux)
 }
 
@@ -89,6 +91,8 @@ func (h *handler) getMachine(w http.ResponseWriter, r *http.Request) {
 
 // O que a tela recebe ao abrir uma máquina: a lista + custos + contagens.
 type bomResponse struct {
+	// Peca: preenchido quando a lista é de um subconjunto (para mostrar o estoque dele).
+	Peca          *model.Part        `json:"peca,omitempty"`
 	Machine       model.Machine      `json:"machine"`
 	Linhas        []model.BOMLine    `json:"linhas"`
 	AbaixoMinimo  int                `json:"abaixo_minimo"`
@@ -103,7 +107,7 @@ type bomResponse struct {
 // cada kit. Também conta peças sem preço e abaixo do estoque mínimo.
 func (h *handler) getBOM(w http.ResponseWriter, r *http.Request) {
 	id := r.PathValue("id")
-	m, err := h.s.GetMachine(id)
+	m, err := h.dono(id) // máquina ou subconjunto (ex.: CPU)
 	if err != nil {
 		writeErr(w, err)
 		return
@@ -114,18 +118,26 @@ func (h *handler) getBOM(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	resp := bomResponse{Machine: m, Linhas: []model.BOMLine{}, CustoPorKit: map[string]float64{}}
+	if m.Subconjunto {
+		if p, err := h.s.GetPart(id); err == nil {
+			resp.Peca = &p
+		}
+	}
 	min, _ := h.minimos()
+	usada := h.usadaEm()
+	memo := map[string]*float64{}
 	for _, it := range items {
 		p, err := h.s.GetPart(it.SKU)
 		if err != nil {
 			continue
 		}
-		line := model.BOMLine{BOMItem: it, Peca: p, Minimo: min[it.SKU]}
-		if line.Minimo > 0 && p.Estoque < line.Minimo {
-			resp.AbaixoMinimo++
+		line := model.BOMLine{BOMItem: it, Peca: p, Minimo: min[it.SKU], UsadaEm: usada[it.SKU]}
+		if line.UsadaEm == nil {
+			line.UsadaEm = []string{}
 		}
-		if p.ValorUnitario != nil {
-			c := round2(*p.ValorUnitario * it.Quantidade)
+		line.CustoUnitario = h.custoUnitario(it.SKU, memo, map[string]bool{})
+		if line.CustoUnitario != nil {
+			c := round2(*line.CustoUnitario * it.Quantidade)
 			line.CustoPorMaquina = &c
 			if it.Kit == "" {
 				resp.CustoPadrao += c
@@ -137,6 +149,28 @@ func (h *handler) getBOM(w http.ResponseWriter, r *http.Request) {
 		}
 		resp.Linhas = append(resp.Linhas, line)
 	}
+	// peças abaixo do mínimo nesta máquina, incluindo as que vão dentro dos
+	// subconjuntos dela (ex.: resistores do Shield, dentro da CPU)
+	vistos := map[string]bool{}
+	var conta func(dono string)
+	conta = func(dono string) {
+		itens, _ := h.s.GetBOM(dono)
+		for _, it := range itens {
+			if vistos[it.SKU] {
+				continue
+			}
+			vistos[it.SKU] = true
+			if p, err := h.s.GetPart(it.SKU); err == nil {
+				if min[it.SKU] > 0 && p.Estoque < min[it.SKU] {
+					resp.AbaixoMinimo++
+				}
+				if p.Fabricado {
+					conta(it.SKU)
+				}
+			}
+		}
+	}
+	conta(id)
 	resp.CustoPadrao = round2(resp.CustoPadrao)
 	for k, v := range resp.CustoPorKit {
 		resp.CustoPorKit[k] = round2(v)
@@ -203,40 +237,107 @@ func (h *handler) plan(w http.ResponseWriter, r *http.Request) {
 	}
 
 	plan := model.Plan{MachineID: id, Quantidade: qtd, Margem: margem, Kits: kitList, Linhas: []model.PlanLine{}}
+	arred := func(p model.Part, v float64) float64 {
+		if p.Tipo == "peca" || p.Tipo == "servico" {
+			return math.Ceil(v - 1e-9) // peças inteiras
+		}
+		return round2(v)
+	}
+
+	// 1) necessidade das peças da lista (com margem)
+	linhas := map[string]*model.PlanLine{}
+	ordem := []string{}
+	partes := map[string]model.Part{}
+	pega := func(sku string) (*model.PlanLine, bool) {
+		if l, ok := linhas[sku]; ok {
+			return l, true
+		}
+		p, err := h.s.GetPart(sku)
+		if err != nil {
+			return nil, false
+		}
+		partes[sku] = p
+		l := &model.PlanLine{
+			SKU: p.SKU, Nome: p.Nome, Unidade: p.Unidade, Estoque: p.Estoque,
+			ValorUnit: p.ValorUnitario, Fornecedores: p.Fornecedores, Imagem: p.Imagem,
+			Fabricar: p.Fabricado,
+		}
+		linhas[sku] = l
+		ordem = append(ordem, sku)
+		return l, true
+	}
+	memo := map[string]*float64{}
 	for _, it := range items {
 		if it.Kit != "" && !kits[it.Kit] {
 			continue
 		}
-		p, err := h.s.GetPart(it.SKU)
-		if err != nil {
+		l, ok := pega(it.SKU)
+		if !ok {
 			continue
 		}
 		nec := it.Quantidade * float64(qtd)
-		com := nec * (1 + margem/100)
-		if p.Tipo == "peca" || p.Tipo == "servico" {
-			com = math.Ceil(com - 1e-9) // peças inteiras
-		} else {
-			com = round2(com)
+		l.Kit = it.Kit
+		l.PorMaquina += it.Quantidade
+		l.Necessario += nec
+		l.ComMargem += arred(partes[it.SKU], nec*(1+margem/100))
+		if c := h.custoUnitario(it.SKU, memo, map[string]bool{}); c != nil {
+			plan.CustoLote += nec * *c
 		}
-		comprar := math.Max(0, round2(com-p.Estoque))
-		line := model.PlanLine{
-			SKU: p.SKU, Nome: p.Nome, Unidade: p.Unidade, Kit: it.Kit,
-			PorMaquina: it.Quantidade, Necessario: round2(nec), ComMargem: com,
-			Estoque: p.Estoque, Comprar: comprar, ValorUnit: p.ValorUnitario,
-			Fornecedores: p.Fornecedores, Imagem: p.Imagem,
+	}
+
+	// 2) SUBCONJUNTOS: se faltar CPU, as CPUs que faltam precisam ser
+	// fabricadas -> as peças da receita delas entram no plano (e assim por
+	// diante: o Shield dentro da CPU). Repete até nada mudar.
+	feito := map[string]float64{} // quanto de cada subconjunto já foi desdobrado
+	for mudou := true; mudou; {
+		mudou = false
+		for _, sku := range append([]string(nil), ordem...) {
+			l := linhas[sku]
+			if !l.Fabricar {
+				continue
+			}
+			fazer := math.Max(0, l.ComMargem-l.Estoque)
+			if fazer <= feito[sku] {
+				continue
+			}
+			extra := fazer - feito[sku]
+			feito[sku] = fazer
+			receita, _ := h.s.GetBOM(sku)
+			for _, it := range receita {
+				c, ok := pega(it.SKU)
+				if !ok {
+					continue
+				}
+				q := extra * it.Quantidade
+				c.Necessario += q
+				c.ComMargem += arred(partes[it.SKU], q)
+				if !contem(c.Via, l.Nome) {
+					c.Via = append(c.Via, l.Nome)
+				}
+			}
+			mudou = true
 		}
-		if p.ValorUnitario != nil {
-			c := round2(comprar * *p.ValorUnitario)
-			line.CustoCompra = &c
+	}
+
+	// 3) comprar (ou fabricar) = necessidade com margem - estoque
+	for _, sku := range ordem {
+		l := linhas[sku]
+		l.Necessario = round2(l.Necessario)
+		l.ComMargem = round2(l.ComMargem)
+		l.Comprar = math.Max(0, round2(l.ComMargem-l.Estoque))
+		if l.Fabricar {
+			// subconjunto: não se compra, fabrica (o custo está nas peças dele)
+		} else if l.ValorUnit != nil {
+			c := round2(l.Comprar * *l.ValorUnit)
+			l.CustoCompra = &c
 			plan.CustoCompra += c
-			plan.CustoLote += nec * *p.ValorUnitario
 		} else {
 			plan.ItensSemPreco++
 		}
-		if comprar > 0 {
+		if l.Comprar > 0 {
 			plan.ItensFaltando++
 		}
-		plan.Linhas = append(plan.Linhas, line)
+		plan.Linhas = append(plan.Linhas, *l)
 	}
 	sort.SliceStable(plan.Linhas, func(i, j int) bool { return plan.Linhas[i].SKU < plan.Linhas[j].SKU })
 	plan.CustoCompra = round2(plan.CustoCompra)
@@ -349,6 +450,16 @@ func (h *handler) deletePart(w http.ResponseWriter, r *http.Request) {
 }
 
 // ---- utilitários ----
+
+// contem diz se o texto está na lista.
+func contem(lista []string, txt string) bool {
+	for _, x := range lista {
+		if x == txt {
+			return true
+		}
+	}
+	return false
+}
 
 // ------------------------- FERRAMENTAS ----------------------------
 // Arredonda para 2 casas (centavos): 8.698376 -> 8.70.

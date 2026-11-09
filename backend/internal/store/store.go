@@ -69,6 +69,17 @@ type Store interface {
 	DeletePart(sku string) error
 	ListClasses() []model.Classe
 	ListFornecedores() []string
+	ListSubconjuntos() []model.Part
+	// RenomearFornecedor troca o nome em todas as peças; se o nome novo já
+	// existir numa peça, junta os dois (serve para unir duplicados).
+	RenomearFornecedor(de, para string) (int, error)
+	// SubstituirFornecedor serve para quando a empresa não trabalha mais com
+	// um fornecedor: passa as peças dele para outro (sem o código antigo, que
+	// era do fornecedor velho) ou, com "para" vazio, só tira ele das peças.
+	// Devolve quantas peças mudaram e quais ficaram sem nenhum fornecedor.
+	SubstituirFornecedor(de, para string) (int, []string, error)
+	// SetCodigoFornecedor grava o código do item da peça naquele fornecedor.
+	SetCodigoFornecedor(sku, fornecedor, codigo string) (model.Part, error)
 	SetPartImage(sku, url string) (model.Part, error)
 
 	GetBOM(machineID string) ([]model.BOMItem, error)
@@ -261,6 +272,115 @@ func (s *FileStore) ListFornecedores() []string {
 	return out
 }
 
+func (s *FileStore) RenomearFornecedor(de, para string) (int, error) {
+	de, para = strings.TrimSpace(de), strings.TrimSpace(para)
+	if de == "" || para == "" {
+		return 0, fmt.Errorf("%w: informe o nome atual e o novo", ErrInvalid)
+	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	n := 0
+	for i := range s.d.Parts {
+		p := &s.d.Parts[i]
+		idxDe, idxPara := -1, -1
+		for j, f := range p.Fornecedores {
+			if f.Nome == de {
+				idxDe = j
+			}
+			if f.Nome == para {
+				idxPara = j
+			}
+		}
+		if idxDe < 0 {
+			continue
+		}
+		n++
+		if idxPara < 0 || idxPara == idxDe {
+			p.Fornecedores[idxDe].Nome = para
+			continue
+		}
+		// a peça já tinha os dois: fica um só (na posição do primeiro),
+		// guardando o código que estiver preenchido
+		manter, tirar := idxPara, idxDe
+		if idxDe < idxPara {
+			manter, tirar = idxDe, idxPara
+		}
+		codigo := p.Fornecedores[idxPara].Codigo
+		if codigo == "" {
+			codigo = p.Fornecedores[idxDe].Codigo
+		}
+		p.Fornecedores[manter] = model.Fornecimento{Nome: para, Codigo: codigo}
+		p.Fornecedores = append(p.Fornecedores[:tirar], p.Fornecedores[tirar+1:]...)
+	}
+	if n == 0 {
+		return 0, ErrNotFound
+	}
+	return n, s.save()
+}
+
+func (s *FileStore) SubstituirFornecedor(de, para string) (int, []string, error) {
+	de, para = strings.TrimSpace(de), strings.TrimSpace(para)
+	if de == "" || de == para {
+		return 0, nil, fmt.Errorf("%w: escolha um fornecedor diferente", ErrInvalid)
+	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	n, semFornecedor := 0, []string{}
+	for i := range s.d.Parts {
+		p := &s.d.Parts[i]
+		idxDe, idxPara := -1, -1
+		for j, f := range p.Fornecedores {
+			if f.Nome == de {
+				idxDe = j
+			}
+			if para != "" && f.Nome == para {
+				idxPara = j
+			}
+		}
+		if idxDe < 0 {
+			continue
+		}
+		n++
+		switch {
+		case para == "":
+			// só tira o fornecedor antigo
+			p.Fornecedores = append(p.Fornecedores[:idxDe], p.Fornecedores[idxDe+1:]...)
+		case idxPara >= 0:
+			// a peça já tinha o novo: ele assume o lugar do antigo (se o
+			// antigo era o principal, o novo vira principal), com o código dele
+			novo := p.Fornecedores[idxPara]
+			p.Fornecedores[idxDe] = novo
+			p.Fornecedores = append(p.Fornecedores[:idxPara], p.Fornecedores[idxPara+1:]...)
+		default:
+			// troca pelo novo, sem código (o código era do fornecedor antigo)
+			p.Fornecedores[idxDe] = model.Fornecimento{Nome: para}
+		}
+		if len(p.Fornecedores) == 0 {
+			semFornecedor = append(semFornecedor, p.SKU)
+		}
+	}
+	if n == 0 {
+		return 0, nil, ErrNotFound
+	}
+	return n, semFornecedor, s.save()
+}
+
+func (s *FileStore) SetCodigoFornecedor(sku, fornecedor, codigo string) (model.Part, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	i := s.partIndex(sku)
+	if i < 0 {
+		return model.Part{}, ErrNotFound
+	}
+	for j, f := range s.d.Parts[i].Fornecedores {
+		if f.Nome == fornecedor {
+			s.d.Parts[i].Fornecedores[j].Codigo = strings.TrimSpace(codigo)
+			return s.d.Parts[i], s.save()
+		}
+	}
+	return model.Part{}, fmt.Errorf("%w: %s não é fornecedor de %s", ErrNotFound, fornecedor, sku)
+}
+
 // ListClasses devolve os prefixos de SKU existentes (BC-ELE-RES, ...).
 // Lista os tipos de peça existentes (ELE-RES, EST-PAR...) para o
 // formulário de peça nova.
@@ -368,6 +488,10 @@ func (s *FileStore) renameSKU(antigo, novo string) (model.Part, error) {
 	p.SKU = novo
 	// a foto é salva com o nome do SKU: /api/imagens/BC-ELE-RES-001.png?v=...
 	p.Imagem = strings.Replace(p.Imagem, "/api/imagens/"+antigo+".", "/api/imagens/"+novo+".", 1)
+	if lista, ok := s.d.BOM[antigo]; ok { // subconjunto: a receita acompanha o novo código
+		s.d.BOM[novo] = lista
+		delete(s.d.BOM, antigo)
+	}
 	for mid := range s.d.BOM {
 		for j := range s.d.BOM[mid] {
 			if s.d.BOM[mid][j].SKU == antigo {
@@ -441,10 +565,11 @@ func (s *FileStore) DeletePart(sku string) error {
 	for mid, items := range s.d.BOM {
 		for _, it := range items {
 			if it.SKU == sku {
-				return fmt.Errorf("%w: a peça está na lista da máquina %s", ErrConflict, mid)
+				return fmt.Errorf("%w: a peça está na lista de %s", ErrConflict, mid)
 			}
 		}
 	}
+	delete(s.d.BOM, sku) // se era um subconjunto, a receita dele vai junto
 	s.d.Parts = append(s.d.Parts[:i], s.d.Parts[i+1:]...)
 	return s.save()
 }
@@ -460,13 +585,49 @@ func (s *FileStore) GetBOM(machineID string) ([]model.BOMItem, error) {
 	return append([]model.BOMItem(nil), s.d.BOM[machineID]...), nil
 }
 
+// hasMachine diz se "id" pode ter lista de materiais: uma máquina (v2, eye...)
+// ou um subconjunto fabricado (pelo SKU, ex.: ELE-SUB-CPUV2).
 func (s *FileStore) hasMachine(id string) bool {
 	for _, m := range s.d.Machines {
 		if m.ID == id {
 			return true
 		}
 	}
+	if i := s.partIndex(id); i >= 0 && s.d.Parts[i].Fabricado {
+		return true
+	}
 	return false
+}
+
+// contem diz se o subconjunto "dono" usa "sku" em algum nível da receita
+// (serve para impedir receita circular: CPU dentro do Shield dentro da CPU...).
+func (s *FileStore) contem(dono, sku string, visitados map[string]bool) bool {
+	if dono == sku {
+		return true
+	}
+	if visitados[dono] {
+		return false
+	}
+	visitados[dono] = true
+	for _, it := range s.d.BOM[dono] {
+		if s.contem(it.SKU, sku, visitados) {
+			return true
+		}
+	}
+	return false
+}
+
+// ListSubconjuntos devolve as peças fabricadas (CPU, Shield Raspberry...).
+func (s *FileStore) ListSubconjuntos() []model.Part {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+	out := []model.Part{}
+	for _, p := range s.d.Parts {
+		if p.Fabricado {
+			out = append(out, p)
+		}
+	}
+	return out
 }
 
 // UpsertBOMItem adiciona a peça à máquina ou atualiza quantidade/uso/kit.
@@ -477,6 +638,9 @@ func (s *FileStore) UpsertBOMItem(machineID string, item model.BOMItem) error {
 	defer s.mu.Unlock()
 	if !s.hasMachine(machineID) || s.partIndex(item.SKU) < 0 {
 		return ErrNotFound
+	}
+	if s.contem(item.SKU, machineID, map[string]bool{}) {
+		return fmt.Errorf("%w: %s não pode entrar na receita de %s (ficaria circular)", ErrInvalid, item.SKU, machineID)
 	}
 	if item.Quantidade < 0 {
 		return fmt.Errorf("%w: quantidade negativa", ErrInvalid)

@@ -1,8 +1,8 @@
 // ============================================================
 //  BARRA LATERAL (a coluna escura à esquerda)
 // ============================================================
-//  Mostra o logo, a lista de máquinas (01 Estática V2, 02 V2.5...) e os
-//  atalhos de estoque (Movimentações e Reposição, com o número laranja de
+//  Mostra o logo, a lista de máquinas (01 Estática V2, 02 Vision...) e os
+//  atalhos de estoque (Movimentações, Reposição e Fornecedores, com o número laranja de
 //  peças abaixo do mínimo).
 
 import { useEffect, useState } from 'react'
@@ -23,7 +23,7 @@ function Logo() {
 
 // "machines" = lista de máquinas; "selected" = o que está aberto agora;
 // "onSelect" = o que fazer quando alguém clica num item.
-export default function Sidebar({ machines, selected, onSelect }) {
+export default function Sidebar({ machines, subs = [], selected, onSelect }) {
   const [abaixo, setAbaixo] = useState(0)
 
   // contador de peças abaixo do mínimo, atualizado sempre que o estoque muda
@@ -64,6 +64,28 @@ export default function Sidebar({ machines, selected, onSelect }) {
         ))}
       </nav>
 
+      {subs.length > 0 && (
+        <>
+          <div className="side-title">Subconjuntos</div>
+          <nav>
+            {subs.map((s) => (
+              <button
+                key={s.id}
+                className={`side-item ${selected === s.id ? 'active' : ''}`}
+                onClick={() => onSelect(s.id)}
+              >
+                <span className="num ghost">⚙</span>
+                <span className="side-body">
+                  <span className="side-name">{s.nome.replace(/\s*\(.*\)\s*$/, '')}</span>
+                  <span className="side-apelido">Fabricado na BoxCubo</span>
+                  <span className="side-meta"><code>{s.sku}</code></span>
+                </span>
+              </button>
+            ))}
+          </nav>
+        </>
+      )}
+
       <div className="side-title">Estoque</div>
       <nav>
         <button
@@ -87,6 +109,16 @@ export default function Sidebar({ machines, selected, onSelect }) {
               {abaixo > 0 && <span className="badge" title="Peças abaixo do estoque mínimo">{abaixo}</span>}
             </span>
             <span className="side-apelido">Abaixo do estoque mínimo</span>
+          </span>
+        </button>
+        <button
+          className={`side-item ${selected === 'forn' ? 'active' : ''}`}
+          onClick={() => onSelect('forn')}
+        >
+          <span className="num ghost">⌂</span>
+          <span className="side-body">
+            <span className="side-name">Fornecedores</span>
+            <span className="side-apelido">Códigos dos itens e pedidos</span>
           </span>
         </button>
       </nav>

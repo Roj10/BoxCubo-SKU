@@ -37,6 +37,8 @@ export const avisarEstoque = () => window.dispatchEvent(new Event('estoque-mudou
 // O "cardápio" de pedidos que a tela pode fazer ao backend.
 export const api = {
   machines: () => req('GET', '/api/machines'),
+  subconjuntos: () => req('GET', '/api/subconjuntos'),
+  fabricar: (sku, body) => req('POST', `/api/parts/${encodeURIComponent(sku)}/fabricar`, body),
   bom: (id) => req('GET', `/api/machines/${id}/bom`),
   plan: (id, { quantidade, margem, kits }) =>
     req('GET', `/api/machines/${id}/plan?quantidade=${quantidade}&margem=${margem}&kits=${kits.join(',')}`),
@@ -45,6 +47,7 @@ export const api = {
   classes: () => req('GET', '/api/classes'),
   fornecedores: () => req('GET', '/api/fornecedores'),
   parts: (q = '') => req('GET', `/api/parts?q=${encodeURIComponent(q)}`),
+  part: (sku) => req('GET', `/api/parts/${encodeURIComponent(sku)}`),
   createPart: (body) => req('POST', '/api/parts', body),
   updatePart: (sku, part) => req('PUT', `/api/parts/${encodeURIComponent(sku)}`, part),
   renameSku: (sku, sufixo) => req('PUT', `/api/parts/${encodeURIComponent(sku)}/sku`, { sufixo }),
@@ -74,4 +77,13 @@ export const api = {
   // estoque mínimo
   setMinimo: (id, maquinas, comKits) => req('PUT', `/api/machines/${id}/minimo`, { maquinas, com_kits: comKits }),
   reposicao: () => req('GET', '/api/reposicao'),
+
+  // página de fornecedores
+  fornecedoresResumo: () => req('GET', '/api/fornecedores/resumo'),
+  fornecedorPecas: (nome) => req('GET', `/api/fornecedores/pecas?nome=${encodeURIComponent(nome)}`),
+  setCodigoFornecedor: (sku, fornecedor, codigo) => req('PUT', '/api/fornecedores/codigo', { sku, fornecedor, codigo }),
+  renomearFornecedor: (de, para) => req('POST', '/api/fornecedores/renomear', { de, para }),
+  // não trabalha mais com o fornecedor: passa as peças para outro (ou só tira, com para = '')
+  substituirFornecedor: (de, para) => req('POST', '/api/fornecedores/substituir', { de, para }),
+  semFornecedor: () => req('GET', '/api/fornecedores/sem-fornecedor'),
 }

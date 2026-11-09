@@ -7,6 +7,7 @@
 //    - uma máquina "em breve" -> aviso de que a lista ainda não existe
 //    - "Movimentações"        -> histórico (Movimentacoes)
 //    - "Reposição"            -> peças abaixo do mínimo (Reposicao)
+//    - "Fornecedores"         -> quem fornece o quê (FornecedoresPage)
 
 import { useEffect, useState } from 'react'
 import { api } from './api.js'
@@ -14,12 +15,14 @@ import Sidebar from './components/Sidebar.jsx'
 import MachinePage from './components/MachinePage.jsx'
 import Movimentacoes from './components/Movimentacoes.jsx'
 import Reposicao from './components/Reposicao.jsx'
+import FornecedoresPage from './components/FornecedoresPage.jsx'
 
 // "useState" é a memória da tela: guarda valores que, quando mudam, fazem
 // a tela se redesenhar sozinha (ex.: qual item da barra lateral está
 // selecionado).
 export default function App() {
   const [machines, setMachines] = useState([])
+  const [subs, setSubs] = useState([]) // subconjuntos (CPU, Shield...) — abrem na mesma tela de máquina
   const [selected, setSelected] = useState('v2')
   const [erro, setErro] = useState('')
 
@@ -29,17 +32,19 @@ export default function App() {
     api.machines().then(setMachines).catch((e) =>
       setErro(`Não consegui falar com o backend (${e.message}). Ele está rodando em localhost:8080?`),
     )
+    api.subconjuntos().then(setSubs).catch(() => {})
   }, [])
 
-  const machine = machines.find((m) => m.id === selected)
+  const machine = machines.find((m) => m.id === selected) || subs.find((s) => s.id === selected)
 
   return (
     <div className="layout">
-      <Sidebar machines={machines} selected={selected} onSelect={setSelected} />
+      <Sidebar machines={machines} subs={subs} selected={selected} onSelect={setSelected} />
       <main className="main">
         {erro && <div className="alert">{erro}</div>}
         {selected === 'mov' && <Movimentacoes machines={machines} />}
         {selected === 'repo' && <Reposicao onIrParaMaquina={setSelected} />}
+        {selected === 'forn' && <FornecedoresPage />}
         {machine && machine.ativa && (
           <MachinePage
             key={machine.id}

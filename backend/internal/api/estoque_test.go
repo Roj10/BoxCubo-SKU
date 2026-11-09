@@ -19,7 +19,7 @@ func getPart(t *testing.T, h http.Handler, sku string) model.Part {
 
 func TestSaidaComEstoque(t *testing.T) {
 	h := setup(t)
-	// Resistor 10 Ω: 1 por máquina, estoque inicial 1352
+	// Balança: 1 por máquina, estoque inicial 24 (vindo do Controle)
 	var mov model.Movement
 	code := do(t, h, "POST", "/api/machines/v2/saida", map[string]any{
 		"numeros_serie": []string{"bc-001"}, "permitir_falta": true,
@@ -27,8 +27,8 @@ func TestSaidaComEstoque(t *testing.T) {
 	if code != 201 || mov.Quantidade != 1 || mov.NumerosSerie[0] != "BC-001" {
 		t.Fatalf("saida: %d %+v", code, mov)
 	}
-	if p := getPart(t, h, "ELE-RES-10"); p.Estoque != 1351 {
-		t.Fatalf("estoque resistor = %v, esperava 1351", p.Estoque)
+	if p := getPart(t, h, "ELE-PES-BALANCA"); p.Estoque != 23 {
+		t.Fatalf("estoque balança = %v, esperava 23", p.Estoque)
 	}
 	// mesmo número de série de novo -> bloqueado
 	if c := do(t, h, "POST", "/api/machines/v2/saida", map[string]any{
@@ -40,7 +40,7 @@ func TestSaidaComEstoque(t *testing.T) {
 
 func TestSaidaSemEstoqueAvisaEDeixaEmZero(t *testing.T) {
 	h := setup(t)
-	// Balança: estoque 27. Tentar 30 máquinas.
+	// Balança: estoque 24. Tentar 30 máquinas.
 	series := []string{}
 	for i := 0; i < 30; i++ {
 		series = append(series, "S"+string(rune('A'+i/10))+string(rune('0'+i%10)))
@@ -54,14 +54,14 @@ func TestSaidaSemEstoqueAvisaEDeixaEmZero(t *testing.T) {
 	}
 	achou := false
 	for _, f := range aviso.Faltas {
-		if f.Nome == "Balança" && f.Falta == 3 {
+		if f.Nome == "Balança" && f.Falta == 6 {
 			achou = true
 		}
 	}
 	if !achou {
-		t.Fatalf("balança deveria faltar 3: %+v", aviso.Faltas)
+		t.Fatalf("balança deveria faltar 6: %+v", aviso.Faltas)
 	}
-	if p := getPart(t, h, "ELE-PES-BALANCA"); p.Estoque != 27 {
+	if p := getPart(t, h, "ELE-PES-BALANCA"); p.Estoque != 24 {
 		t.Fatalf("nada deveria ter saído ainda, balança = %v", p.Estoque)
 	}
 
@@ -75,13 +75,13 @@ func TestSaidaSemEstoqueAvisaEDeixaEmZero(t *testing.T) {
 		t.Fatalf("balança deveria ficar em 0, ficou %v", p.Estoque)
 	}
 
-	// estorno devolve exatamente o que saiu (27, não 30)
+	// estorno devolve exatamente o que saiu (24, não 30)
 	var est model.Movement
 	if c := do(t, h, "POST", "/api/movements/"+mov.ID+"/estorno", nil, &est); c != 201 {
 		t.Fatalf("estorno: %d", c)
 	}
-	if p := getPart(t, h, "ELE-PES-BALANCA"); p.Estoque != 27 {
-		t.Fatalf("estorno deveria voltar a 27, ficou %v", p.Estoque)
+	if p := getPart(t, h, "ELE-PES-BALANCA"); p.Estoque != 24 {
+		t.Fatalf("estorno deveria voltar a 24, ficou %v", p.Estoque)
 	}
 	if c := do(t, h, "POST", "/api/movements/"+mov.ID+"/estorno", nil, nil); c != 409 {
 		t.Fatalf("estornar duas vezes deveria dar 409, veio %d", c)
@@ -102,19 +102,19 @@ func TestEntradaEKit(t *testing.T) {
 	}, &mov); c != 201 {
 		t.Fatalf("entrada: %d", c)
 	}
-	if p := getPart(t, h, "ELE-PES-BALANCA"); p.Estoque != 37 {
-		t.Fatalf("balança = %v, esperava 37", p.Estoque)
+	if p := getPart(t, h, "ELE-PES-BALANCA"); p.Estoque != 34 {
+		t.Fatalf("balança = %v, esperava 34", p.Estoque)
 	}
-	// monitor só sai quando o kit ADDC é marcado (estoque 3)
+	// leitor 2D só sai quando o kit ADDC é marcado (estoque 8)
 	do(t, h, "POST", "/api/machines/v2/saida", map[string]any{"numeros_serie": []string{"X1"}, "permitir_falta": true}, nil)
-	if p := getPart(t, h, "ELE-PER-MONITOR15"); p.Estoque != 3 {
-		t.Fatalf("monitor não deveria sair sem kit: %v", p.Estoque)
+	if p := getPart(t, h, "ELE-PER-LEITOR2D"); p.Estoque != 8 {
+		t.Fatalf("leitor não deveria sair sem kit: %v", p.Estoque)
 	}
 	do(t, h, "POST", "/api/machines/v2/saida", map[string]any{
 		"numeros_serie": []string{"X2"}, "kits": []string{"ADDC"}, "permitir_falta": true,
 	}, nil)
-	if p := getPart(t, h, "ELE-PER-MONITOR15"); p.Estoque != 2 {
-		t.Fatalf("monitor deveria sair com kit: %v", p.Estoque)
+	if p := getPart(t, h, "ELE-PER-LEITOR2D"); p.Estoque != 7 {
+		t.Fatalf("leitor deveria sair com kit: %v", p.Estoque)
 	}
 	var lista []model.Movement
 	do(t, h, "GET", "/api/movements?q=X2", nil, &lista)
@@ -125,7 +125,7 @@ func TestEntradaEKit(t *testing.T) {
 
 func TestSaidaPecasAvulsas(t *testing.T) {
 	h := setup(t)
-	// envia 2 sensores (estoque 151) e 5 shields sensor (estoque 0) para manutenção
+	// envia 2 sensores (estoque 101) e 5 shields sensor (estoque 0) para manutenção
 	body := map[string]any{
 		"itens": []map[string]any{
 			{"sku": "ELE-CMP-HYSR05", "quantidade": 2},
@@ -144,7 +144,7 @@ func TestSaidaPecasAvulsas(t *testing.T) {
 	if c := do(t, h, "POST", "/api/saidas", body, &mov); c != 201 || mov.Tipo != model.MovSaidaPecas || !mov.ComFalta {
 		t.Fatalf("saida: %d %+v", c, mov)
 	}
-	if p := getPart(t, h, "ELE-CMP-HYSR05"); p.Estoque != 149 {
+	if p := getPart(t, h, "ELE-CMP-HYSR05"); p.Estoque != 99 {
 		t.Fatalf("sensor = %v", p.Estoque)
 	}
 	// busca pela máquina do cliente
@@ -159,8 +159,8 @@ func TestSaidaPecasAvulsas(t *testing.T) {
 	}
 	// estorno da saída avulsa devolve
 	do(t, h, "POST", "/api/movements/"+mov.ID+"/estorno", nil, nil)
-	// 149 - 10 (máquina) + 2 (estorno) = 141
-	if p := getPart(t, h, "ELE-CMP-HYSR05"); p.Estoque != 141 {
+	// 99 - 10 (máquina) + 2 (estorno) = 91
+	if p := getPart(t, h, "ELE-CMP-HYSR05"); p.Estoque != 91 {
 		t.Fatalf("estorno não devolveu: %v", p.Estoque)
 	}
 }

@@ -2,12 +2,13 @@
 //  TELA "REPOSIÇÃO" (peças abaixo do estoque mínimo)
 // ============================================================
 //  Mostra o que comprar para voltar ao mínimo, com custo e fornecedor.
-//  "Exportar CSV" baixa a lista por fornecedor; "Dar entrada desta lista"
+//  "Exportar Excel" baixa a lista separada por fornecedor, com subtotais; "Dar entrada desta lista"
 //  abre a janela de entrada já preenchida, para quando o material chegar.
 
 import { useCallback, useEffect, useState } from 'react'
 import { api, avisarEstoque } from '../api.js'
-import { money, qty, downloadCSV, FORN_COLS, fornCols, porFornecedor } from '../format.js'
+import { money, qty, porFornecedor, grupoFornecedor, outros } from '../format.js'
+import { baixarPlanilha, agora } from '../planilha.js'
 import Fornecedores from './Fornecedores.jsx'
 import SkuHover from './SkuHover.jsx'
 import EntradaModal from './EntradaModal.jsx'
@@ -29,14 +30,36 @@ export default function Reposicao({ onIrParaMaquina }) {
     return () => window.removeEventListener('estoque-mudou', load)
   }, [load])
 
+  // Planilha do Excel separada por fornecedor principal (um bloco por
+  // fornecedor, com subtotal), para montar os pedidos.
   const exportar = () =>
-    downloadCSV('reposicao.csv', [
-      [...FORN_COLS, 'SKU', 'Peça', 'Unidade', 'Estoque', 'Mínimo', 'Comprar', 'Valor unit.', 'Custo'],
-      // agrupado por fornecedor principal, para facilitar os pedidos
-      ...[...rep.linhas].sort(porFornecedor).map((l) => [
-        ...fornCols(l.fornecedores), l.sku, l.nome, l.unidade, l.estoque, l.minimo, l.sugestao, l.valor_unitario, l.custo,
-      ]),
-    ])
+    baixarPlanilha('reposicao.xlsx', {
+      titulo: 'Reposição de estoque mínimo',
+      subtitulo:
+        `${rep.itens} peças abaixo do mínimo · mínimo: ` +
+        rep.maquinas.map((m) => `${m.nome.replace('BoxCubo ', '')} ${m.minimo_maquinas} máq.`).join(', ') +
+        ` · gerado em ${agora()}`,
+      aba: 'Reposição',
+      colunas: [
+        { titulo: 'SKU' },
+        { titulo: 'Peça' },
+        { titulo: 'Código no fornecedor' },
+        { titulo: 'Un.' },
+        { titulo: 'Estoque', tipo: 'num' },
+        { titulo: 'Mínimo', tipo: 'num' },
+        { titulo: 'Comprar', tipo: 'num', destaque: true },
+        { titulo: 'Valor unit.', tipo: 'preco' },
+        { titulo: 'Custo', tipo: 'dinheiro', total: true },
+        { titulo: 'Outros fornecedores' },
+      ],
+      linhas: [...rep.linhas].sort(porFornecedor).map((l) => ({
+        grupo: grupoFornecedor(l.fornecedores),
+        valores: [
+          l.sku, l.nome, l.fornecedores?.[0]?.codigo || '', l.unidade, l.estoque, l.minimo, l.sugestao,
+          l.valor_unitario, l.custo, outros(l.fornecedores),
+        ],
+      })),
+    })
 
   return (
     <div>
@@ -48,7 +71,7 @@ export default function Reposicao({ onIrParaMaquina }) {
         </div>
         {rep && rep.itens > 0 && (
           <div className="head-actions">
-            <button className="btn" onClick={exportar}>Exportar CSV</button>
+            <button className="btn" onClick={exportar}>Exportar Excel</button>
             <button className="btn primary" onClick={() => setEntrada(true)}>Dar entrada desta lista</button>
           </div>
         )}

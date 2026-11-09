@@ -22,6 +22,9 @@ type Machine struct {
 	// Estoque mínimo: manter peças para N máquinas deste modelo (0 = sem mínimo).
 	MinimoMaquinas int  `json:"minimo_maquinas"`
 	MinimoComKits  bool `json:"minimo_com_kits"` // itens dos kits também entram no mínimo
+	// Subconjunto = true quando isto não é uma máquina, e sim uma peça fabricada
+	// (ex.: CPU) mostrada com a mesma tela de máquina. Não é gravado no arquivo.
+	Subconjunto bool `json:"subconjunto,omitempty"`
 }
 
 // Kit agrupa itens opcionais de uma máquina (ex.: Adicional Correios).
@@ -52,6 +55,9 @@ type Part struct {
 	ValorUnitario    *float64 `json:"valor_unitario"` // nil = sem preço cadastrado
 	Estoque          float64  `json:"estoque"`
 	Imagem           string   `json:"imagem"` // URL da foto (enviada pela API de imagens); "" = sem foto
+	// Fabricado = true para SUBCONJUNTOS montados aqui (ex.: CPU, Shield Raspberry).
+	// Eles têm receita própria e entram no estoque pela "Registrar fabricação".
+	Fabricado bool `json:"fabricado"`
 }
 
 // Fornecimento é um fornecedor da peça e o código do item nele.
@@ -80,6 +86,10 @@ type BOMLine struct {
 	Peca            Part     `json:"peca"`
 	CustoPorMaquina *float64 `json:"custo_por_maquina"`
 	Minimo          float64  `json:"minimo"` // estoque mínimo da peça (somando todas as máquinas)
+	// Custo de 1 unidade: o preço; ou, se for subconjunto sem preço, a soma da receita dele.
+	CustoUnitario *float64 `json:"custo_unitario"`
+	// Máquinas que usam esta peça (direto ou dentro de um subconjunto). Ex.: ["Estática V2", "Eye"].
+	UsadaEm []string `json:"usada_em"`
 }
 
 // ReposicaoLine é uma peça abaixo do estoque mínimo.
@@ -126,6 +136,10 @@ type PlanLine struct {
 	CustoCompra  *float64       `json:"custo_compra"`
 	Fornecedores []Fornecimento `json:"fornecedores"`
 	Imagem       string         `json:"imagem"`
+	// Fabricar = true: é um subconjunto; "Comprar" vira "fabricar" e as peças
+	// da receita dele entram no plano (Via = de qual subconjunto vieram).
+	Fabricar bool     `json:"fabricar"`
+	Via      []string `json:"via,omitempty"`
 }
 
 // Tipos de movimentação de estoque.
@@ -133,6 +147,8 @@ type PlanLine struct {
 const (
 	MovSaidaMaquina = "saida_maquina" // máquina montada/vendida: baixa a lista de peças
 	MovSaidaPecas   = "saida_pecas"   // peças avulsas enviadas (manutenção, reposição)
+	MovFabricacao   = "fabricacao"    // subconjunto montado (ex.: CPU): sai a receita, entra o subconjunto
+	MovAjuste       = "ajuste"        // correção/importação de estoque (ex.: estoque vindo do Controle)
 	MovEntrada      = "entrada"       // material comprado chegou
 	MovEstorno      = "estorno"       // desfaz outra movimentação
 )

@@ -419,3 +419,81 @@ tr:hover .copiar, .copiar:focus-visible { color: var(--muted); }
 .forn-tag .link:hover { color: var(--brand); }
 .modal input.mono { font-family: var(--mono); font-size: 13px; }
 .forn-editor .small-btn { align-self: flex-start; margin-top: 0; }
+
+/* ---- subconjuntos e "usada em" ---- */
+.chip.maq { font-family: var(--font); font-weight: 600; letter-spacing: .04em; cursor: default; }
+.chip.maq.compart { border-color: rgba(218, 131, 1, .55); color: var(--brand-2); }
+.tag.sub-tag {
+  background: rgba(127, 207, 143, .08); border-color: rgba(127, 207, 143, .45); color: var(--ok);
+  cursor: pointer; font-family: var(--font);
+}
+.tag.sub-tag:hover { background: rgba(127, 207, 143, .18); }
+.calc { color: var(--muted); font-style: italic; }
+.via { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; }
+.tag.tipo-fabricacao { border-color: #3f6b49; color: var(--ok); margin-left: 0; }
+.tag.tipo-ajuste { border-color: var(--line-2); color: var(--ink-2); margin-left: 0; }
+
+/* ---- página Fornecedores: lista à esquerda, peças à direita ---- */
+.forn-layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 22px; align-items: start; }
+.forn-lista { position: sticky; top: 20px; display: flex; flex-direction: column; gap: 10px; }
+.forn-lista .search { min-width: 0; width: 100%; }
+.forn-itens { border: 1px solid var(--line); background: var(--panel); max-height: calc(100vh - 230px); overflow-y: auto; }
+.forn-item {
+  display: flex; flex-direction: column; gap: 4px; width: 100%; text-align: left; cursor: pointer;
+  background: none; border: 0; border-bottom: 1px solid var(--line); border-left: 3px solid transparent;
+  padding: 10px 12px; color: var(--ink); font: inherit;
+}
+.forn-item:hover { background: var(--panel-2); }
+.forn-item.active { border-left-color: var(--brand); background: var(--brand-soft); }
+.forn-nome { font-size: 14px; font-weight: 500; }
+.forn-meta { display: flex; gap: 8px; flex-wrap: wrap; font-size: 11px; color: var(--muted); }
+.forn-meta em { font-style: normal; }
+.forn-meta .sem-cod { color: var(--ink-2); }
+.forn-meta .abaixo { color: var(--brand-2); }
+.forn-titulo { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.forn-titulo h2 { margin: 0; font-size: 28px; }
+.forn-detalhe .tabs { margin-bottom: 0; border-bottom: 0; }
+.forn-detalhe .tabs button { padding: 8px 12px; }
+.btn.small { padding: 6px 12px; font-size: 11px; }
+.alert.info { border-color: rgba(218, 131, 1, .4); margin-top: 12px; }
+.pad { padding: 12px; }
+
+/* campo do código do item, editável direto na tabela */
+.codigo-inline {
+  width: 130px; background: transparent; border: 1px solid transparent; color: var(--brand-2);
+  font-family: var(--mono); font-size: 12px; padding: 5px 7px;
+}
+.codigo-inline:hover { border-color: var(--line-2); }
+.codigo-inline:focus { border-color: var(--brand); background: var(--bg-2); outline: none; }
+.codigo-inline.vazio::placeholder { color: var(--muted); font-style: italic; font-family: inherit; }
+.codigo-inline.salvando { opacity: .6; }
+.codigo-inline.ok { border-color: var(--ok); }
+.codigo-inline.erro { border-color: var(--red); }
+
+@media (max-width: 1000px) {
+  .forn-layout { grid-template-columns: 1fr; }
+  .forn-lista { position: static; }
+  .forn-itens { max-height: 260px; }
+}
+.forn-detalhe .tbl td:nth-child(2) { min-width: 230px; }
+
+/* aviso "peça sem fornecedor" na janela da peça */
+.aviso-forn { margin-top: 14px; }
+.aviso-acoes { display: flex; gap: 10px; margin-top: 12px; justify-content: flex-end; }
+/* "Não trabalho mais com ele": opções */
+.modal label.radio {
+  flex-direction: row; align-items: flex-start; gap: 10px; margin-top: 14px; cursor: pointer;
+  font-size: 13px; text-transform: none; letter-spacing: 0; color: var(--ink-2); line-height: 1.45;
+}
+.modal label.radio input { width: 16px; margin-top: 3px; flex: none; }
+.modal label.radio b { color: var(--ink); }
+/* lista "Sem fornecedor" */
+.forn-item.sem { border-top: 1px dashed var(--line-2); }
+.forn-item.sem .forn-nome { font-style: italic; color: var(--ink-2); }
+.add-forn { display: flex; gap: 6px; align-items: center; }
+.add-forn input { width: 150px; min-width: 0; padding: 6px 8px; font-size: 13px; }
+.add-forn input.mono { width: 120px; font-family: var(--mono); font-size: 12px; }
+/* pesquisa de produto acima da tabela de peças do fornecedor */
+.forn-pesquisa { display: flex; align-items: center; gap: 12px; margin: 14px 0 12px; }
+.forn-pesquisa .search { flex: 1; min-width: 0; max-width: 520px; }
+.forn-pesquisa .link { font-size: 12px; color: var(--brand); }

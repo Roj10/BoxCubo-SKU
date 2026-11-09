@@ -31,6 +31,32 @@ func (h *handler) routesMinimo(mux *http.ServeMux) {
 func (h *handler) minimos() (min map[string]float64, porMaquina map[string][]string) {
 	min = map[string]float64{}
 	porMaquina = map[string][]string{}
+	// soma "qtd" de "sku" no mínimo; se for subconjunto (ex.: CPU), o mínimo
+	// vai para as peças da receita dele (Raspberry, display, Shield -> resistores...),
+	// porque o que se compra são as peças, e o subconjunto se fabrica com elas.
+	var soma func(sku string, qtd float64, nome string, profundidade int)
+	soma = func(sku string, qtd float64, nome string, profundidade int) {
+		if qtd <= 0 || profundidade > 10 {
+			return
+		}
+		p, err := h.s.GetPart(sku)
+		if err != nil {
+			return
+		}
+		if p.Fabricado {
+			receita, _ := h.s.GetBOM(sku)
+			if len(receita) > 0 {
+				for _, it := range receita {
+					soma(it.SKU, qtd*it.Quantidade, nome, profundidade+1)
+				}
+				return
+			}
+		}
+		min[sku] = round2(min[sku] + qtd)
+		if !contem(porMaquina[sku], nome) {
+			porMaquina[sku] = append(porMaquina[sku], nome)
+		}
+	}
 	for _, m := range h.s.ListMachines() {
 		if m.MinimoMaquinas <= 0 {
 			continue
@@ -39,22 +65,16 @@ func (h *handler) minimos() (min map[string]float64, porMaquina map[string][]str
 		if err != nil {
 			continue
 		}
-		nome := m.Nome
 		for _, it := range items {
 			if it.Kit != "" && !m.MinimoComKits {
 				continue
 			}
-			if it.Quantidade <= 0 {
-				continue
-			}
-			min[it.SKU] = round2(min[it.SKU] + it.Quantidade*float64(m.MinimoMaquinas))
-			porMaquina[it.SKU] = append(porMaquina[it.SKU], nome)
+			soma(it.SKU, it.Quantidade*float64(m.MinimoMaquinas), m.Nome, 0)
 		}
 	}
 	return min, porMaquina
 }
 
-// abaixoDoMinimo lista as peças com estoque menor que o mínimo.
 // Lista as peças com estoque MENOR que o mínimo e quanto comprar para
 // voltar a ele (sugestão = mínimo - estoque). Zeradas aparecem primeiro.
 func (h *handler) abaixoDoMinimo() []model.ReposicaoLine {

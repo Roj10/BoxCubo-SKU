@@ -14,6 +14,8 @@ import SkuHover from './SkuHover.jsx'
 const TIPOS = {
   saida_maquina: 'Saída de máquina',
   saida_pecas: 'Saída de peças',
+  fabricacao: 'Fabricação',
+  ajuste: 'Ajuste de estoque',
   entrada: 'Entrada',
   estorno: 'Estorno',
 }
@@ -46,7 +48,14 @@ export default function Movimentacoes({ machines }) {
     return () => clearTimeout(t)
   }, [load])
 
-  const nomeMaquina = (id) => machines.find((m) => m.id === id)?.nome.replace('BoxCubo ', '') || id
+  const [subs, setSubs] = useState([]) // subconjuntos (para mostrar "CPU V2" e não o SKU)
+  useEffect(() => {
+    api.subconjuntos().then(setSubs).catch(() => {})
+  }, [])
+  const nomeMaquina = (id) =>
+    machines.find((m) => m.id === id)?.nome.replace('BoxCubo ', '') ||
+    subs.find((s) => s.id === id)?.nome.replace(/\s*\(.*\)\s*$/, '') ||
+    id
 
   // Pergunta o motivo e pede o estorno ao backend.
   async function estornar(m) {
@@ -154,6 +163,7 @@ function MovRow({ m, aberto, onToggle, onEstornar, nomeMaquina, fotos }) {
         <td><span className={`tag tipo-${m.tipo}`}>{TIPOS[m.tipo] || m.tipo}</span></td>
         <td>
           {m.machine_id && <b>{m.quantidade ? `${m.quantidade}× ` : ''}{nomeMaquina(m.machine_id)}</b>}
+          {m.tipo === 'ajuste' && <span className="muted small">Correção de estoque</span>}
           {m.kits?.length > 0 && <span className="tag kit">+ {m.kits.join(', ')}</span>}
           {m.tipo === 'saida_pecas' && <span className="muted small">Peças avulsas</span>}
           {m.numeros_serie?.length > 0 && (

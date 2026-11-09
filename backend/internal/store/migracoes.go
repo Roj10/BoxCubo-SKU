@@ -36,6 +36,8 @@ var migracoes = []migracao{
 	{"sku-descritivo-v1", migrarSKUDescritivo},
 	{"sem-bc-v1", migrarSemBC},
 	{"fornecedores-v1", migrarFornecedores},
+	{"receitas-controle-v1", migrarReceitasControle},
+	{"remover-maquinas-v1", migrarRemoverMaquinas},
 }
 
 // Migrar aplica as migrações que ainda não rodaram neste arquivo e devolve
@@ -219,4 +221,169 @@ func FornecedoresDeTexto(txt, nomePeca string) []model.Fornecimento {
 		out = append(out, f)
 	}
 	return out
+}
+
+//go:embed receitas_controle.json
+var receitasControleJSON []byte
+
+type materialControle struct {
+	NomeControle string   `json:"nome_controle"`
+	SKU          string   `json:"sku"`
+	Novo         bool     `json:"novo"`
+	Nome         string   `json:"nome"`
+	Grupo        string   `json:"grupo"`
+	Classe       string   `json:"classe"`
+	Unidade      string   `json:"unidade"`
+	TrocaUnidade bool     `json:"troca_unidade"`
+	Tipo         string   `json:"tipo"`
+	Estoque      float64  `json:"estoque"`
+	Preco        *float64 `json:"preco"`
+	Fabricado    bool     `json:"fabricado"`
+}
+
+// Migração 4: traz do sistema Controle BoxCubo (aba Materiais) as receitas da
+// V2, Vision e EYE e dos subconjuntos CPU e Shield Raspberry.
+//   - peças que já existiam: reaproveita o SKU (atualiza preço quando o
+//     Controle tem e marca CPU/Shield como fabricados);
+//   - peças novas: cria com SKU novo (ex.: EST-MET-EYEBRACO1);
+//   - a receita da V2 passa a ser a do Controle (os itens do kit Correios
+//     continuam como opcionais);
+//   - o estoque passa a ser o do Controle, lançado como uma movimentação de
+//     AJUSTE (aparece no histórico e pode ser estornada).
+func migrarReceitasControle(s *FileStore, _ string) (string, error) {
+	var dados struct {
+		Data      string                       `json:"data"`
+		Materiais []materialControle           `json:"materiais"`
+		Raw       map[string][]json.RawMessage `json:"receitas"`
+	}
+	if err := json.Unmarshal(receitasControleJSON, &dados); err != nil {
+		return "", err
+	}
+	criados := 0
+	ajustes := []model.StockChange{}
+	for _, m := range dados.Materiais {
+		i := s.partIndex(m.SKU)
+		if i < 0 {
+			p := model.Part{
+				SKU: m.SKU, Nome: m.Nome, Grupo: m.Grupo, Classe: m.Classe, Unidade: m.Unidade,
+				Tipo: m.Tipo, ValorUnitario: m.Preco, Fabricado: m.Fabricado,
+				Fornecedores: []model.Fornecimento{},
+			}
+			normalize(&p)
+			s.d.Parts = append(s.d.Parts, p)
+			i = len(s.d.Parts) - 1
+			criados++
+		}
+		p := &s.d.Parts[i]
+		p.Nome = m.Nome // usa o nome do Controle, que é o que a equipe usa hoje
+		if m.Preco != nil {
+			p.ValorUnitario = m.Preco
+		}
+		if m.Fabricado {
+			p.Fabricado = true
+		}
+		if m.TrocaUnidade && p.Unidade != m.Unidade {
+			// ex.: cabo manga era contado em rolo, no Controle é em metro
+			p.Unidade, p.Tipo, p.Estoque = m.Unidade, m.Tipo, 0
+		}
+		if d := round3(m.Estoque - p.Estoque); d != 0 {
+			ajustes = append(ajustes, model.StockChange{SKU: m.SKU, Delta: d})
+		}
+	}
+
+	// receitas: [[sku, quantidade], ...]
+	receita := func(dono string) ([]model.BOMItem, error) {
+		out := []model.BOMItem{}
+		for _, raw := range dados.Raw[dono] {
+			var par [2]any
+			if err := json.Unmarshal(raw, &par); err != nil {
+				return nil, err
+			}
+			sku, _ := par[0].(string)
+			q, _ := par[1].(float64)
+			out = append(out, model.BOMItem{SKU: sku, Quantidade: q, OndeUsado: []string{}})
+		}
+		return out, nil
+	}
+	for _, dono := range []string{"vision", "eye", "ELE-SUB-CPUV2", "ELE-PCB-SHIELDRPI"} {
+		lista, err := receita(dono)
+		if err != nil {
+			return "", err
+		}
+		s.d.BOM[dono] = lista
+	}
+	// V2: receita do Controle + mantém "onde é usado" e os itens de kit que já existiam
+	novaV2, err := receita("v2")
+	if err != nil {
+		return "", err
+	}
+	antiga := map[string]model.BOMItem{}
+	for _, it := range s.d.BOM["v2"] {
+		antiga[it.SKU] = it
+	}
+	naNova := map[string]bool{}
+	for j, it := range novaV2 {
+		naNova[it.SKU] = true
+		if a, ok := antiga[it.SKU]; ok {
+			novaV2[j].OndeUsado = a.OndeUsado
+		}
+	}
+	for _, it := range s.d.BOM["v2"] {
+		if it.Kit != "" && !naNova[it.SKU] {
+			novaV2 = append(novaV2, it)
+		}
+	}
+	s.d.BOM["v2"] = novaV2
+
+	// máquinas: Vision e Eye ganham receita; a Slim entra na lista (ainda sem receita)
+	temSlim := false
+	for i := range s.d.Machines {
+		switch s.d.Machines[i].ID {
+		case "vision", "eye":
+			s.d.Machines[i].Ativa = true
+		case "slim":
+			temSlim = true
+		}
+	}
+	if !temSlim {
+		s.d.Machines = append(s.d.Machines, model.Machine{
+			ID: "slim", SKU: "MAQ-SLIM", Nome: "BoxCubo Slim", Apelido: "Compacta",
+			Tecnologia: "A definir", Ativa: false,
+		})
+	}
+
+	if len(ajustes) > 0 {
+		if _, err := s.apply(model.Movement{
+			Tipo:       model.MovAjuste,
+			Observacao: "Estoque importado do Controle BoxCubo (192.168.15.10) em " + dados.Data,
+		}, ajustes); err != nil {
+			return "", err
+		}
+	}
+	return fmt.Sprintf("Receitas do Controle BoxCubo: V2, Vision, EYE, CPU e Shield (%d peças novas, estoque de %d peças ajustado)",
+		criados, len(ajustes)), nil
+}
+
+// Migração 5: tira do sistema as máquinas que a BoxCubo não usa mais
+// (Estática V2.5, Dynamic e Slim), junto com a lista de peças delas, se
+// tiver. As PEÇAS continuam cadastradas (algumas são usadas em outras
+// máquinas, como a "PCB BoxCubo v2.5" da V2) e o histórico de
+// movimentações não é apagado.
+func migrarRemoverMaquinas(s *FileStore, _ string) (string, error) {
+	tirar := map[string]bool{"v25": true, "dynamic": true, "slim": true}
+	ficam := s.d.Machines[:0]
+	nomes := []string{}
+	for _, m := range s.d.Machines {
+		if tirar[m.ID] {
+			nomes = append(nomes, m.Nome)
+			delete(s.d.BOM, m.ID)
+			continue
+		}
+		ficam = append(ficam, m)
+	}
+	s.d.Machines = ficam
+	if len(nomes) == 0 {
+		return "", nil
+	}
+	return "máquinas removidas: " + strings.Join(nomes, ", "), nil
 }

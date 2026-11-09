@@ -2,11 +2,12 @@
 //  TABELA "LISTA DE PEÇAS" (a lista de materiais da máquina)
 // ============================================================
 //  Mostra as peças agrupadas (ex.: Elétrica > Resistor), com busca,
-//  filtros, cores de estoque e o botão "Exportar CSV".
+//  filtros, cores de estoque e o botão "Exportar Excel".
 //  Clicar numa linha abre a janela de edição da peça.
 
 import { useMemo, useState } from 'react'
-import { money, qty, downloadCSV, FORN_COLS, fornCols, fornTexto } from '../format.js'
+import { money, qty, fornTexto, sigla, outros } from '../format.js'
+import { baixarPlanilha, agora } from '../planilha.js'
 import Fornecedores from './Fornecedores.jsx'
 import SkuHover from './SkuHover.jsx'
 
@@ -22,8 +23,10 @@ function estoqueClasse(l) {
 
 // "useMemo" guarda um resultado já calculado e só recalcula quando algo
 // de que ele depende muda (deixa a tela rápida mesmo com muitas peças).
-export default function BomTable({ linhas, legenda, kitNome, onEdit, soAbaixo = false, onSoAbaixo }) {
+
+export default function BomTable({ nomeMaquina = '', linhas, legenda, kitNome, onEdit, soAbaixo = false, onSoAbaixo, onAbrirSub }) {
   const [busca, setBusca] = useState('')
+  const [soCompart, setSoCompart] = useState(false) // só peças usadas em mais de uma máquina
   const [grupo, setGrupo] = useState('')
   const [kit, setKit] = useState('todos')
 
@@ -35,6 +38,7 @@ export default function BomTable({ linhas, legenda, kitNome, onEdit, soAbaixo = 
     const q = busca.trim().toLowerCase()
     return linhas.filter((l) => {
       if (soAbaixo && !(l.minimo > 0 && l.peca.estoque < l.minimo)) return false
+      if (soCompart && !(l.usada_em?.length > 1)) return false
       if (grupo && l.peca.grupo !== grupo) return false
       if (kit === 'padrao' && l.kit) return false
       if (kit !== 'todos' && kit !== 'padrao' && l.kit !== kit) return false
@@ -44,7 +48,7 @@ export default function BomTable({ linhas, legenda, kitNome, onEdit, soAbaixo = 
         .toLowerCase()
         .includes(q)
     })
-  }, [linhas, busca, grupo, kit, soAbaixo])
+  }, [linhas, busca, grupo, kit, soAbaixo, soCompart])
 
   // agrupa por grupo > classe, mantendo a ordem da planilha
   // Agrupa as peças por "grupo > classe" e soma o custo de cada grupo.
@@ -62,16 +66,41 @@ export default function BomTable({ linhas, legenda, kitNome, onEdit, soAbaixo = 
 
   const kitsExistentes = [...new Set(linhas.map((l) => l.kit).filter(Boolean))]
 
-  // Botão "Exportar CSV": baixa exatamente o que está na tela (com filtros).
+  // Botão "Exportar Excel": baixa exatamente o que está na tela (com
+  // filtros), separado pelas mesmas seções da tela (Elétrica › Resistores...).
   const exportar = () =>
-    downloadCSV('lista-pecas.csv', [
-      ['SKU', 'Nome', 'Grupo', 'Classe', 'Tipo', 'Onde é usado', 'Kit', 'Qtd/máquina', 'Unidade', 'Valor unit.', 'Custo/máquina', ...FORN_COLS, 'Estoque'],
-      ...filtradas.map((l) => [
-        l.sku, l.peca.nome, l.peca.grupo, l.peca.classe, TIPO[l.peca.tipo], l.onde_usado.join(', '),
-        l.kit ? kitNome(l.kit) : '', l.quantidade, l.peca.unidade, l.peca.valor_unitario,
-        l.custo_por_maquina, ...fornCols(l.peca.fornecedores), l.peca.estoque,
-      ]),
-    ])
+    baixarPlanilha(`lista-pecas-${nomeMaquina.replace('BoxCubo ', '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\W+/g, '-').toLowerCase() || 'maquina'}.xlsx`, {
+      titulo: `Lista de peças — ${nomeMaquina.replace('BoxCubo ', '')}`,
+      subtitulo: `${filtradas.length} itens · gerado em ${agora()}`,
+      aba: 'Lista de peças',
+      colunas: [
+        { titulo: 'SKU' },
+        { titulo: 'Peça' },
+        { titulo: 'Tipo' },
+        { titulo: 'Qtd/máquina', tipo: 'num' },
+        { titulo: 'Un.' },
+        { titulo: 'Valor unit.', tipo: 'preco' },
+        { titulo: 'Custo/máquina', tipo: 'dinheiro', total: true },
+        { titulo: 'Estoque', tipo: 'num' },
+        { titulo: 'Fornecedor' },
+        { titulo: 'Código no fornecedor' },
+        { titulo: 'Outros fornecedores' },
+        { titulo: 'Usada em' },
+        { titulo: 'Onde é usado' },
+        { titulo: 'Kit' },
+      ],
+      linhas: secoes.flatMap((s) =>
+        s.linhas.map((l) => ({
+          grupo: s.key,
+          valores: [
+            l.sku, l.peca.nome, l.peca.fabricado ? 'Subconjunto' : TIPO[l.peca.tipo], l.quantidade, l.peca.unidade,
+            l.peca.valor_unitario, l.custo_por_maquina, l.peca.estoque,
+            l.peca.fornecedores?.[0]?.nome || '', l.peca.fornecedores?.[0]?.codigo || '', outros(l.peca.fornecedores),
+            (l.usada_em || []).map(sigla).join(', '), l.onde_usado.join(', '), l.kit ? kitNome(l.kit) : '',
+          ],
+        })),
+      ),
+    })
 
   return (
     <div>
@@ -97,8 +126,12 @@ export default function BomTable({ linhas, legenda, kitNome, onEdit, soAbaixo = 
             Só abaixo do mínimo
           </label>
         )}
+        <label className="check" title="Peças usadas em mais de uma máquina">
+          <input type="checkbox" checked={soCompart} onChange={(e) => setSoCompart(e.target.checked)} />
+          Só compartilhadas
+        </label>
         <span className="muted">{filtradas.length} itens</span>
-        <button className="btn" onClick={exportar}>Exportar CSV</button>
+        <button className="btn" onClick={exportar}>Exportar Excel</button>
       </div>
 
       <div className="table-wrap">
@@ -107,6 +140,7 @@ export default function BomTable({ linhas, legenda, kitNome, onEdit, soAbaixo = 
             <tr>
               <th>SKU</th>
               <th>Nome</th>
+              <th title="Máquinas que usam esta peça (direto ou dentro de um subconjunto)">Usada em</th>
               <th>Onde é usado</th>
               <th className="r">Qtd/máq.</th>
               <th>Und.</th>
@@ -118,7 +152,7 @@ export default function BomTable({ linhas, legenda, kitNome, onEdit, soAbaixo = 
           </thead>
           <tbody>
             {secoes.map((s) => (
-              <Secao key={s.key} s={s} legenda={legenda} kitNome={kitNome} onEdit={onEdit} />
+              <Secao key={s.key} s={s} legenda={legenda} kitNome={kitNome} onEdit={onEdit} onAbrirSub={onAbrirSub} />
             ))}
           </tbody>
         </table>
@@ -129,11 +163,11 @@ export default function BomTable({ linhas, legenda, kitNome, onEdit, soAbaixo = 
 }
 
 // Desenha um grupo: a linha de título (ex.: "RESISTOR (12)") e as peças.
-function Secao({ s, legenda, kitNome, onEdit }) {
+function Secao({ s, legenda, kitNome, onEdit, onAbrirSub }) {
   return (
     <>
       <tr className="sec">
-        <td colSpan={6}>
+        <td colSpan={7}>
           <span className="sec-grupo">{s.grupo}</span> <b>{s.classe}</b> <span className="muted">({s.linhas.length})</span>
         </td>
         <td className="r">{money(s.custo)}</td>
@@ -146,6 +180,26 @@ function Secao({ s, legenda, kitNome, onEdit }) {
             {l.peca.nome}
             {l.kit && <span className="tag kit">{kitNome(l.kit)}</span>}
             {l.peca.tipo !== 'peca' && <span className="tag">{TIPO[l.peca.tipo]}</span>}
+            {l.peca.fabricado && (
+              <button
+                type="button"
+                className="tag sub-tag"
+                title="Subconjunto fabricado: clique para ver a receita"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  onAbrirSub?.(l.sku)
+                }}
+              >
+                Subconjunto ›
+              </button>
+            )}
+          </td>
+          <td>
+            {(l.usada_em || []).map((m) => (
+              <span key={m} className={`chip maq ${l.usada_em.length > 1 ? 'compart' : ''}`} title={m}>
+                {sigla(m)}
+              </span>
+            ))}
           </td>
           <td>
             {l.onde_usado.map((o) => (
@@ -154,7 +208,13 @@ function Secao({ s, legenda, kitNome, onEdit }) {
           </td>
           <td className="r">{qty(l.quantidade)}</td>
           <td>{l.peca.unidade}</td>
-          <td className="r">{money(l.peca.valor_unitario)}</td>
+          <td className="r">
+            {l.peca.valor_unitario == null && l.custo_unitario != null ? (
+              <span className="calc" title="Soma da receita do subconjunto">≈ {money(l.custo_unitario)}</span>
+            ) : (
+              money(l.peca.valor_unitario)
+            )}
+          </td>
           <td className="r">{money(l.custo_por_maquina)}</td>
           <td className="forn"><Fornecedores lista={l.peca.fornecedores} /></td>
           <td className={`r ${estoqueClasse(l)}`} title={l.minimo > 0 ? `Mínimo: ${qty(l.minimo)} ${l.peca.unidade}` : undefined}>

@@ -7,7 +7,8 @@
 
 import { useEffect, useState } from 'react'
 import { api } from '../api.js'
-import { money, qty, downloadCSV, FORN_COLS, fornCols, porFornecedor } from '../format.js'
+import { money, qty, porFornecedor, grupoFornecedor, outros } from '../format.js'
+import { baixarPlanilha, agora } from '../planilha.js'
 import Fornecedores from './Fornecedores.jsx'
 import EntradaModal from './EntradaModal.jsx'
 import SkuHover from './SkuHover.jsx'
@@ -44,17 +45,44 @@ export default function PlanView({ machine, kits, onEstoqueMudou }) {
 
   const linhas = plan ? plan.linhas.filter((l) => !soFaltando || l.comprar > 0) : []
 
-  // "Exportar lista de compra": CSV ordenado por fornecedor, com o código do
-  // item em cada fornecedor.
-  const exportar = () =>
-    downloadCSV(`compra-${machine.id}-${quantidade}maq.csv`, [
-      [...FORN_COLS, 'SKU', 'Nome', 'Unidade', 'Por máquina', 'Necessário', `Com margem ${margem}%`, 'Estoque', 'Comprar', 'Valor unit.', 'Custo compra'],
-      // agrupado por fornecedor principal, para facilitar os pedidos
-      ...[...linhas].sort(porFornecedor).map((l) => [
-        ...fornCols(l.fornecedores), l.sku, l.nome, l.unidade, l.por_maquina, l.necessario, l.com_margem,
-        l.estoque, l.comprar, l.valor_unitario, l.custo_compra,
-      ]),
-    ])
+  // "Exportar lista de compra": planilha do Excel separada por fornecedor
+  // (com subtotal de cada um). O que é fabricado na BoxCubo (CPU, Shield)
+  // fica num bloco próprio no fim.
+  const exportar = () => {
+    const grupo = (l) => (l.fabricar ? 'Fabricar na BoxCubo' : grupoFornecedor(l.fornecedores))
+    const ordem = (l) => (l.fabricar ? 2 : l.fornecedores?.[0]?.nome ? 0 : 1)
+    const ordenadas = [...linhas].sort((a, b) => ordem(a) - ordem(b) || porFornecedor(a, b))
+    const temVia = linhas.some((l) => l.via?.length)
+    baixarPlanilha(`compra-${machine.id}-${quantidade}maq.xlsx`, {
+      titulo: `Lista de compra — ${quantidade} ${machine.nome.replace('BoxCubo ', '')}`,
+      subtitulo:
+        `Margem de ${margem}%` + (kitsSel.length ? ` · com ${kitsSel.length} kit(s)` : '') + ` · gerado em ${agora()}`,
+      aba: 'Compra',
+      colunas: [
+        { titulo: 'SKU' },
+        { titulo: 'Peça' },
+        { titulo: 'Código no fornecedor' },
+        { titulo: 'Un.' },
+        { titulo: 'Por máquina', tipo: 'num' },
+        { titulo: `Necessário (+${margem}%)`, tipo: 'num' },
+        { titulo: 'Estoque', tipo: 'num' },
+        { titulo: 'Comprar / fabricar', tipo: 'num', destaque: true },
+        { titulo: 'Valor unit.', tipo: 'preco' },
+        { titulo: 'Custo', tipo: 'dinheiro', total: true },
+        ...(temVia ? [{ titulo: 'Vai em (subconjunto)' }] : []),
+        { titulo: 'Outros fornecedores' },
+      ],
+      linhas: ordenadas.map((l) => ({
+        grupo: grupo(l),
+        valores: [
+          l.sku, l.nome, l.fornecedores?.[0]?.codigo || '', l.unidade, l.por_maquina, l.com_margem, l.estoque,
+          l.comprar, l.valor_unitario, l.fabricar ? null : l.custo_compra,
+          ...(temVia ? [(l.via || []).join(', ')] : []),
+          outros(l.fornecedores),
+        ],
+      })),
+    })
+  }
 
   return (
     <div>
@@ -109,7 +137,7 @@ export default function PlanView({ machine, kits, onEstoqueMudou }) {
             <button className="btn" onClick={exportar}>Exportar lista de compra</button>
             <button
               className="btn primary no-auto"
-              disabled={!plan.linhas.some((l) => l.comprar > 0)}
+              disabled={!plan.linhas.some((l) => l.comprar > 0 && !l.fabricar)}
               onClick={() => setEntrada(true)}
               title="Quando o material desta lista chegar"
             >
@@ -127,7 +155,7 @@ export default function PlanView({ machine, kits, onEstoqueMudou }) {
                   <th className="r">Necessário</th>
                   <th className="r">Com margem</th>
                   <th className="r">Estoque</th>
-                  <th className="r">Comprar</th>
+                  <th className="r" title="Peças: quanto comprar. Subconjuntos: quanto fabricar.">Comprar / fabricar</th>
                   <th className="r">Custo compra</th>
                   <th>Fornecedor</th>
                 </tr>
@@ -136,12 +164,18 @@ export default function PlanView({ machine, kits, onEstoqueMudou }) {
                 {linhas.map((l) => (
                   <tr key={l.sku}>
                     <td><SkuHover sku={l.sku} nome={l.nome} imagem={l.imagem} /></td>
-                    <td>{l.nome}</td>
-                    <td className="r">{qty(l.por_maquina)} {l.unidade}</td>
+                    <td>
+                      {l.nome}
+                      {l.fabricar && <span className="tag sub-tag">Subconjunto</span>}
+                      {l.via?.length > 0 && <small className="via">para {l.via.join(', ')}</small>}
+                    </td>
+                    <td className="r">{l.por_maquina ? `${qty(l.por_maquina)} ${l.unidade}` : '—'}</td>
                     <td className="r">{qty(l.necessario)}</td>
                     <td className="r">{qty(l.com_margem)}</td>
                     <td className="r">{qty(l.estoque)}</td>
-                    <td className={`r ${l.comprar > 0 ? 'neg' : 'ok'}`}>{qty(l.comprar)}</td>
+                    <td className={`r ${l.comprar > 0 ? 'neg' : 'ok'}`}>
+                      {l.fabricar && l.comprar > 0 ? `fabricar ${qty(l.comprar)}` : qty(l.comprar)}
+                    </td>
                     <td className="r">{money(l.custo_compra)}</td>
                     <td className="forn"><Fornecedores lista={l.fornecedores} /></td>
                   </tr>
@@ -155,7 +189,9 @@ export default function PlanView({ machine, kits, onEstoqueMudou }) {
       {entrada && plan && (
         <EntradaModal
           titulo={`Compra do lote de ${plan.quantidade} ${machine.nome.replace('BoxCubo ', '')}`}
-          inicial={plan.linhas.filter((l) => l.comprar > 0).map((l) => ({ sku: l.sku, quantidade: l.comprar }))}
+          inicial={plan.linhas
+            .filter((l) => l.comprar > 0 && !l.fabricar) // subconjuntos se fabricam, não chegam de fornecedor
+            .map((l) => ({ sku: l.sku, quantidade: l.comprar }))}
           onClose={() => setEntrada(false)}
           onDone={() => {
             setEntrada(false)

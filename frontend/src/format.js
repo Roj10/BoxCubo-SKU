@@ -10,39 +10,7 @@ export const money = (v) => (v === null || v === undefined ? '—' : brl.format(
 // Quantidade: 1352 -> "1.352"; 0.25 -> "0,25".
 export const qty = (v) => (v === null || v === undefined ? '—' : num.format(v))
 
-// Gera o arquivo .csv (abre no Excel) e baixa no computador.
-// Usa ";" para separar colunas e vírgula nos decimais, que é o padrão do
-// Excel em português. O "\ufeff" no começo faz o Excel entender acentos.
-export function downloadCSV(filename, rows) {
-  const esc = (v) => {
-    // números com vírgula decimal, para o Excel em português
-    const s = v === null || v === undefined ? '' : typeof v === 'number' ? String(v).replace('.', ',') : String(v)
-    return /[";\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s
-  }
-  // ; como separador para abrir direto no Excel em português
-  const csv = '﻿' + rows.map((r) => r.map(esc).join(';')).join('\n')
-  const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }))
-  const a = document.createElement('a')
-  a.href = url
-  a.download = filename
-  a.click()
-  URL.revokeObjectURL(url)
-}
-
 // ---- fornecedores ----
-// [{nome, codigo}] -> colunas para CSV: principal, código no principal, demais
-// Colunas de fornecedor usadas em todos os CSVs.
-export const FORN_COLS = ['Fornecedor', 'Código no fornecedor', 'Outros fornecedores (código)']
-// Transforma a lista de fornecedores nas 3 colunas do CSV:
-// fornecedor principal | código no principal | outros (com código).
-export function fornCols(fs = []) {
-  const [p, ...resto] = fs || []
-  return [
-    p?.nome || '',
-    p?.codigo || '',
-    resto.map((f) => (f.codigo ? `${f.nome} (${f.codigo})` : f.nome)).join('; '),
-  ]
-}
 // texto curto para busca
 export const fornTexto = (fs = []) => (fs || []).map((f) => `${f.nome} ${f.codigo}`).join(' ')
 
@@ -56,3 +24,13 @@ export const porFornecedor = (a, b) => {
   if (!fa !== !fb) return fa ? -1 : 1
   return fa.localeCompare(fb, 'pt-BR')
 }
+
+// Sigla curta de cada máquina (coluna "Usada em"): "Estática V2" -> "V2".
+const SIGLA = { 'Estática V2': 'V2', Vision: 'VIS', Eye: 'EYE' }
+export const sigla = (nome) => SIGLA[nome] || nome
+
+// Nome do grupo de uma linha na planilha: o fornecedor principal.
+export const grupoFornecedor = (fs) => fs?.[0]?.nome || 'Sem fornecedor'
+// Os fornecedores além do principal, com código: "Mercado Livre (ML123); Kabum".
+export const outros = (fs) =>
+  (fs || []).slice(1).map((f) => (f.codigo ? `${f.nome} (${f.codigo})` : f.nome)).join('; ')

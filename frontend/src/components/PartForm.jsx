@@ -14,7 +14,7 @@ import { api } from '../api.js'
 import CodigosInput from './CodigosInput.jsx'
 import { FornecedoresEditor } from './Fornecedores.jsx'
 
-const UNIDADES = ['und', 'rolo', 'm', 'serviço']
+const UNIDADES = ['und', 'pct', 'rolo', 'm', 'serviço'] // pct = pacote (ex.: pacote com 2 ou 10)
 const TIPOS = [
   ['peca', 'Peça'],
   ['consumivel', 'Consumível'],
@@ -36,12 +36,15 @@ export default function PartForm({ machine, line, classes, kits, legenda, onClos
     fornecedores: (p.fornecedores || []).map((x) => ({ nome: x.nome, codigo: x.codigo || '' })),
     valor_unitario: p.valor_unitario ?? '',
     estoque: p.estoque ?? 0,
+    fabricado: !!p.fabricado,
     quantidade: line?.quantidade ?? 1,
     onde_usado: line?.onde_usado || [],
     kit: line?.kit || '',
   })
   const [erro, setErro] = useState('')
   const [salvando, setSalvando] = useState(false)
+  // aviso "salvar sem fornecedor?" (não é obrigatório, só um lembrete)
+  const [avisoSemForn, setAvisoSemForn] = useState(false)
   const [nomesForn, setNomesForn] = useState([])
   useEffect(() => {
     api.fornecedores().then(setNomesForn).catch(() => {})
@@ -75,9 +78,17 @@ export default function PartForm({ machine, line, classes, kits, legenda, onClos
   // só letras e números, em maiúsculas (o hífen separa as partes do SKU)
   const setSufixo = (e) => setF({ ...f, sufixo: e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 16) })
 
-  // Botão "Salvar".
-  async function salvar(e) {
-    e.preventDefault()
+  // Botão "Salvar". Se a peça ficou sem fornecedor, primeiro mostra um
+  // aviso (dá para salvar mesmo assim). Peças fabricadas na BoxCubo não
+  // precisam de fornecedor, então não avisa.
+  async function salvar(e, mesmoSemFornecedor = false) {
+    e?.preventDefault()
+    const temFornecedor = f.fornecedores.some((x) => x.nome.trim())
+    if (!temFornecedor && !f.fabricado && !mesmoSemFornecedor) {
+      setAvisoSemForn(true)
+      return
+    }
+    setAvisoSemForn(false)
     setSalvando(true)
     setErro('')
     const part = {
@@ -89,6 +100,7 @@ export default function PartForm({ machine, line, classes, kits, legenda, onClos
       fornecedores: f.fornecedores,
       valor_unitario: f.valor_unitario === '' ? null : Number(f.valor_unitario),
       estoque: Number(f.estoque) || 0,
+      fabricado: f.fabricado,
     }
     const bom = {
       quantidade: Number(f.quantidade) || 0,
@@ -234,6 +246,14 @@ export default function PartForm({ machine, line, classes, kits, legenda, onClos
             Estoque
             <input type="number" step="0.01" min="0" value={f.estoque} onChange={set('estoque')} />
           </label>
+          <label className="check full" title="Peça montada aqui, com receita própria (ex.: CPU, Shield Raspberry)">
+            <input
+              type="checkbox"
+              checked={f.fabricado}
+              onChange={(e) => setF({ ...f, fabricado: e.target.checked })}
+            />
+            Subconjunto fabricado na BoxCubo (tem receita própria e aparece em "Subconjuntos")
+          </label>
           <div className="full campo">
             <span className="campo-titulo">Fornecedores e código do item</span>
             <FornecedoresEditor
@@ -268,6 +288,28 @@ export default function PartForm({ machine, line, classes, kits, legenda, onClos
         </fieldset>
 
         {erro && <div className="alert">{erro}</div>}
+
+        {avisoSemForn && (
+          <div className="alerta-minimo aviso-forn">
+            <b>Esta peça está sem fornecedor.</b> Não é obrigatório, mas sem ele a peça não entra no pedido de
+            nenhum fornecedor e fica na lista "Sem fornecedor".
+            <div className="aviso-acoes">
+              <button
+                type="button"
+                className="btn"
+                onClick={() => {
+                  setAvisoSemForn(false)
+                  setF({ ...f, fornecedores: [...f.fornecedores.filter((x) => x.nome.trim()), { nome: '', codigo: '' }] })
+                }}
+              >
+                Adicionar fornecedor
+              </button>
+              <button type="button" className="btn primary" onClick={() => salvar(null, true)}>
+                Salvar sem fornecedor
+              </button>
+            </div>
+          </div>
+        )}
 
         <div className="modal-actions">
           {!novo && (

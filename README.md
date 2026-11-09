@@ -22,13 +22,17 @@ simples, o que ele faz. Resumo:
 | `backend/internal/api/estoque.go` | Saídas, entradas e estornos |
 | `backend/internal/api/minimo.go` | Estoque mínimo e reposição |
 | `backend/internal/api/imagens.go` | Fotos das peças |
+| `backend/internal/api/subconjuntos.go` | Subconjuntos (CPU, Shield): receita, custo, fabricação, "usada em" |
+| `backend/internal/api/fornecedores.go` | Página de fornecedores: resumo, peças, código do item, renomear/juntar |
 | `backend/internal/api/*_test.go` | Testes automáticos (`go test ./...`) |
 | `backend/data/` | **Os dados de vocês** (`boxcubo.json`) e as fotos |
 | `frontend/src/App.jsx` | A tela inteira: barra lateral + área principal |
 | `frontend/src/api.js` | O "garçom": leva os pedidos da tela para o backend |
+| `frontend/src/planilha.js` | Monta as planilhas do Excel (.xlsx) que o sistema baixa |
 | `frontend/src/components/` | Cada pedaço da tela (tabela, janelas, barra lateral…) |
 | `frontend/src/styles.css` | O visual (cores, fontes) |
 | `tools/` | Dados extraídos da planilha e o gerador dos dados iniciais |
+| `tools/controle/` | Receitas e materiais lidos do Controle BoxCubo + o importador |
 
 ## Como rodar (Windows)
 
@@ -86,12 +90,47 @@ como "Dados atualizados — …" e rodam uma vez só).
 ## Fornecedores
 
 Cada peça tem uma lista de fornecedores com o **código do item** em cada um;
-o primeiro é o **principal**. Na janela da peça: "+ Adicionar fornecedor",
+o primeiro é o **principal**. O fornecedor não é obrigatório: ao salvar uma
+peça sem nenhum, aparece um aviso com "Adicionar fornecedor" ou "Salvar sem
+fornecedor" (peças fabricadas na BoxCubo não recebem o aviso). Na janela da peça: "+ Adicionar fornecedor",
 "Tornar principal" e × para remover. A busca encontra a peça pelo código do
-fornecedor. Nos CSVs (lista de peças, lista de compra e reposição) saem as
-colunas *Fornecedor*, *Código no fornecedor* e *Outros fornecedores (código)*;
-a lista de compra e a reposição vêm ordenadas por fornecedor principal, para
-facilitar os pedidos.
+fornecedor.
+
+### Planilhas (Excel)
+
+Todos os botões de baixar (lista de peças, lista de compra, reposição,
+peças do fornecedor e pedido) geram um arquivo **.xlsx** já formatado: título
+e data no topo, cabeçalho laranja que fica parado ao rolar, colunas na
+largura certa, valores em R$ e quantidades com separador de milhar. A
+reposição e a lista de compra vêm **separadas por fornecedor**, com subtotal
+de cada um e total geral; a lista de peças vem separada pelas seções da tela.
+O arquivo é montado no navegador por `frontend/src/planilha.js` (sem
+bibliotecas extras).
+
+### Página Fornecedores (barra lateral › Estoque › Fornecedores)
+
+- À esquerda, todos os fornecedores com quantas peças fornecem, quantas estão
+  **sem código** do item e quantas estão **para comprar** (abaixo do mínimo).
+- Clicando num fornecedor, aparecem as peças dele (de todas as máquinas e
+  subconjuntos). O **código no fornecedor** se digita direto na tabela: salva
+  ao apertar Enter ou sair do campo (Esc desfaz).
+- Abas: *Todas*, *Sem código* (para ir preenchendo) e *Pedido*.
+- **Pesquisar produto** (logo acima da tabela): procura pelo SKU, nome, código
+  do item em **qualquer** fornecedor da peça, **onde é usado** (o código, ex.:
+  `CF`, ou o que ele significa, ex.: `cabo de força`) e máquina (ex.: `eye`).
+  Várias palavras = todas precisam aparecer (ex.: `parafuso 4x10`).
+- **Baixar pedido**: planilha com o que comprar dele para voltar ao estoque mínimo,
+  só das peças em que ele é o fornecedor **principal** (peças em que ele é
+  alternativo aparecem marcadas como "alternativo" e não entram no pedido).
+- **Renomear / juntar**: troca o nome em todas as peças. Se o nome novo já
+  existir, os dois viram um só (ex.: juntar "R&A Parafusos" em "1001
+  Parafusos"); os códigos preenchidos são mantidos.
+- **Não trabalho mais com ele**: passa as peças para outro fornecedor (que
+  assume o lugar dele; o código fica em branco, porque era do antigo) ou só
+  tira ele das peças. Antes de confirmar, avisa quais peças ficariam sem
+  fornecedor.
+- **Sem fornecedor** (fim da lista): as peças que não têm nenhum, com um campo
+  em cada linha para já escolher o fornecedor e o código.
 
 Grupos: `ELE` Elétrica/Eletrônica · `EST` Estrutural · `EMB` Embalagens/Outros.
 
@@ -103,6 +142,38 @@ Classes: `RES` resistor · `CAP` capacitor · `LED` · `DIO` diodo · `TRS` tran
 
 Os itens do **Adicional Correios** são um *kit* opcional da V2: aparecem na
 lista marcados e só entram no planejamento quando o kit é marcado.
+
+## Receitas do Controle BoxCubo e subconjuntos
+
+As receitas da **V2, Vision e EYE** e dos subconjuntos **CPU V2** e **Shield
+Raspberry** vieram do sistema Controle BoxCubo (aba Materiais, lida em
+09/11/2026). Os dados lidos estão em `tools/controle/` e o
+`tools/controle/importar.py` monta `backend/internal/store/receitas_controle.json`,
+que o backend aplica uma vez (migração `receitas-controle-v1`):
+
+- cada material do Controle virou um SKU — 91 reaproveitaram SKUs que já
+  existiam, 43 são novos (ex.: `EST-MET-EYEBRACO1`, `ELE-CTR-NUC`);
+- **uma peça = um SKU**, mesmo se usada em várias máquinas (monitor, cabo de
+  rede, parafuso M4x10…). A coluna **Usada em** mostra as máquinas e o filtro
+  **Só compartilhadas** lista só essas peças;
+- o estoque passou a ser o do Controle, lançado como **Ajuste de estoque** nas
+  Movimentações (pode ser estornado);
+- as máquinas que não são mais usadas (Estática V2.5, Dynamic e Slim) saíram
+  do sistema; ficaram **V2, Vision e Eye**. As peças delas que também servem
+  a outras máquinas continuam cadastradas.
+
+**Subconjuntos** (CPU V2, Shield Raspberry) são peças montadas aqui, com
+receita própria (seção *Subconjuntos* da barra lateral):
+
+- **Registrar fabricação**: sai a receita × quantidade e entram as unidades prontas;
+- na saída de uma V2 sai **1 CPU pronta** (como no Controle);
+- o custo do subconjunto é a soma da receita;
+- no **Planejar lote**, se faltar CPU, aparece "fabricar N" e as peças da CPU
+  (e do Shield dentro dela) entram na lista de compra, com "para CPU V2";
+- o **estoque mínimo** vai para as peças de dentro do subconjunto.
+
+Qualquer peça pode virar subconjunto marcando "Subconjunto fabricado" na
+janela da peça.
 
 ## Estoque mínimo e reposição
 
@@ -117,7 +188,7 @@ itens do kit Adicional Correios.
 - A barra lateral mostra em **Reposição** quantas peças estão abaixo do mínimo.
 - Depois de uma saída, a confirmação lista as peças que ficaram abaixo do mínimo.
 - A tela **Reposição** mostra o que comprar para voltar ao mínimo, com custo e
-  fornecedor, exporta CSV e permite dar entrada quando o material chegar.
+  fornecedor, exporta para o Excel e permite dar entrada quando o material chegar.
 
 ## Fotos das peças
 
@@ -158,6 +229,12 @@ laranja ao lado. As fotos ficam em `backend/data/imagens/` (uma por SKU).
 | GET/PUT/DELETE | `/api/parts/{sku}` | Consulta / edita / exclui peça |
 | PUT | `/api/parts/{sku}/sku` | Troca o final do SKU (`{"sufixo": "1K2"}`) |
 | GET | `/api/fornecedores` | Nomes de fornecedores já usados |
+| GET | `/api/fornecedores/resumo` | Cada fornecedor: peças, sem código, para comprar, valor do pedido |
+| GET | `/api/fornecedores/pecas?nome=Fornell` | Peças do fornecedor com código, mínimo e quanto comprar |
+| PUT | `/api/fornecedores/codigo` | Grava o código do item (`sku`, `fornecedor`, `codigo`) |
+| POST | `/api/fornecedores/renomear` | Renomeia/junta (`de`, `para`) em todas as peças |
+| POST | `/api/fornecedores/substituir` | Não trabalha mais com `de`: passa para `para` (ou, vazio, só tira) |
+| GET | `/api/fornecedores/sem-fornecedor` | Peças sem nenhum fornecedor |
 | GET | `/api/classes`, `/api/kits`, `/api/legenda` | Apoio para os formulários |
 | POST | `/api/machines/{id}/saida` | Saída de máquinas (`numeros_serie`, `kits`, `permitir_falta`) — 409 com `faltas` se faltar peça |
 | POST | `/api/entradas` | Entrada de material (`itens: [{sku, quantidade}]`) |
@@ -165,6 +242,8 @@ laranja ao lado. As fotos ficam em `backend/data/imagens/` (uma por SKU).
 | GET | `/api/movements?tipo=&q=` | Histórico de movimentações |
 | PUT | `/api/machines/{id}/minimo` | Estoque mínimo da máquina (`maquinas`, `com_kits`) |
 | GET | `/api/reposicao` | Peças abaixo do mínimo e sugestão de compra |
+| GET | `/api/subconjuntos` | Subconjuntos fabricados |
+| POST | `/api/parts/{sku}/fabricar` | Registrar fabricação (`quantidade`, `permitir_falta`) |
 | POST/DELETE | `/api/parts/{sku}/imagem` | Envia (multipart, campo `arquivo`) / remove a foto |
 | GET | `/api/imagens/{arquivo}` | Serve a foto |
 | POST | `/api/movements/{id}/estorno` | Desfaz uma movimentação |

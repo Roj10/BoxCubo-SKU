@@ -53,8 +53,9 @@ func TestBOMV2(t *testing.T) {
 	if c := do(t, h, "GET", "/api/machines/v2/bom", nil, &bom); c != 200 {
 		t.Fatalf("status %d", c)
 	}
-	if len(bom.Linhas) != 123 {
-		t.Fatalf("esperava 123 linhas, veio %d", len(bom.Linhas))
+	// receita do Controle (56 itens, com a CPU) + 7 itens do kit Correios
+	if len(bom.Linhas) != 63 {
+		t.Fatalf("esperava 63 linhas, veio %d", len(bom.Linhas))
 	}
 	if bom.CustoPadrao <= 3850 || bom.CustoPorKit["ADDC"] <= 0 {
 		t.Fatalf("custos estranhos: %+v %+v", bom.CustoPadrao, bom.CustoPorKit)
@@ -100,7 +101,7 @@ func TestPlan(t *testing.T) {
 		t.Fatalf("kit ADDC não entrou no plano")
 	}
 	for _, l := range sem.Linhas {
-		if l.Nome == "Balança" && (l.Necessario != 43 || l.ComMargem != 48 || l.Comprar != 21) {
+		if l.Nome == "Balança" && (l.Necessario != 43 || l.ComMargem != 48 || l.Comprar != 24) {
 			t.Fatalf("balança: %+v", l)
 		}
 	}

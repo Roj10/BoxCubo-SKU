@@ -10,11 +10,12 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import { api, avisarEstoque } from '../api.js'
-import { money } from '../format.js'
+import { money, qty } from '../format.js'
 import BomTable from './BomTable.jsx'
 import PlanView from './PlanView.jsx'
 import PartForm from './PartForm.jsx'
 import SaidaModal from './SaidaModal.jsx'
+import FabricarModal from './FabricarModal.jsx'
 import MinimoModal from './MinimoModal.jsx'
 
 // Memórias desta página: a lista carregada (bom), qual aba está aberta,
@@ -53,6 +54,8 @@ export default function MachinePage({ machine, onMachineUpdated, onIrPara }) {
   const totalKits = Object.values(bom.custo_por_kit).reduce((a, b) => a + b, 0)
   const temKits = bom.linhas.some((l) => l.kit)
   const nMin = machine.minimo_maquinas || 0
+  // subconjunto (CPU, Shield...): mesma tela, mas com "Registrar fabricação" no lugar da saída
+  const sub = !!machine.subconjunto
 
   return (
     <div>
@@ -64,17 +67,27 @@ export default function MachinePage({ machine, onMachineUpdated, onIrPara }) {
         </div>
         <div className="head-actions">
           <button className="btn" onClick={() => setEditing('new')}>+ Nova peça</button>
-          <button className="btn primary" onClick={() => setSaida(true)}>Registrar saída</button>
+          {sub ? (
+            <button className="btn primary" onClick={() => setSaida(true)}>Registrar fabricação</button>
+          ) : (
+            <button className="btn primary" onClick={() => setSaida(true)}>Registrar saída</button>
+          )}
         </div>
       </header>
 
       <section className="cards">
         <div className="card">
-          <span>Itens na lista</span>
+          <span>{sub ? 'Itens na receita' : 'Itens na lista'}</span>
           <strong>{bom.linhas.length}</strong>
         </div>
+        {sub && bom.peca && (
+          <div className="card accent">
+            <span>Prontos em estoque</span>
+            <strong>{qty(bom.peca.estoque)}</strong>
+          </div>
+        )}
         <div className="card">
-          <span>Custo por máquina (padrão)</span>
+          <span>{sub ? 'Custo por unidade' : 'Custo por máquina (padrão)'}</span>
           <strong>{money(bom.custo_padrao)}</strong>
         </div>
         {Object.entries(bom.custo_por_kit).map(([k, v]) => (
@@ -83,10 +96,12 @@ export default function MachinePage({ machine, onMachineUpdated, onIrPara }) {
             <strong>+ {money(v)}</strong>
           </div>
         ))}
-        <div className="card">
-          <span>Custo com todos os kits</span>
-          <strong>{money(bom.custo_padrao + totalKits)}</strong>
-        </div>
+        {totalKits > 0 && (
+          <div className="card">
+            <span>Custo com todos os kits</span>
+            <strong>{money(bom.custo_padrao + totalKits)}</strong>
+          </div>
+        )}
         {bom.itens_sem_preco > 0 && (
           <div className="card warn">
             <span>Sem preço cadastrado</span>
@@ -95,7 +110,19 @@ export default function MachinePage({ machine, onMachineUpdated, onIrPara }) {
         )}
       </section>
 
-      {/* faixa do estoque mínimo */}
+      {/* faixa do estoque mínimo (subconjunto: explica de onde vem o mínimo) */}
+      {sub ? (
+        <section className="minimo-bar">
+          <div className="minimo-info">
+            <span className="eyebrow-sm">Como funciona</span>
+            <span className="small">
+              Ao <b>registrar fabricação</b>, sai do estoque a receita abaixo e entram as unidades prontas. Na saída
+              de uma máquina, sai o {machine.nome.replace(/\s*\(.*\)\s*$/, '')} pronto. O estoque mínimo destas peças
+              vem das máquinas que usam este subconjunto.
+            </span>
+          </div>
+        </section>
+      ) : (
       <section className={`minimo-bar ${nMin && bom.abaixo_minimo ? 'alerta' : ''}`}>
         <div className="minimo-info">
           <span className="eyebrow-sm">Estoque mínimo</span>
@@ -132,25 +159,40 @@ export default function MachinePage({ machine, onMachineUpdated, onIrPara }) {
           </div>
         )}
       </section>
+      )}
 
       <div className="tabs">
         <button className={tab === 'pecas' ? 'on' : ''} onClick={() => setTab('pecas')}>Lista de peças</button>
-        <button className={tab === 'plano' ? 'on' : ''} onClick={() => setTab('plano')}>Planejar lote</button>
+        <button className={tab === 'plano' ? 'on' : ''} onClick={() => setTab('plano')}>
+          {sub ? 'Planejar fabricação' : 'Planejar lote'}
+        </button>
       </div>
 
       {tab === 'pecas' && (
         <BomTable
+          nomeMaquina={machine.nome}
           linhas={bom.linhas}
           legenda={legenda}
           kitNome={kitNome}
           onEdit={setEditing}
           soAbaixo={soAbaixo}
           onSoAbaixo={setSoAbaixo}
+          onAbrirSub={onIrPara}
         />
       )}
       {tab === 'plano' && <PlanView machine={machine} kits={kits} onEstoqueMudou={avisarEstoque} />}
 
-      {saida && (
+      {saida && sub && (
+        <FabricarModal
+          sub={machine}
+          onClose={() => setSaida(false)}
+          onDone={() => {
+            setSaida(false)
+            avisarEstoque()
+          }}
+        />
+      )}
+      {saida && !sub && (
         <SaidaModal
           machine={machine}
           kits={kits}

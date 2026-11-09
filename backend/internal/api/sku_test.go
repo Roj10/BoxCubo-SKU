@@ -33,31 +33,34 @@ func TestSufixoEscolhidoERenomear(t *testing.T) {
 	}
 	// renomear peça que está na BOM e em movimentações
 	do(t, h, "POST", "/api/saidas", map[string]any{
-		"itens": []map[string]any{{"sku": "ELE-RES-10K", "quantidade": 3}},
+		"itens": []map[string]any{{"sku": "ELE-CMP-HYSR05", "quantidade": 3}},
 	}, nil)
 	var r model.Part
-	if c := do(t, h, "PUT", "/api/parts/ELE-RES-10K/sku", map[string]any{"sufixo": "10k0"}, &r); c != 200 || r.SKU != "ELE-RES-10K0" {
+	if c := do(t, h, "PUT", "/api/parts/ELE-CMP-HYSR05/sku", map[string]any{"sufixo": "hcsr05"}, &r); c != 200 || r.SKU != "ELE-CMP-HCSR05" {
 		t.Fatalf("renomear: %d %+v", c, r)
 	}
 	var bom bomResponse
 	do(t, h, "GET", "/api/machines/v2/bom", nil, &bom)
 	achou := false
 	for _, l := range bom.Linhas {
-		if l.SKU == "ELE-RES-10K" {
+		if l.SKU == "ELE-CMP-HYSR05" {
 			t.Fatal("SKU antigo ficou na BOM")
 		}
-		achou = achou || l.SKU == "ELE-RES-10K0"
+		achou = achou || l.SKU == "ELE-CMP-HCSR05"
 	}
 	if !achou {
 		t.Fatal("SKU novo não está na BOM")
 	}
 	var movs []model.Movement
 	do(t, h, "GET", "/api/movements", nil, &movs)
-	if movs[0].Itens[0].SKU != "ELE-RES-10K0" {
+	if movs[0].Itens[0].SKU != "ELE-CMP-HCSR05" {
 		t.Fatalf("movimentação não acompanhou: %+v", movs[0].Itens)
 	}
 	// renomear para um que já existe
-	if c := do(t, h, "PUT", "/api/parts/ELE-RES-10K0/sku", map[string]any{"sufixo": "47"}, nil); c != 409 {
+	if c := do(t, h, "PUT", "/api/parts/ELE-CMP-HCSR05/sku", map[string]any{"sufixo": "HYSR05"}, nil); c != 200 {
+		t.Fatalf("voltar o código: %d", c)
+	}
+	if c := do(t, h, "PUT", "/api/parts/ELE-RES-10K/sku", map[string]any{"sufixo": "47"}, nil); c != 409 {
 		t.Fatalf("renomear para existente deveria dar 409, veio %d", c)
 	}
 }
@@ -93,7 +96,7 @@ func TestMigracaoDadosAntigos(t *testing.T) {
 	s.SetPartImage("BC-ELE-PES-001", "/api/imagens/BC-ELE-PES-001.png?v=1")
 
 	msgs, err := s.Migrar(imgDir)
-	if err != nil || len(msgs) != 3 {
+	if err != nil || len(msgs) != 5 {
 		t.Fatalf("migrar: %v %v", msgs, err)
 	}
 	t.Log(msgs)

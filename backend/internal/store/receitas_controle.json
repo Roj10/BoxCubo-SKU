@@ -1,0 +1,2518 @@
+{
+ "origem": "Controle BoxCubo (192.168.15.10/materiais)",
+ "data": "09/11/2026",
+ "materiais": [
+  {
+   "nome_controle": "Adapdator eixo giratorio EYE",
+   "sku": "EST-MET-EYEADAPTEIXO",
+   "novo": true,
+   "nome": "Adapdator eixo giratorio EYE",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Adesivo CPU V2",
+   "sku": "EST-ADE-CPUV2",
+   "novo": true,
+   "nome": "Adesivo CPU V2",
+   "grupo": "ESTRUTURAL",
+   "classe": "ADESIVOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 24,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Adesivo Logo Box Cubo EYE",
+   "sku": "EST-ADE-LOGOEYE",
+   "novo": true,
+   "nome": "Adesivo Logo Box Cubo EYE",
+   "grupo": "ESTRUTURAL",
+   "classe": "ADESIVOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 38,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Adesivo Logo Box Cubo V2",
+   "sku": "EST-ADE-LOGOV2",
+   "novo": true,
+   "nome": "Adesivo Logo Box Cubo V2",
+   "grupo": "ESTRUTURAL",
+   "classe": "ADESIVOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 2,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Adesivo Logo Hexágono",
+   "sku": "EST-ADE-HEXAGONO",
+   "novo": true,
+   "nome": "Adesivo Logo Hexágono",
+   "grupo": "ESTRUTURAL",
+   "classe": "ADESIVOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 47,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Adesivo Logo Vision",
+   "sku": "EST-ADE-LOGOVISION",
+   "novo": true,
+   "nome": "Adesivo Logo Vision",
+   "grupo": "ESTRUTURAL",
+   "classe": "ADESIVOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 14,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Adesivo Modo Cubagem / Modo Balança",
+   "sku": "EST-ADE-MODO",
+   "novo": false,
+   "nome": "Adesivo Modo Cubagem / Modo Balança",
+   "grupo": "ESTRUTURAL",
+   "classe": "ADESIVOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 54,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Adesivo Objetos Sobre a Mesa",
+   "sku": "EST-ADE-NAOAPOIE",
+   "novo": false,
+   "nome": "Adesivo Objetos Sobre a Mesa",
+   "grupo": "ESTRUTURAL",
+   "classe": "ADESIVOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 38,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Arruela Plastica 1/4",
+   "sku": "EST-PAR-ARRPL14",
+   "novo": true,
+   "nome": "Arruela plástica 1/4",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 550,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Arruela Lisa ZB 3/8 - IMP (Fixa Estrutura)",
+   "sku": "EST-PAR-ARR38",
+   "novo": false,
+   "nome": "Arruela Lisa ZB 3/8 - IMP (Fixa Estrutura)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 795,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Arruela Lisa ZB 3/8 Abalarga (Fixa Balança)",
+   "sku": "EST-PAR-ARR38AL",
+   "novo": false,
+   "nome": "Arruela Lisa ZB 3/8 Abalarga (Fixa Balança)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 123,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Arruela M5",
+   "sku": "EST-PAR-ARRM5",
+   "novo": true,
+   "nome": "Arruela M5",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 200,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Arruela de borracha 1/8",
+   "sku": "EST-PAR-ARRBOR18",
+   "novo": true,
+   "nome": "Arruela de borracha 1/8",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 550,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Balança",
+   "sku": "ELE-PES-BALANCA",
+   "novo": false,
+   "nome": "Balança",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "PES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 24,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Barra De Pinos Fêmea 2x20",
+   "sku": "ELE-BPN-F2X20",
+   "novo": false,
+   "nome": "Barra De Pinos Fêmea 2x20",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "BARRA DE PINO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 50,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Barra Pino Fêmea 1x5 90 graus 2.54mm",
+   "sku": "ELE-BPN-F1X5",
+   "novo": false,
+   "nome": "Barra Pino Fêmea 1x5 90 graus 2.54mm",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "BARRA DE PINO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 200,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Barra de Pinos 16 Vias (1x16) Simples MCI Fêmea",
+   "sku": "ELE-BPN-F1X16",
+   "novo": false,
+   "nome": "Barra de Pinos 16 Vias (1x16) Simples MCI Fêmea",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "BARRA DE PINO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 49,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Barra pino macho 1x40 180 graus",
+   "sku": "ELE-BPN-M1X40R",
+   "novo": true,
+   "nome": "Barra pino macho 1x40 180 graus",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "BARRA DE PINO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Barra pino macho 1x40 90 graus",
+   "sku": "ELE-BPN-M1X40",
+   "novo": false,
+   "nome": "Barra pino macho 1x40 90 graus",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "BARRA DE PINO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 72,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Base Eye",
+   "sku": "EST-MET-EYEBASE",
+   "novo": true,
+   "nome": "Base Eye",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Botão 19mm Inox Lig/desl. Start Led C/ Trava + Chicote",
+   "sku": "ELE-CAB-BOTAO19",
+   "novo": true,
+   "nome": "Botão 19mm Inox Lig/desl. Start Led C/ Trava + Chicote",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "pct",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 31,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Botão Pulsador 22mm Retentivo Verde 1na Xa2eh031 Schneider",
+   "sku": "ELE-CAB-BOTAO",
+   "novo": false,
+   "nome": "Botão Pulsador 22mm Retentivo Verde 1na Xa2eh031 Schneider",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 27,
+   "preco": 27.61,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Braço 1 Eye",
+   "sku": "EST-MET-EYEBRACO1",
+   "novo": true,
+   "nome": "Braço 1 Eye",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Braço 2 EYE",
+   "sku": "EST-MET-EYEBRACO2",
+   "novo": true,
+   "nome": "Braço 2 EYE",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Braço 3 EYE",
+   "sku": "EST-MET-EYEBRACO3",
+   "novo": true,
+   "nome": "Braço 3 EYE",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Braço 4 EYE",
+   "sku": "EST-MET-EYEBRACO4",
+   "novo": true,
+   "nome": "Braço 4 EYE",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Buzzer 3.3v com Oscilador interno",
+   "sku": "ELE-CMP-BUZZER",
+   "novo": false,
+   "nome": "Buzzer 3.3v com Oscilador interno",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 60,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "CI 74HC595",
+   "sku": "ELE-CTR-74HC595",
+   "novo": false,
+   "nome": "CI 74HC595",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CONTROLADORES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 39,
+   "preco": 1.26,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "CPU",
+   "sku": "ELE-SUB-CPUV2",
+   "novo": true,
+   "nome": "CPU V2 (Raspberry + Shield + display)",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "SUBCONJUNTOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": true
+  },
+  {
+   "nome_controle": "Cabo Carregamento V8 Micro Usb 6920231021077",
+   "sku": "ELE-CAB-V8MICROUSB",
+   "novo": true,
+   "nome": "Cabo Carregamento V8 Micro Usb 6920231021077",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "pct",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 108,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Cabo De Energia Para Fonte, 1.50M, 3x0,75, 10Ah - Nbr14136",
+   "sku": "ELE-CAB-FORCA15M",
+   "novo": false,
+   "nome": "Cabo De Energia Para Fonte, 1.50M, 3x0,75, 10Ah - Nbr14136",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": 8.99,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Cabo De Rede Cat.5e",
+   "sku": "ELE-CAB-CAT5E",
+   "novo": false,
+   "nome": "Cabo De Rede Cat.5e",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "m",
+   "troca_unidade": false,
+   "tipo": "consumivel",
+   "estoque": 115,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Cabo Extensor Usb 2.0 Cristal 3m Fce3 Feasso (resistente)",
+   "sku": "ELE-CAB-USB3M",
+   "novo": false,
+   "nome": "Cabo Extensor Usb 2.0 Cristal 3m Fce3 Feasso (resistente)",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 61,
+   "preco": 37,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Cabo Hdmi Curvo 1 metro",
+   "sku": "ELE-CAB-HDMI",
+   "novo": false,
+   "nome": "Cabo Hdmi Curvo 1 metro",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 9,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Cabo Manga 4X26 Awg Blindado Malha de Cobre Verde/Palha",
+   "sku": "ELE-CAB-MANGA4X26",
+   "novo": false,
+   "nome": "Cabo Manga 4X26 Awg Blindado Malha de Cobre Verde/Palha",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "m",
+   "troca_unidade": true,
+   "tipo": "consumivel",
+   "estoque": 65.5,
+   "preco": 4.46,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Cabo de Alimentação da Balança",
+   "sku": "ELE-CAB-ALIMBAL",
+   "novo": true,
+   "nome": "Cabo de Alimentação da Balança",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 50,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Cabo de Força Tripolar 3 Metros",
+   "sku": "ELE-CAB-FORCA3M",
+   "novo": true,
+   "nome": "Cabo de Força Tripolar 3 Metros",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 23,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Caixa Patola CPU",
+   "sku": "EST-CAS-PBT114",
+   "novo": false,
+   "nome": "Caixa Patola CPU",
+   "grupo": "ESTRUTURAL",
+   "classe": "CASES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 40,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Caixa Patola Sensor",
+   "sku": "EST-CAS-PBT075",
+   "novo": false,
+   "nome": "Caixa Patola Sensor",
+   "grupo": "ESTRUTURAL",
+   "classe": "CASES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Caixa de papelão V2",
+   "sku": "EMB-EMB-CAIXA",
+   "novo": false,
+   "nome": "Caixa de papelão V2",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMB",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 62,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Capa para Conector DB9",
+   "sku": "ELE-CAB-CAPADB9",
+   "novo": false,
+   "nome": "Capa para Conector DB9",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 39,
+   "preco": 2.47,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Capacitor Eletrolítico 16v 470uF",
+   "sku": "ELE-CAP-470UF16V",
+   "novo": false,
+   "nome": "Capacitor Eletrolítico 16v 470uF",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CAP",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 68,
+   "preco": 0.6,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Cartão de memória 32GB /16GB (070341075586) (070341075593)",
+   "sku": "ELE-CTR-SD32GB",
+   "novo": false,
+   "nome": "Cartão de memória 32GB /16GB (070341075586) (070341075593)",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CONTROLADORES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 17,
+   "preco": 49.51,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Case Raspberry Pi 3 B+",
+   "sku": "EST-CAS-CASERPI",
+   "novo": true,
+   "nome": "Case Raspberry Pi 3 B+",
+   "grupo": "ESTRUTURAL",
+   "classe": "CASES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Chapa Fixação LCD / Shield Raspberry",
+   "sku": "EST-MET-CHAPAFIX",
+   "novo": false,
+   "nome": "Chapa Fixação LCD / Shield Raspberry",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 36,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Conector DB9 Serial RS232 Macho 180º",
+   "sku": "ELE-CAB-DB9M",
+   "novo": false,
+   "nome": "Conector DB9 Serial RS232 Macho 180º",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 10,
+   "preco": 2.4,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Conector Modu Femea 5 Vias",
+   "sku": "ELE-CAB-ALOJMODU",
+   "novo": false,
+   "nome": "Conector Modu Femea 5 Vias",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 280,
+   "preco": 0.8,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Conversor de USB para 1 saída serial RS232",
+   "sku": "ELE-CTR-USBRS232",
+   "novo": true,
+   "nome": "Conversor de USB para 1 saída serial RS232",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CONTROLADORES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "DB9 fêmea 90 graus para placa",
+   "sku": "ELE-CMP-DB9F",
+   "novo": false,
+   "nome": "DB9 fêmea 90 graus para placa",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 31,
+   "preco": 4.28,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Diodo 1N4007 Retificador 1A 1000V (DO-41)",
+   "sku": "ELE-DIO-1N4007",
+   "novo": false,
+   "nome": "Diodo 1N4007 Retificador 1A 1000V (DO-41)",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "DIO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 140,
+   "preco": 0.1,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Diodo 1N4148 Comutação Rápida 0,15A 100V (DO-35)",
+   "sku": "ELE-DIO-1N4148",
+   "novo": false,
+   "nome": "Diodo 1N4148 Comutação Rápida 0,15A 100V (DO-35)",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "DIO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 140,
+   "preco": 0.12,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Display LCD 20×4 Backlight Azul",
+   "sku": "ELE-CMP-LCD20X4",
+   "novo": false,
+   "nome": "Display LCD 20×4 Backlight Azul",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 46,
+   "preco": 34.9,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Extensao Eletrica Tripolar 3Mts 3 Entradas",
+   "sku": "ELE-CAB-EXTENSAO3M",
+   "novo": true,
+   "nome": "Extensao Eletrica Tripolar 3Mts 3 Entradas",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 1,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Fita Cristal (Durex)",
+   "sku": "EMB-EMB-FITACRISTAL",
+   "novo": false,
+   "nome": "Fita Cristal (Durex)",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMB",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 10,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Fita dupla face 3M (1/4 ROLO)",
+   "sku": "EST-PAR-DUPLAFACE",
+   "novo": false,
+   "nome": "Fita dupla face 3M (1/4 ROLO)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "m",
+   "troca_unidade": false,
+   "tipo": "consumivel",
+   "estoque": 80,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Fita led 12v",
+   "sku": "ELE-CMP-FITALED12V",
+   "novo": true,
+   "nome": "Fita led 12v",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "m",
+   "troca_unidade": false,
+   "tipo": "consumivel",
+   "estoque": 15,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Fitilho (1/8)",
+   "sku": "EMB-EMB-FITILHO",
+   "novo": false,
+   "nome": "Fitilho (1/8)",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMB",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 5,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Fonte Chaveada 25W 5A RS-25-5 88-264V Mean Well AC/DC Entrada Automática",
+   "sku": "ELE-CAB-FONTE5V",
+   "novo": true,
+   "nome": "Fonte Chaveada 25W 5A RS-25-5 88-264V Mean Well AC/DC Entrada Automática",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": 112.4,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Fonte MW (5v 3A - 0 - 12v 2A) [V1 - GND - V2]",
+   "sku": "ELE-CAB-FONTEMW",
+   "novo": false,
+   "nome": "Fonte MW (5v 3A - 0 - 12v 2A) [V1 - GND - V2]",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Fonte de Alimentação RS-25-12 12V 2,1A 25W",
+   "sku": "ELE-CAB-FONTE12V",
+   "novo": true,
+   "nome": "Fonte de Alimentação RS-25-12 12V 2,1A 25W",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 27,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Fusível de Vidro 5x20mm 3A 250V",
+   "sku": "ELE-CMP-FUS3A",
+   "novo": false,
+   "nome": "Fusível de Vidro 5x20mm 3A 250V",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 100,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Junta U EYE",
+   "sku": "EST-MET-EYEJUNTAU",
+   "novo": true,
+   "nome": "Junta U EYE",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Led Difuso 3mm - Verde",
+   "sku": "ELE-LED-VERDE",
+   "novo": false,
+   "nome": "Led Difuso 3mm - Verde",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "LED",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 152,
+   "preco": 0.14,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Led Difuso 3mm - Vermelho",
+   "sku": "ELE-LED-VERMELHO",
+   "novo": false,
+   "nome": "Led Difuso 3mm - Vermelho",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "LED",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 152,
+   "preco": 0.14,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Led RGB Tricolor 5mm com 4 Terminais - 3.000 MCD, catodo comum",
+   "sku": "ELE-LED-RGB",
+   "novo": false,
+   "nome": "Led RGB Tricolor 5mm com 4 Terminais - 3.000 MCD, catodo comum",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "LED",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 39,
+   "preco": 1.18,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Manipulo M6",
+   "sku": "EST-PAR-MANIPM6",
+   "novo": true,
+   "nome": "Manipulo M6",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 200,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Microcontrolador ATTINY85",
+   "sku": "ELE-CTR-ATTINY85",
+   "novo": false,
+   "nome": "Microcontrolador ATTINY85",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CONTROLADORES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 29,
+   "preco": 25.55,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Mini Pc Nuc Intel",
+   "sku": "ELE-CTR-NUC",
+   "novo": true,
+   "nome": "Mini Pc Nuc Intel",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CONTROLADORES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 2,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Monitor 15\" LED HD 60Hz",
+   "sku": "ELE-PER-MONITOR15",
+   "novo": false,
+   "nome": "Monitor 15\" LED HD 60Hz",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "ADICIONAL CORREIOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 6,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Módulo Conversor RS232 para TTL MAX3232",
+   "sku": "ELE-CTR-MAX3232",
+   "novo": false,
+   "nome": "Módulo Conversor RS232 para TTL MAX3232",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CONTROLADORES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 10,
+   "preco": 7.5,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Organizador De Fios E Cabos Espiral 1/2",
+   "sku": "EST-ACA-ORGFIO",
+   "novo": false,
+   "nome": "Organizador De Fios E Cabos Espiral 1/2",
+   "grupo": "ESTRUTURAL",
+   "classe": "ACABAMENTO",
+   "unidade": "m",
+   "troca_unidade": false,
+   "tipo": "consumivel",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "PCB BoxCubo v2.5",
+   "sku": "ELE-PCB-PCBV25",
+   "novo": true,
+   "nome": "PCB BoxCubo v2.5",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "PCB",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso AA PN PH ZB 2,9x6,5 (Chapa metal Shield Rapsberry)",
+   "sku": "EST-PAR-AA29X65",
+   "novo": false,
+   "nome": "Parafuso AA PN PH ZB 2,9x6,5 (Chapa metal Shield Rapsberry)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 66,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso AA PN PH ZB 4,2x9,5 (Fixar patola sensor)",
+   "sku": "EST-PAR-AA42X95",
+   "novo": false,
+   "nome": "Parafuso AA PN PH ZB 4,2x9,5 (Fixar patola sensor)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 279,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso Auto Brocante Sextavado 5,5x19mm (12x3/4)",
+   "sku": "EST-PAR-AB55X19",
+   "novo": true,
+   "nome": "Parafuso Auto Brocante Sextavado 5,5x19mm (12x3/4)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 150,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso Fixer CH 3,5x16 (Fechar CPU)",
+   "sku": "EST-PAR-CH35X16FX",
+   "novo": true,
+   "nome": "Parafuso Fixer CH 3,5x16 (Fechar CPU)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 177,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso Fixes CH 3,5x16 - (Fechar CPU)",
+   "sku": "EST-PAR-CH35X16",
+   "novo": false,
+   "nome": "Parafuso Fixes CH 3,5x16 - (Fechar CPU)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 93,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso Frances ZB 3/8x21/2 (Estrutura Tubo)",
+   "sku": "EST-PAR-FR38X212",
+   "novo": false,
+   "nome": "Parafuso Frances ZB 3/8x21/2 (Estrutura Tubo)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 95,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso Frances ZB 3/8x4\" (Estrutura Tubo)",
+   "sku": "EST-PAR-FR38X4",
+   "novo": false,
+   "nome": "Parafuso Frances ZB 3/8x4\" (Estrutura Tubo)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 244,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso Frances ZB 3/8x5\" (Estrutura Tubo)",
+   "sku": "EST-PAR-FR38X5",
+   "novo": false,
+   "nome": "Parafuso Frances ZB 3/8x5\" (Estrutura Tubo)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 290,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso PN PH 3x6 M3 (Parafuso Fonte)",
+   "sku": "EST-PAR-M3X6",
+   "novo": false,
+   "nome": "Parafuso PN PH 3x6 M3 (Parafuso Fonte)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 61,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso PN PH 4x10",
+   "sku": "EST-PAR-M4X10",
+   "novo": false,
+   "nome": "Parafuso PN PH 4x10",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 500,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso PN PH 4x20",
+   "sku": "EST-PAR-M4X20",
+   "novo": false,
+   "nome": "Parafuso PN PH 4x20",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 588,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso PN PH 4x25 (M4x25)",
+   "sku": "EST-PAR-M4X25",
+   "novo": true,
+   "nome": "Parafuso PN PH 4x25 (M4x25)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 180,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso PN PH 6x10 (M6x10)",
+   "sku": "EST-PAR-M6X10",
+   "novo": true,
+   "nome": "Parafuso PN PH 6x10 (M6x10)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 50,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso PN PH 6x12 (M6x12) (Display Balança)",
+   "sku": "EST-PAR-M6X12",
+   "novo": false,
+   "nome": "Parafuso PN PH 6x12 (M6x12) (Display Balança)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 109,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso PN PH 6x40 (M6x40)",
+   "sku": "EST-PAR-M6X40",
+   "novo": true,
+   "nome": "Parafuso PN PH 6x40 (M6x40)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 84,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso PN PH 6x8 (M6x8)",
+   "sku": "EST-PAR-M6X8",
+   "novo": true,
+   "nome": "Parafuso PN PH 6x8 (M6x8)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 52,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Parafuso Sextavado ZB RI 10x50 (Fixa Balança)",
+   "sku": "EST-PAR-SEX10X50",
+   "novo": false,
+   "nome": "Parafuso Sextavado ZB RI 10x50 (Fixa Balança)",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 145,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Perfil Alpo2 Sobrepor Preto",
+   "sku": "EST-ACA-PERFILALPO2",
+   "novo": true,
+   "nome": "Perfil Alpo2 Sobrepor Preto",
+   "grupo": "ESTRUTURAL",
+   "classe": "ACABAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 8,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Plug RJ45 Macho Furukawa SohoPlus CAT5e",
+   "sku": "ELE-CAB-RJ45M",
+   "novo": false,
+   "nome": "Plug RJ45 Macho Furukawa SohoPlus CAT5e",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 1258,
+   "preco": 2.97,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Plástico Bolha",
+   "sku": "EMB-EMB-BOLHA",
+   "novo": false,
+   "nome": "Plástico Bolha",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMB",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 1,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Plástico Strach (1/3)",
+   "sku": "EMB-EMB-STRETCH",
+   "novo": false,
+   "nome": "Plástico Strach (1/3)",
+   "grupo": "EMBALAGENS / OUTROS",
+   "classe": "EMB",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 7,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Porca rebite M4",
+   "sku": "EST-PAR-REBROSCM4",
+   "novo": false,
+   "nome": "Porca rebite M4",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 902,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Porca rebite M6",
+   "sku": "EST-PAR-REBROSCM6",
+   "novo": true,
+   "nome": "Porca rebite M6",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 400,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Porta Fusível 5x20 AS-06",
+   "sku": "ELE-CMP-PORTAFUS",
+   "novo": false,
+   "nome": "Porta Fusível 5x20 AS-06",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 46,
+   "preco": 0.9,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "RJ45 fêmea 90 graus para placa",
+   "sku": "ELE-CMP-RJ45F",
+   "novo": false,
+   "nome": "RJ45 fêmea 90 graus para placa",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 85,
+   "preco": 1.75,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Raspberry pi3 B+",
+   "sku": "ELE-CTR-RPI3B",
+   "novo": false,
+   "nome": "Raspberry pi3 B+",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CONTROLADORES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 25,
+   "preco": 526.2,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Rebite Pop 4,0x10",
+   "sku": "EST-PAR-REB4X10",
+   "novo": false,
+   "nome": "Rebite Pop 4,0x10",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 1600,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Rebite Pop 4,0x12",
+   "sku": "EST-PAR-REB4X12",
+   "novo": false,
+   "nome": "Rebite Pop 4,0x12",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 182,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Rebite Pop 4,0x8",
+   "sku": "EST-PAR-REB4X8",
+   "novo": false,
+   "nome": "Rebite Pop 4,0x8",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 182,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Relé Songle 5V",
+   "sku": "ELE-CMP-RELE5V",
+   "novo": false,
+   "nome": "Relé Songle 5V",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 38,
+   "preco": 3.9,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Resistor 10 Ω",
+   "sku": "ELE-RES-10",
+   "novo": false,
+   "nome": "Resistor 10 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 1337,
+   "preco": 0.09,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Resistor 100 Ω",
+   "sku": "ELE-RES-100",
+   "novo": false,
+   "nome": "Resistor 100 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 1342,
+   "preco": 0.07,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Resistor 100k Ω",
+   "sku": "ELE-RES-100K",
+   "novo": false,
+   "nome": "Resistor 100k Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 1859,
+   "preco": 0.07,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Resistor 10k Ω",
+   "sku": "ELE-RES-10K",
+   "novo": false,
+   "nome": "Resistor 10k Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 960,
+   "preco": 0.07,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Resistor 150 Ω",
+   "sku": "ELE-RES-150",
+   "novo": false,
+   "nome": "Resistor 150 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 942,
+   "preco": 0.07,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Resistor 1k Ω",
+   "sku": "ELE-RES-1K",
+   "novo": false,
+   "nome": "Resistor 1k Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 1371,
+   "preco": 0.07,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Resistor 1k2 Ω",
+   "sku": "ELE-RES-1K2",
+   "novo": false,
+   "nome": "Resistor 1k2 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 1356,
+   "preco": 0.07,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Resistor 220 Ω",
+   "sku": "ELE-RES-220",
+   "novo": false,
+   "nome": "Resistor 220 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 1825,
+   "preco": 0.09,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Resistor 270Ω",
+   "sku": "ELE-RES-270",
+   "novo": false,
+   "nome": "Resistor 270Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 349,
+   "preco": 0.07,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Resistor 2k2 Ω",
+   "sku": "ELE-RES-2K2",
+   "novo": false,
+   "nome": "Resistor 2k2 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 1890,
+   "preco": 0.07,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Resistor 390 Ω",
+   "sku": "ELE-RES-390",
+   "novo": false,
+   "nome": "Resistor 390 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 1358,
+   "preco": 0.07,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Resistor 3k9 Ω",
+   "sku": "ELE-RES-3K9",
+   "novo": false,
+   "nome": "Resistor 3k9 Ω",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "RES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 1289,
+   "preco": 0.07,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Rodízio 2'' rosca 3/8",
+   "sku": "EST-PAR-RODIZIO2",
+   "novo": false,
+   "nome": "Rodízio 2'' rosca 3/8",
+   "grupo": "ESTRUTURAL",
+   "classe": "PARAFUSOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 108,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Sensor Temperatura LM35DZ",
+   "sku": "ELE-TRS-LM35",
+   "novo": false,
+   "nome": "Sensor Temperatura LM35DZ",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "TRS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 42,
+   "preco": 9.9,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Sensores ultrassônicos HYSR05",
+   "sku": "ELE-CMP-HYSR05",
+   "novo": false,
+   "nome": "Sensores ultrassônicos HYSR05",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 101,
+   "preco": 22.99,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Shield Raspberry",
+   "sku": "ELE-PCB-SHIELDRPI",
+   "novo": false,
+   "nome": "Shield Raspberry",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "PCB",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": true
+  },
+  {
+   "nome_controle": "Shield Sensor",
+   "sku": "ELE-PCB-SHIELDSENS",
+   "novo": false,
+   "nome": "Shield Sensor",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "PCB",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Silicone Neutro Incolor",
+   "sku": "EST-ACA-SILICONE",
+   "novo": true,
+   "nome": "Silicone Neutro Incolor",
+   "grupo": "ESTRUTURAL",
+   "classe": "ACABAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 5,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Suporte monitor EYE",
+   "sku": "EST-MET-EYESUPMON",
+   "novo": true,
+   "nome": "Suporte monitor EYE",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Tampa da Base Eye",
+   "sku": "EST-MET-EYETAMPA",
+   "novo": true,
+   "nome": "Tampa da Base Eye",
+   "grupo": "ESTRUTURAL",
+   "classe": "METALÚRGICO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Tapa furo 40x40",
+   "sku": "EST-ACA-TAPA40X40",
+   "novo": false,
+   "nome": "Tapa furo 40x40",
+   "grupo": "ESTRUTURAL",
+   "classe": "ACABAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Tapa furo 60x40",
+   "sku": "EST-ACA-TAPA60X40",
+   "novo": false,
+   "nome": "Tapa furo 60x40",
+   "grupo": "ESTRUTURAL",
+   "classe": "ACABAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Tblock 3 Vias 90 graus femea para fio",
+   "sku": "ELE-CMP-TBLOCK3F",
+   "novo": false,
+   "nome": "Tblock 3 Vias 90 graus femea para fio",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 98,
+   "preco": 3.98,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Tblock 3 Vias 90 graus macho para placa",
+   "sku": "ELE-CMP-TBLOCK3M",
+   "novo": false,
+   "nome": "Tblock 3 Vias 90 graus macho para placa",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 62,
+   "preco": 2.62,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Terminal Forquilha Azul Para Fios De 1,5 A 2,5Mm",
+   "sku": "ELE-CAB-FORQUILHA",
+   "novo": false,
+   "nome": "Terminal Forquilha Azul Para Fios De 1,5 A 2,5Mm",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 2000,
+   "preco": 0.31,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Terminal Modu 1mm",
+   "sku": "ELE-CAB-TERMMODU",
+   "novo": false,
+   "nome": "Terminal Modu 1mm",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 636,
+   "preco": 0.16,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Termo Retrátil 4,8mm",
+   "sku": "ELE-CAB-TERMO48",
+   "novo": true,
+   "nome": "Termo Retrátil 4,8mm",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "m",
+   "troca_unidade": false,
+   "tipo": "consumivel",
+   "estoque": 0,
+   "preco": null,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Tomada AS-03 Tripolar com Chave Gangorra",
+   "sku": "ELE-CAB-TOMADAAS03",
+   "novo": false,
+   "nome": "Tomada AS-03 Tripolar com Chave Gangorra",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "CABEAMENTO",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 20,
+   "preco": 14.15,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Transistor NPN BC337",
+   "sku": "ELE-TRS-BC337",
+   "novo": false,
+   "nome": "Transistor NPN BC337",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "TRS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 198,
+   "preco": 0.45,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Transistor PNP BC327",
+   "sku": "ELE-TRS-BC327",
+   "novo": false,
+   "nome": "Transistor PNP BC327",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "TRS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 206,
+   "preco": 0.3,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Trimpot 3386H - 5K",
+   "sku": "ELE-CMP-TRIMPOT5K",
+   "novo": false,
+   "nome": "Trimpot 3386H - 5K",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "OUTROS COMPONENTES",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 0,
+   "preco": 1.57,
+   "fabricado": false
+  },
+  {
+   "nome_controle": "Webcam 4k ??? kkk",
+   "sku": "ELE-PER-WEBCAM4K",
+   "novo": true,
+   "nome": "Webcam 4K",
+   "grupo": "ELÉTRICA / ELETRÔNICA",
+   "classe": "ADICIONAL CORREIOS",
+   "unidade": "und",
+   "troca_unidade": false,
+   "tipo": "peca",
+   "estoque": 52,
+   "preco": 139,
+   "fabricado": false
+  }
+ ],
+ "receitas": {
+  "v2": [
+   [
+    "EST-ADE-CPUV2",
+    1.0
+   ],
+   [
+    "EST-ADE-LOGOV2",
+    1.0
+   ],
+   [
+    "EST-ADE-HEXAGONO",
+    1.0
+   ],
+   [
+    "EST-ADE-MODO",
+    1.0
+   ],
+   [
+    "EST-ADE-NAOAPOIE",
+    1.0
+   ],
+   [
+    "EST-PAR-ARR38",
+    23.0
+   ],
+   [
+    "EST-PAR-ARR38AL",
+    10.0
+   ],
+   [
+    "ELE-PES-BALANCA",
+    1.0
+   ],
+   [
+    "ELE-CAB-BOTAO",
+    1.0
+   ],
+   [
+    "ELE-CAB-CAT5E",
+    3.0
+   ],
+   [
+    "ELE-CAB-USB3M",
+    2.0
+   ],
+   [
+    "ELE-CAB-HDMI",
+    1.0
+   ],
+   [
+    "ELE-CAB-MANGA4X26",
+    8.15
+   ],
+   [
+    "ELE-CAB-ALIMBAL",
+    1.0
+   ],
+   [
+    "ELE-CAB-FORCA3M",
+    1.0
+   ],
+   [
+    "EST-CAS-PBT114",
+    1.0
+   ],
+   [
+    "EST-CAS-PBT075",
+    4.0
+   ],
+   [
+    "EMB-EMB-CAIXA",
+    1.0
+   ],
+   [
+    "ELE-CAB-CAPADB9",
+    1.0
+   ],
+   [
+    "ELE-CAB-DB9M",
+    1.0
+   ],
+   [
+    "ELE-CAB-ALOJMODU",
+    4.0
+   ],
+   [
+    "EST-PAR-DUPLAFACE",
+    3.0
+   ],
+   [
+    "ELE-CAB-FONTE5V",
+    1.0
+   ],
+   [
+    "ELE-CAB-FONTE12V",
+    1.0
+   ],
+   [
+    "ELE-LED-VERMELHO",
+    4.0
+   ],
+   [
+    "ELE-LED-RGB",
+    3.0
+   ],
+   [
+    "ELE-PER-MONITOR15",
+    1.0
+   ],
+   [
+    "ELE-CTR-MAX3232",
+    1.0
+   ],
+   [
+    "EST-ACA-ORGFIO",
+    0.5
+   ],
+   [
+    "EST-PAR-AA42X95",
+    8.0
+   ],
+   [
+    "EST-PAR-CH35X16FX",
+    4.0
+   ],
+   [
+    "EST-PAR-FR38X212",
+    2.0
+   ],
+   [
+    "EST-PAR-FR38X4",
+    6.0
+   ],
+   [
+    "EST-PAR-FR38X5",
+    5.0
+   ],
+   [
+    "EST-PAR-M3X6",
+    2.0
+   ],
+   [
+    "EST-PAR-M4X10",
+    8.0
+   ],
+   [
+    "EST-PAR-M6X12",
+    2.0
+   ],
+   [
+    "EST-PAR-M6X40",
+    4.0
+   ],
+   [
+    "EST-PAR-SEX10X50",
+    4.0
+   ],
+   [
+    "ELE-CAB-RJ45M",
+    3.0
+   ],
+   [
+    "EST-PAR-REBROSCM4",
+    8.0
+   ],
+   [
+    "ELE-CMP-PORTAFUS",
+    1.0
+   ],
+   [
+    "ELE-CMP-RJ45F",
+    1.0
+   ],
+   [
+    "EST-PAR-REB4X10",
+    12.0
+   ],
+   [
+    "EST-PAR-RODIZIO2",
+    4.0
+   ],
+   [
+    "ELE-CMP-HYSR05",
+    10.0
+   ],
+   [
+    "ELE-PCB-SHIELDSENS",
+    4.0
+   ],
+   [
+    "ELE-CMP-TBLOCK3F",
+    1.0
+   ],
+   [
+    "ELE-CMP-TBLOCK3M",
+    1.0
+   ],
+   [
+    "ELE-CAB-FORQUILHA",
+    8.0
+   ],
+   [
+    "ELE-CAB-TERMMODU",
+    16.0
+   ],
+   [
+    "ELE-CAB-TERMO48",
+    0.3
+   ],
+   [
+    "ELE-TRS-BC337",
+    1.0
+   ],
+   [
+    "ELE-TRS-BC327",
+    1.0
+   ],
+   [
+    "ELE-CMP-TRIMPOT5K",
+    1.0
+   ],
+   [
+    "ELE-SUB-CPUV2",
+    1.0
+   ]
+  ],
+  "eye": [
+   [
+    "EST-MET-EYEADAPTEIXO",
+    1.0
+   ],
+   [
+    "EST-ADE-LOGOEYE",
+    1.0
+   ],
+   [
+    "EST-PAR-ARRPL14",
+    4.0
+   ],
+   [
+    "EST-PAR-ARRM5",
+    4.0
+   ],
+   [
+    "EST-PAR-ARRBOR18",
+    11.0
+   ],
+   [
+    "EST-MET-EYEBASE",
+    1.0
+   ],
+   [
+    "ELE-CAB-BOTAO19",
+    1.0
+   ],
+   [
+    "EST-MET-EYEBRACO1",
+    1.0
+   ],
+   [
+    "EST-MET-EYEBRACO2",
+    1.0
+   ],
+   [
+    "EST-MET-EYEBRACO3",
+    1.0
+   ],
+   [
+    "EST-MET-EYEBRACO4",
+    1.0
+   ],
+   [
+    "ELE-CAB-V8MICROUSB",
+    1.0
+   ],
+   [
+    "ELE-CAB-FORCA15M",
+    1.0
+   ],
+   [
+    "ELE-CAB-CAT5E",
+    3.0
+   ],
+   [
+    "ELE-CTR-SD32GB",
+    1.0
+   ],
+   [
+    "EST-CAS-CASERPI",
+    1.0
+   ],
+   [
+    "EST-PAR-DUPLAFACE",
+    0.5
+   ],
+   [
+    "ELE-CAB-FONTE5V",
+    1.0
+   ],
+   [
+    "EST-MET-EYEJUNTAU",
+    3.0
+   ],
+   [
+    "EST-PAR-MANIPM6",
+    4.0
+   ],
+   [
+    "ELE-PER-MONITOR15",
+    1.0
+   ],
+   [
+    "EST-PAR-AB55X19",
+    3.0
+   ],
+   [
+    "EST-PAR-M4X10",
+    10.0
+   ],
+   [
+    "EST-PAR-M4X20",
+    2.0
+   ],
+   [
+    "EST-PAR-M4X25",
+    2.0
+   ],
+   [
+    "EST-PAR-M6X8",
+    1.0
+   ],
+   [
+    "ELE-CAB-RJ45M",
+    2.0
+   ],
+   [
+    "EST-PAR-REBROSCM4",
+    12.0
+   ],
+   [
+    "EST-PAR-REBROSCM6",
+    6.0
+   ],
+   [
+    "ELE-CTR-RPI3B",
+    1.0
+   ],
+   [
+    "EST-PAR-REB4X10",
+    8.0
+   ],
+   [
+    "EST-MET-EYESUPMON",
+    1.0
+   ],
+   [
+    "EST-MET-EYETAMPA",
+    1.0
+   ],
+   [
+    "ELE-CAB-FORQUILHA",
+    5.0
+   ],
+   [
+    "ELE-CAB-TERMO48",
+    0.3
+   ],
+   [
+    "ELE-CAB-TOMADAAS03",
+    1.0
+   ],
+   [
+    "ELE-PER-WEBCAM4K",
+    1.0
+   ]
+  ],
+  "vision": [
+   [
+    "EST-ADE-LOGOVISION",
+    1.0
+   ],
+   [
+    "ELE-CAB-BOTAO19",
+    1.0
+   ],
+   [
+    "ELE-CAB-FORCA15M",
+    1.0
+   ],
+   [
+    "ELE-CAB-CAT5E",
+    3.0
+   ],
+   [
+    "ELE-CAB-USB3M",
+    2.0
+   ],
+   [
+    "ELE-CAB-ALIMBAL",
+    1.0
+   ],
+   [
+    "ELE-CTR-USBRS232",
+    1.0
+   ],
+   [
+    "ELE-CAB-EXTENSAO3M",
+    1.0
+   ],
+   [
+    "EST-PAR-DUPLAFACE",
+    4.3
+   ],
+   [
+    "ELE-CMP-FITALED12V",
+    4.2
+   ],
+   [
+    "ELE-CAB-FONTEMW",
+    1.0
+   ],
+   [
+    "ELE-CTR-NUC",
+    1.0
+   ],
+   [
+    "ELE-PER-MONITOR15",
+    1.0
+   ],
+   [
+    "EST-ACA-ORGFIO",
+    3.0
+   ],
+   [
+    "EST-PAR-M4X10",
+    12.0
+   ],
+   [
+    "EST-PAR-M4X20",
+    1.0
+   ],
+   [
+    "EST-ACA-PERFILALPO2",
+    2.0
+   ],
+   [
+    "ELE-CAB-RJ45M",
+    2.0
+   ],
+   [
+    "EST-PAR-REB4X10",
+    2.0
+   ],
+   [
+    "EST-ACA-SILICONE",
+    1.0
+   ],
+   [
+    "ELE-CAB-FORQUILHA",
+    6.0
+   ],
+   [
+    "ELE-PER-WEBCAM4K",
+    1.0
+   ]
+  ],
+  "ELE-SUB-CPUV2": [
+   [
+    "EST-ADE-CPUV2",
+    1.0
+   ],
+   [
+    "ELE-BPN-M1X40R",
+    1.0
+   ],
+   [
+    "EST-CAS-PBT114",
+    1.0
+   ],
+   [
+    "ELE-CTR-SD32GB",
+    1.0
+   ],
+   [
+    "EST-MET-CHAPAFIX",
+    1.0
+   ],
+   [
+    "ELE-CMP-LCD20X4",
+    1.0
+   ],
+   [
+    "EST-PAR-AA29X65",
+    6.0
+   ],
+   [
+    "EST-PAR-CH35X16FX",
+    4.0
+   ],
+   [
+    "ELE-CTR-RPI3B",
+    1.0
+   ],
+   [
+    "ELE-PCB-SHIELDRPI",
+    1.0
+   ]
+  ],
+  "ELE-PCB-SHIELDRPI": [
+   [
+    "ELE-BPN-F2X20",
+    1.0
+   ],
+   [
+    "ELE-BPN-F1X16",
+    1.0
+   ],
+   [
+    "ELE-CMP-BUZZER",
+    1.0
+   ],
+   [
+    "ELE-CTR-74HC595",
+    1.0
+   ],
+   [
+    "ELE-CAP-470UF16V",
+    2.0
+   ],
+   [
+    "ELE-CMP-DB9F",
+    1.0
+   ],
+   [
+    "ELE-DIO-1N4007",
+    1.0
+   ],
+   [
+    "ELE-DIO-1N4148",
+    1.0
+   ],
+   [
+    "ELE-CMP-FUS3A",
+    3.0
+   ],
+   [
+    "ELE-LED-VERDE",
+    1.0
+   ],
+   [
+    "ELE-LED-VERMELHO",
+    1.0
+   ],
+   [
+    "ELE-LED-RGB",
+    3.0
+   ],
+   [
+    "ELE-PCB-PCBV25",
+    1.0
+   ],
+   [
+    "ELE-CMP-PORTAFUS",
+    1.0
+   ],
+   [
+    "ELE-CMP-RJ45F",
+    1.0
+   ],
+   [
+    "ELE-CMP-RELE5V",
+    1.0
+   ],
+   [
+    "ELE-RES-10",
+    1.0
+   ],
+   [
+    "ELE-RES-100",
+    3.0
+   ],
+   [
+    "ELE-RES-100K",
+    1.0
+   ],
+   [
+    "ELE-RES-10K",
+    3.0
+   ],
+   [
+    "ELE-RES-1K",
+    2.0
+   ],
+   [
+    "ELE-RES-1K2",
+    3.0
+   ],
+   [
+    "ELE-RES-220",
+    1.0
+   ],
+   [
+    "ELE-RES-270",
+    3.0
+   ],
+   [
+    "ELE-RES-2K2",
+    2.0
+   ],
+   [
+    "ELE-RES-390",
+    3.0
+   ],
+   [
+    "ELE-RES-3K9",
+    3.0
+   ],
+   [
+    "ELE-CMP-TBLOCK3M",
+    1.0
+   ],
+   [
+    "ELE-TRS-BC337",
+    1.0
+   ],
+   [
+    "ELE-TRS-BC327",
+    1.0
+   ],
+   [
+    "ELE-CMP-TRIMPOT5K",
+    1.0
+   ]
+  ]
+ }
+}

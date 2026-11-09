@@ -296,7 +296,7 @@ export default function FornecedoresPage() {
     <div className="forn-pesquisa">
       <input
         className="search"
-        placeholder="Pesquisar: SKU, nome, código do fornecedor ou onde é usado"
+        placeholder="Pesquisar: SKU, nome, código do fornecedor, máquina ou local na máquina"
         value={q}
         onChange={(e) => setQ(e.target.value)}
       />
@@ -344,8 +344,8 @@ export default function FornecedoresPage() {
         { titulo: 'Mínimo', tipo: 'num' },
         { titulo: 'Comprar', tipo: 'num', destaque: true },
         { titulo: 'Valor unit.', tipo: 'preco' },
-        { titulo: 'Usada em' },
-        { titulo: 'Onde é usado' },
+        { titulo: 'Máquinas' },
+        { titulo: 'Local na máquina' },
         { titulo: 'Outros fornecedores' },
       ],
       linhas: linhas.map((p) => [
@@ -441,7 +441,7 @@ export default function FornecedoresPage() {
                 <div className="table-wrap">
                   <table className="tbl">
                     <thead>
-                      <tr><th>SKU</th><th>Peça</th><th>Fornecedor e código</th><th className="r">Estoque</th><th>Usada em</th><th>Onde é usado</th></tr>
+                      <tr><th>SKU</th><th>Peça</th><th>Fornecedor e código</th><th className="r">Estoque</th><th>Máquinas</th><th>Local na máquina</th></tr>
                     </thead>
                     <tbody>
                       {linhas.map((p) => (
@@ -532,8 +532,8 @@ export default function FornecedoresPage() {
                         <th className="r">Mínimo</th>
                         <th className="r">Comprar</th>
                         <th className="r">Valor unit.</th>
-                        <th>Usada em</th>
-                        <th>Onde é usado</th>
+                        <th>Máquinas</th>
+                        <th>Local na máquina</th>
                       </tr>
                     </thead>
                     <tbody>

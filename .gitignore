@@ -2,3 +2,8 @@ node_modules/
 frontend/dist/
 backend/data/
 *.tmp
+
+# senhas e chaves (nunca vão para o GitHub)
+.env
+*.env
+!.env.example

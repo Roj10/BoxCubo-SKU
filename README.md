@@ -17,12 +17,15 @@ simples, o que ele faz. Resumo:
 | `backend/cmd/server/main.go` | Liga o servidor ("a cozinha") |
 | `backend/internal/model/model.go` | O "formulário" de cada coisa: máquina, peça, fornecedor, movimentação |
 | `backend/internal/store/store.go` | A "despensa": lê e grava o arquivo de dados |
+| `backend/internal/store/supabase.go` | Guarda os dados no Supabase (lê ao ligar, grava só o que mudou) |
+| `backend/supabase/schema.sql` | Cria as tabelas no Supabase (rodar uma vez no SQL Editor) |
+| `backend/.env` | Endereço e chave secreta do Supabase (não vai para o GitHub) |
 | `backend/internal/store/migracoes.go` | Atualizações automáticas de dados antigos |
 | `backend/internal/api/api.go` | O "balcão": recebe os pedidos da tela (lista de peças, planejamento, cadastro) |
 | `backend/internal/api/estoque.go` | Saídas, entradas e estornos |
 | `backend/internal/api/minimo.go` | Estoque mínimo e reposição |
 | `backend/internal/api/imagens.go` | Fotos das peças |
-| `backend/internal/api/subconjuntos.go` | Subconjuntos (CPU, Shield): receita, custo, fabricação, "usada em" |
+| `backend/internal/api/subconjuntos.go` | Subconjuntos (CPU, Shield): receita, custo, fabricação, em quais máquinas a peça vai |
 | `backend/internal/api/fornecedores.go` | Página de fornecedores: resumo, peças, código do item, renomear/juntar |
 | `backend/internal/api/*_test.go` | Testes automáticos (`go test ./...`) |
 | `backend/data/` | **Os dados de vocês** (`boxcubo.json`) e as fotos |
@@ -45,8 +48,9 @@ cd backend
 go run ./cmd/server
 ```
 
-A API sobe em http://localhost:8080. Na primeira execução ela cria
-`backend/data/boxcubo.json` já com as 123 peças da V2.
+A API sobe em http://localhost:8080, com os dados no Supabase (veja
+"Banco de dados" abaixo). Sem o Supabase configurado, ela usa o arquivo
+`backend/data/boxcubo.json` (criado na primeira vez com as 123 peças da V2).
 
 **2. Frontend** (em outro terminal):
 
@@ -59,14 +63,39 @@ npm run dev
 Abra http://localhost:5173.
 Para os testes do backend: `cd backend && go test ./...`
 
-## Banco de dados
+## Banco de dados (Supabase)
 
-Por enquanto os dados ficam num arquivo JSON local (`backend/data/boxcubo.json`).
-Toda a API usa a interface `store.Store` (`backend/internal/store/store.go`);
-quando o banco for escolhido, basta criar uma nova implementação dessa
-interface (Postgres, MySQL, SQLite…) e trocar uma linha no
-`backend/cmd/server/main.go`. Para voltar aos dados originais da planilha,
-apague `backend/data/boxcubo.json` e reinicie o backend.
+Os dados ficam no **Supabase** (Postgres na nuvem), nas tabelas `maquinas`,
+`kits`, `pecas`, `pecas_fornecedores`, `receitas`, `legenda`,
+`movimentacoes` e `migracoes`. As fotos das peças continuam na pasta
+`backend/data/imagens`.
+
+**Configurar (uma vez só):**
+
+1. No Supabase: **SQL Editor › New query**, cole o arquivo
+   `backend/supabase/schema.sql` inteiro e clique em **Run** (cria as tabelas).
+2. Em **Project Settings › API Keys › Secret keys**, copie a chave secreta
+   (`sb_secret_...`).
+3. No arquivo `backend/.env` (modelo em `backend/.env.example`), preencha
+   `SUPABASE_URL` e `SUPABASE_SECRET_KEY`.
+4. Reinicie o backend. Na primeira vez, com o banco vazio, ele **copia os
+   dados de `backend/data/boxcubo.json` para o Supabase** e mostra no
+   terminal: *"Supabase: banco vazio: dados copiados de data/boxcubo.json"*.
+   Das próximas vezes: *"Supabase: dados lidos do Supabase"*.
+
+Como funciona: o backend lê as tabelas ao ligar e, a cada mudança, manda
+para o Supabase só as linhas que mudaram. A conversa é pela API REST do
+Supabase (HTTPS), com a chave secreta; as tabelas têm RLS ligado e nenhuma
+regra, então a chave publicável não acessa nada. A senha do banco não é
+usada pelo sistema.
+
+- O `.env` (com a chave) **não vai para o GitHub** (está no `.gitignore`).
+- O backend deve ser o único a escrever nas tabelas: editar pelo painel do
+  Supabase com o backend ligado pode ser desfeito pela próxima gravação.
+  Para editar direto no painel, desligue o backend antes.
+- Sem `SUPABASE_SECRET_KEY`, o sistema volta a usar o arquivo
+  `backend/data/boxcubo.json` (e avisa no terminal).
+- O código está em `backend/internal/store/supabase.go`.
 
 ## Formato do SKU
 
@@ -115,8 +144,10 @@ bibliotecas extras).
   subconjuntos). O **código no fornecedor** se digita direto na tabela: salva
   ao apertar Enter ou sair do campo (Esc desfaz).
 - Abas: *Todas*, *Sem código* (para ir preenchendo) e *Pedido*.
+- As colunas **Máquinas** (V2, Eye...) e **Local na máquina** (códigos da
+  legenda: PR, CF, ACA...) aparecem nas tabelas e nas planilhas.
 - **Pesquisar produto** (logo acima da tabela): procura pelo SKU, nome, código
-  do item em **qualquer** fornecedor da peça, **onde é usado** (o código, ex.:
+  do item em **qualquer** fornecedor da peça, **local na máquina** (o código, ex.:
   `CF`, ou o que ele significa, ex.: `cabo de força`) e máquina (ex.: `eye`).
   Várias palavras = todas precisam aparecer (ex.: `parafuso 4x10`).
 - **Baixar pedido**: planilha com o que comprar dele para voltar ao estoque mínimo,
@@ -154,7 +185,7 @@ que o backend aplica uma vez (migração `receitas-controle-v1`):
 - cada material do Controle virou um SKU — 91 reaproveitaram SKUs que já
   existiam, 43 são novos (ex.: `EST-MET-EYEBRACO1`, `ELE-CTR-NUC`);
 - **uma peça = um SKU**, mesmo se usada em várias máquinas (monitor, cabo de
-  rede, parafuso M4x10…). A coluna **Usada em** mostra as máquinas e o filtro
+  rede, parafuso M4x10…). A coluna **Máquinas** mostra em quais máquinas a peça vai e o filtro
   **Só compartilhadas** lista só essas peças;
 - o estoque passou a ser o do Controle, lançado como **Ajuste de estoque** nas
   Movimentações (pode ser estornado);
@@ -252,7 +283,7 @@ laranja ao lado. As fotos ficam em `backend/data/imagens/` (uma por SKU).
 
 - **Estoque:** veio da coluna logo após "onde é usado" na aba Super_Controle.
   Confirmar se é a coluna certa.
-- Códigos de "onde é usado" que não estão na legenda da planilha:
+- Códigos de "local na máquina" (na planilha: "onde é usado") que não estão na legenda da planilha:
   OS, CL, CR, BL, FB, EMB (marcados com "(?)").
 - Itens da BoxCubo Eye (webcam, cabo V8) e "fora da V2" (manípulo,
   parafuso M6x10) **não** foram incluídos na V2.

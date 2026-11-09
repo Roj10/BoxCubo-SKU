@@ -25,7 +25,7 @@ export const porFornecedor = (a, b) => {
   return fa.localeCompare(fb, 'pt-BR')
 }
 
-// Sigla curta de cada máquina (coluna "Usada em"): "Estática V2" -> "V2".
+// Sigla curta de cada máquina (coluna "Máquinas"): "Estática V2" -> "V2".
 const SIGLA = { 'Estática V2': 'V2', Vision: 'VIS', Eye: 'EYE' }
 export const sigla = (nome) => SIGLA[nome] || nome
 

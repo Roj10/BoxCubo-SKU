@@ -115,10 +115,13 @@ type data struct {
 
 // FileStore guarda os dados num arquivo JSON local.
 // FileStore é a despensa que guarda tudo num arquivo JSON local.
+// Os dados ficam na memória enquanto o backend está ligado; cada mudança
+// é gravada no arquivo (path) ou, se configurado, no Supabase (banco).
 type FileStore struct {
-	mu   sync.RWMutex
-	path string
-	d    data
+	mu    sync.RWMutex
+	path  string
+	d     data
+	banco *supabase // nil = grava no arquivo local
 }
 
 // NewFileStore abre o arquivo; se ele não existir, cria a partir do seed da V2.
@@ -147,6 +150,9 @@ func NewFileStore(path string) (*FileStore, error) {
 // save grava de forma atômica (arquivo temporário + rename).
 // Grava tudo no disco de forma segura (temporário + troca).
 func (s *FileStore) save() error {
+	if s.banco != nil {
+		return s.banco.salvar(&s.d)
+	}
 	if err := os.MkdirAll(filepath.Dir(s.path), 0o755); err != nil {
 		return err
 	}

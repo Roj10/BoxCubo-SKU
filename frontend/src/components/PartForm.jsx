@@ -278,7 +278,7 @@ export default function PartForm({ machine, line, classes, kits, legenda, onClos
             </select>
           </label>
           <div className="full campo">
-            <span className="campo-titulo">Onde é usado</span>
+            <span className="campo-titulo">Local na máquina</span>
             <CodigosInput
               value={f.onde_usado}
               onChange={(v) => setF({ ...f, onde_usado: v })}

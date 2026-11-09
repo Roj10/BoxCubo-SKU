@@ -85,8 +85,8 @@ export default function BomTable({ nomeMaquina = '', linhas, legenda, kitNome, o
         { titulo: 'Fornecedor' },
         { titulo: 'Código no fornecedor' },
         { titulo: 'Outros fornecedores' },
-        { titulo: 'Usada em' },
-        { titulo: 'Onde é usado' },
+        { titulo: 'Máquinas' },
+        { titulo: 'Local na máquina' },
         { titulo: 'Kit' },
       ],
       linhas: secoes.flatMap((s) =>
@@ -140,8 +140,8 @@ export default function BomTable({ nomeMaquina = '', linhas, legenda, kitNome, o
             <tr>
               <th>SKU</th>
               <th>Nome</th>
-              <th title="Máquinas que usam esta peça (direto ou dentro de um subconjunto)">Usada em</th>
-              <th>Onde é usado</th>
+              <th title="Máquinas que usam esta peça (direto ou dentro de um subconjunto)">Máquinas</th>
+              <th title="Em que parte da máquina a peça vai (códigos da legenda: PR, CF, ACA...)">Local na máquina</th>
               <th className="r">Qtd/máq.</th>
               <th>Und.</th>
               <th className="r">Valor unit.</th>
